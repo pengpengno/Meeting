@@ -1,7 +1,10 @@
 package com.github.peng.gui.controller;
 
 
-import com.github.peng.gui.viewMain.MainView;
+import cn.hutool.core.io.FileUtil;
+import com.github.peng.gui.controller.pane.viewMain.MainView;
+import com.github.peng.gui.util.FxmlLoader;
+import com.github.peng.model.account.search.AccountSearchVo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -40,24 +43,24 @@ public class MainController implements Initializable {
 
     MainView mainView;
 
-    DashBoardPane dashBoard;
+//    DashBoardPane dashBoard;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         log.info("Main Controller is init");
-        Assert.notNull(AccountContext.getCurAccount(),"Current Account not be null!");
+//        Assert.notNull(AccountContext.getCurAccount(),"Current Account not be null!");
         mainView.initialize(null,null);
-        dashBoard.initialize(null,null);
+//        dashBoard.initialize(null,null);
 
 
         mainView.prefWidthProperty().bind(viewMainPane.widthProperty());
         mainView.prefHeightProperty().bind(viewMainPane.heightProperty());
-        dashBoard.prefHeightProperty().bind(dashBoardFlowPane.heightProperty());
-        dashBoard.prefWidthProperty().bind(dashBoardFlowPane.widthProperty());
+//        dashBoard.prefHeightProperty().bind(dashBoardFlowPane.heightProperty());
+//        dashBoard.prefWidthProperty().bind(dashBoardFlowPane.widthProperty());
 
         viewMainPane.getChildren().add(mainView);
-        dashBoardFlowPane.getChildren().add(dashBoard);
+//        dashBoardFlowPane.getChildren().add(dashBoard);
 
 
     }

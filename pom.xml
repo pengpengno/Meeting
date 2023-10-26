@@ -14,10 +14,10 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.plugin.version>3.6.1</maven.plugin.version>
+        <maven.plugin.version>3.8.0</maven.plugin.version>
         <spring.starter.version>3.1.4</spring.starter.version>
         <sl4j.version>2.0.2</sl4j.version>
         <hutool-all.version>5.8.4</hutool-all.version>
@@ -46,6 +46,11 @@
 
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2 -->
         <dependency>
             <groupId>org.projectlombok</groupId>

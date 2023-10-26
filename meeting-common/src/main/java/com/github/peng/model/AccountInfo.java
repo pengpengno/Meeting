@@ -1,16 +1,14 @@
 package com.github.peng.model;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
 /***
  * 账户基本信息  公用模块
  */
+@Getter
 @Data
 @Builder
 @NoArgsConstructor
@@ -59,19 +57,4 @@ public class AccountInfo implements Serializable, AccountSPI {
         this.email = email;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 }

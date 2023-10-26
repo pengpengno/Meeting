@@ -38,6 +38,7 @@ public class ReactorTcpServer implements ReactiveServer {
 
 
     private TcpServer server;
+
     private DisposableServer disposableServer;
 
     private ReactorTcpServer(){
@@ -49,7 +50,7 @@ public class ReactorTcpServer implements ReactiveServer {
     }
 
 
-    public  void init(InetSocketAddress address){
+    public ReactiveServer init(InetSocketAddress address){
         this.address = address;
         server = TcpServer
                 .create()
@@ -59,13 +60,14 @@ public class ReactorTcpServer implements ReactiveServer {
                 .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;
         log.info("startup netty  on port {}",address.getPort());
-
+        return this;
     }
 
 
-    public void start(){
+    public ReactiveServer start(){
         disposableServer = server.bindNow();
         disposableServer.onDispose().block();
+        return this;
     }
 
 

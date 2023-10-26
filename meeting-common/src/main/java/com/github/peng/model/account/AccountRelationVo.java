@@ -1,7 +1,5 @@
 package com.github.peng.model.account;
 
-import com.ifx.account.validator.ACCOUNTLOGIN;
-import com.ifx.account.validator.ACCOUTRELATIONINSERT;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
@@ -20,11 +18,12 @@ import java.util.Set;
 @Builder
 public class AccountRelationVo {
 
-    @NotBlank(message = "账户不可为空！",groups = ACCOUNTLOGIN.class)
+    @NotBlank(message = "账户不可为空！")
     private String account ;
 
     private Long relationId; // 账户关系标识
-    @NotEmpty(message = "添加关系不可为空!",groups = ACCOUTRELATIONINSERT.class)
+
+    @NotEmpty(message = "添加关系不可为空!")
     private Set<String> friendAccountIds;
 
 

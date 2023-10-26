@@ -1,9 +1,8 @@
 package com.github.peng.model.account.chat;
 
-import com.ifx.account.vo.page.PageVo;
+import com.github.peng.model.account.page.PageVo;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import org.springframework.data.domain.PageRequest;
 
 import java.io.Serializable;
 import java.time.Period;
@@ -24,14 +23,14 @@ public class PullChatMsgVo implements Serializable {
     private PageVo pageVo;
 
 
-
-    public PageRequest getPageRequest(){
-        if (pageVo != null  &&  getPageVo().pageSize() > 0 && getPageVo().pageNumber() >= 0){
-            PageRequest of = PageRequest.of(getPageVo().pageNumber(), getPageVo().pageSize());
-            return of;
-        }
-        return null;
-    }
+//
+//    public PageRequest getPageRequest(){
+//        if (pageVo != null  &&  getPageVo().pageSize() > 0 && getPageVo().pageNumber() >= 0){
+//            PageRequest of = PageRequest.of(getPageVo().pageNumber(), getPageVo().pageSize());
+//            return of;
+//        }
+//        return null;
+//    }
 
 
 
@@ -86,27 +85,6 @@ public class PullChatMsgVo implements Serializable {
          @NotNull
         private String endTime;
 
-
-//
-//        public Period period(){
-//            if (period != null ){
-//
-//                return Period.parse(period);
-//
-//            }
-//
-//            throw new IllegalArgumentException("Provided DateTime  is null ,please type date like following   period " +
-//                    "             \"P2Y\"             -- Period.ofYears(2)\n" +
-//                    "         *   \"P3M\"             -- Period.ofMonths(3)\n" +
-//                    "         *   \"P4W\"             -- Period.ofWeeks(4)\n" +
-//                    "         *   \"P5D\"             -- Period.ofDays(5)\n" +
-//                    "         *   \"P1Y2M3D\"         -- Period.of(1, 2, 3)\n" +
-//                    "         *   \"P1Y2M3W4D\"       -- Period.of(1, 2, 25)\n" +
-//                    "         *   \"P-1Y2M\"          -- Period.of(-1, 2, 0)\n" +
-//                    "         *   \"-P1Y2M\"          -- Period.of(-1, -2, 0)");
-//
-//        }
-//
 
 
         public static Period defaultPeriod(){

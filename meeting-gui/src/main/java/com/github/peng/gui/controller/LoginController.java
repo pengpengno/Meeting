@@ -3,7 +3,8 @@ package com.github.peng.gui.controller;
 
 import com.github.peng.connect.connection.client.ReactiveClientAction;
 import com.github.peng.connect.mapstruct.ProtoBufMapper;
-import com.github.peng.server.model.AccountVo;
+import com.github.peng.gui.util.FxmlLoader;
+import com.github.peng.model.account.AccountVo;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,17 +58,12 @@ public class LoginController  implements Initializable {
     @FXML
     private CheckBox rememberPsdCheckBox;
 
-    private WebClient webClient;
-
-    private AccountApi accountApi;
-
     ReactiveClientAction reactiveClientAction;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         passwordField.setText("wangpeng");
         accountField.setText("wangpeng");
-        URL url = UrlBuilder.of("icon/menu/icomoon.svg").toURL();
         log.debug ("initialing login controller ");
     }
 
@@ -77,29 +73,29 @@ public class LoginController  implements Initializable {
                 .password(accountField.getText()).build();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("登录状态");
-        accountApi.login(accountVo)
-                .doOnNext(acc -> {
-                    Platform.runLater(()->  {
-                        log.debug("save accountInfo ");
-                        AccountContext.setCurAccount(acc);
-                    });
-                } )
-            .map(acc -> {
-                Account.AccountInfo accountInfo = ProtoBufMapper.INSTANCE.protocolAccMap(acc);
-                return Account.Authenticate
-                        .newBuilder()
-                        .setAccountInfo(accountInfo)
-                        .build();
-            })
-            .subscribe(auth-> {
-                log.info("res {}", auth.toString());
-                Platform.runLater(()->  {
-                    reactiveClientAction.sendMessage(auth).subscribe();
-                    log.debug("start main frame");
-                    hide();
-                    MainController.show();
-                });
-            });
+//        accountApi.login(accountVo)
+//                .doOnNext(acc -> {
+//                    Platform.runLater(()->  {
+//                        log.debug("save accountInfo ");
+//                        AccountContext.setCurAccount(acc);
+//                    });
+//                } )
+//            .map(acc -> {
+//                Account.AccountInfo accountInfo = ProtoBufMapper.INSTANCE.protocolAccMap(acc);
+//                return Account.Authenticate
+//                        .newBuilder()
+//                        .setAccountInfo(accountInfo)
+//                        .build();
+//            })
+//            .subscribe(auth-> {
+//                log.info("res {}", auth.toString());
+//                Platform.runLater(()->  {
+//                    reactiveClientAction.sendMessage(auth).subscribe();
+//                    log.debug("start main frame");
+//                    hide();
+//                    MainController.show();
+//                });
+//            });
 
         alert.contentTextProperty().addListener((a1,a2,a3)-> alert.show());
 

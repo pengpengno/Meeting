@@ -17,10 +17,10 @@ public interface ReactiveServer {
         return tcpServer;
     }
 
-    public void init (InetSocketAddress address);
+    public ReactiveServer init (InetSocketAddress address);
 
 
-    public void start();
+    public ReactiveServer start();
 
 
     public void stop();

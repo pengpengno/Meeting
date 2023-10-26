@@ -1,7 +1,7 @@
 package com.github.peng.connect.handler.client;
 
-import com.ifx.connect.proto.Account;
-import com.ifx.connect.proto.ProtocolType;
+import com.github.peng.connect.model.proto.Account;
+import com.github.peng.connect.model.proto.ProtocolType;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;

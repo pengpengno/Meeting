@@ -6,7 +6,7 @@ import com.github.peng.connect.connection.client.ClientLifeStyle;
 import com.github.peng.connect.connection.client.ReactiveClientAction;
 import com.github.peng.connect.connection.server.ServerToolkit;
 import com.github.peng.connect.model.proto.Account;
-import com.github.peng.connect.proto.ProtoParseUtil;
+import com.github.peng.connect.model.proto.ProtoParseUtil;
 import com.github.peng.connect.spi.ReactiveHandlerSPI;
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
@@ -19,6 +19,7 @@ import reactor.netty.Connection;
 import reactor.netty.tcp.TcpClient;
 import reactor.util.retry.Retry;
 
+import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.time.Duration;
 import java.util.concurrent.Callable;
@@ -51,7 +52,11 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
                             return;
                         }
                         log.warn("the netty connection  is disconnect");
-                        ServerToolkit.contextAction().closeAndRmConnection(accountInfo.getAccount());
+                        try {
+                            ServerToolkit.contextAction().closeAndRmConnection(accountInfo.getAccount());
+                        } catch (ConnectException e) {
+                            throw new RuntimeException(e);
+                        }
                     })
                 ;
     }

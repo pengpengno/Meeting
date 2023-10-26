@@ -2,6 +2,7 @@ package com.github.peng.connect.mapstruct;
 
 import cn.hutool.core.util.StrUtil;
 import com.github.peng.connect.model.proto.Account;
+import com.github.peng.model.AccountInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

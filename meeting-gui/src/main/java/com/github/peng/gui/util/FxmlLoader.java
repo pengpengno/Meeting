@@ -3,7 +3,7 @@ package com.github.peng.gui.util;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.spring.SpringUtil;
-import com.ifx.client.ClientApplication;
+import com.github.peng.HelloApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -48,7 +48,7 @@ public class FxmlLoader {
     private static Scene applySceneSpring(String path) {
         try{
             Assert.notNull(path,"指定路径不可为空！");
-            FXMLLoader fxmlLoader = new FXMLLoader(ClientApplication.class.getResource(path));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(path));
 //            Injector injector = Guice.createInjector();
 //            ProxyWiredBeanProcessor instance = injector.getInstance(ProxyWiredBeanProcessor.class);
 //            fxmlLoader.setControllerFactory(instance.proxyBeanProcessor());

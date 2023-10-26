@@ -1,7 +1,6 @@
 package com.github.peng.model.account;
 
-import com.ifx.account.validator.ACCOUNTLOGIN;
-import com.ifx.common.acc.AccountSPI;
+import com.github.peng.model.AccountSPI;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,11 +19,11 @@ import java.io.Serializable;
 public class AccountVo implements Serializable , AccountSPI {
 
     private Long userId;
-    @NotNull(message = "账户不可为空！",groups = ACCOUNTLOGIN.class)
+    @NotNull(message = "账户不可为空！")
     private String account;
 
     private String userName;   // 用户姓名
-    @NotNull(message = "密码不可为空！",groups = ACCOUNTLOGIN.class)
+    @NotNull(message = "密码不可为空！")
     private String password;
 
     private String email;  // 电子邮件

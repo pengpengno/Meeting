@@ -1,6 +1,6 @@
 package com.github.peng.model.account;
 
-import com.ifx.account.vo.auth.AuthVo;
+import com.github.peng.model.account.auth.AuthVo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +20,5 @@ public class AccountAuthenticateVo {
     private String jwt;
 
     private AuthVo authVo;
+
 }

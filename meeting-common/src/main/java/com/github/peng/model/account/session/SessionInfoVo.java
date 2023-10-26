@@ -1,6 +1,6 @@
 package com.github.peng.model.account.session;
 
-import com.ifx.common.base.AccountInfo;
+import com.github.peng.model.AccountInfo;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 

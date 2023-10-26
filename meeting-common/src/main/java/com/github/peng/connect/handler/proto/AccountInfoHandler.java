@@ -1,10 +1,11 @@
 package com.github.peng.connect.handler.proto;
 
+import com.github.peng.connect.connection.server.ServerToolkit;
+import com.github.peng.connect.connection.server.context.IConnectContextAction;
+import com.github.peng.connect.connection.server.context.IConnection;
+import com.github.peng.connect.model.proto.Account;
 import com.google.protobuf.Message;
-import com.ifx.connect.connection.server.ServerToolkit;
-import com.ifx.connect.connection.server.context.IConnectContextAction;
-import com.ifx.connect.connection.server.context.IConnection;
-import com.ifx.connect.proto.Account;
+
 
 /**
  * @author pengpeng

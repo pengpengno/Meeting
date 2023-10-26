@@ -1,7 +1,9 @@
 package com.github.peng.connect.handler;
 
 import com.github.peng.connect.enums.ProtocolMessageMapEnum;
-import com.github.peng.connect.proto.ProtocolType;
+import com.github.peng.connect.model.proto.Account;
+import com.github.peng.connect.model.proto.Chat;
+import com.github.peng.connect.model.proto.ProtocolType;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Parser;

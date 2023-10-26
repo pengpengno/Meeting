@@ -1,7 +1,9 @@
 package com.github.peng.connect.enums;
 
 import cn.hutool.core.util.ObjectUtil;
-import com.github.peng.connect.proto.ProtocolType;
+import com.github.peng.connect.model.proto.Account;
+import com.github.peng.connect.model.proto.Chat;
+import com.github.peng.connect.model.proto.ProtocolType;
 import com.google.protobuf.Message;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
