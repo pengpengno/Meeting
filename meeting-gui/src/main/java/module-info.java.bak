@@ -12,8 +12,8 @@ module com.github.peng.meetinggui {
     requires java.desktop;
     requires spring.beans;
 
-    exports com.github.peng.gui.controller;
-    opens com.github.peng.gui.controller to javafx.fxml;
+    exports com.github.peng.gui.app;
+    opens com.github.peng.gui.app to javafx.fxml;
     exports com.github.peng;
     opens com.github.peng to javafx.fxml;
 }

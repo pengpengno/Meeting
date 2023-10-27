@@ -1,4 +1,4 @@
-package com.ifx.connect.reactor.netty.tcp;
+package com.github.connect.reactor.netty.tcp;
 
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;

@@ -1,4 +1,4 @@
-package com.ifx.connect.reactor.rabbitmq;
+package com.github.connect.reactor.rabbitmq;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.ConnectionFactory;

@@ -1,6 +1,6 @@
-package com.ifx.connect.reactor.rabbitmq;
+package com.github.connect.reactor.rabbitmq;
 
-import com.ifx.connect.proto.OnLineUser;
+import com.github.connect.proto.OnLineUser;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Delivery;

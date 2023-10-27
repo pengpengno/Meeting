@@ -1,4 +1,4 @@
-package com.ifx.connect.reactor.mono;
+package com.github.connect.reactor.mono;
 
 
 

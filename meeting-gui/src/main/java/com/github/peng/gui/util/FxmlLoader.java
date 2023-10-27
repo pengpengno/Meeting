@@ -1,9 +1,7 @@
 package com.github.peng.gui.util;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.spring.SpringUtil;
-import com.github.peng.HelloApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -12,142 +10,114 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 @Component
+/***
+ *  所有 fxml 设计为 与controller 同名 且 同路径
+ */
 public class FxmlLoader {
 
-    private final static ConcurrentHashMap<String,Stage> stageMap = new ConcurrentHashMap<>();
-    private final static ConcurrentHashMap<String,Scene> sceneMap = new ConcurrentHashMap<>();
+    private final static ConcurrentHashMap<Class<?>,Stage> stageMap = new ConcurrentHashMap<>();
 
 
-    private static Scene applyScene(URL url) {
+    private final static ConcurrentHashMap<Class<?>,Scene> sceneMap = new ConcurrentHashMap<>();
+
+
+    private final static String FXML_SUFFIX = ".fxml";
+
+
+    /***
+     * 获取单例的 Stage
+     * @param clazz 传入的类
+     * @return 返回加载的 stage
+     */
+    private static Scene applySingleScene (Class<?> clazz) {
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(url);
-//            Injector injector = Guice.createInjector();
-//            ProxyWiredBeanProcessor instance = injector.getInstance(ProxyWiredBeanProcessor.class);
-//            fxmlLoader.setControllerFactory(instance.proxyBeanProcessor());
+
+            Assert.notNull(clazz,"指定路径不可为空！");
+
+            FXMLLoader fxmlLoader = new FXMLLoader(clazz.getResource(buildString(clazz)));
+
             fxmlLoader.setControllerFactory(SpringUtil::getBean);
+
             return new Scene(fxmlLoader.load());
+
         }
         catch (Exception e){
-            log.error("create stage fail {}", ExceptionUtil.stacktraceToString(e));
-        }
-        return null;
-    }
 
+            log.error("create stage fail {}", ExceptionUtil.stacktraceToString(e));
+
+            return null;
+
+        }
+    }
 
     /***
      * 根据给定路径加载fxml
-     * @param path
-     * @return
+     * @param clazz 传入的类
+     * @return 返回加载的scene
      */
-    private static Scene applySceneSpring(String path) {
-        try{
-            Assert.notNull(path,"指定路径不可为空！");
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(path));
-//            Injector injector = Guice.createInjector();
-//            ProxyWiredBeanProcessor instance = injector.getInstance(ProxyWiredBeanProcessor.class);
-//            fxmlLoader.setControllerFactory(instance.proxyBeanProcessor());
-            fxmlLoader.setControllerFactory(SpringUtil::getBean);
-            return new Scene(fxmlLoader.load());
-        }
-        catch (Exception e){
-            log.error("create stage fail {}", ExceptionUtil.stacktraceToString(e));
-        }
-        return null;
+    private static String buildString (Class<?> clazz) {
+
+        return clazz.getName()+ FXML_SUFFIX;
+
     }
 
 
-
-    /***
-     * url 加载 fxml 资源为 Scene
-     * @param url
-     * @return
-     */
-    public static Scene load(URL url) {
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(url);
-            fxmlLoader.setControllerFactory(SpringUtil::getBean);
-            Scene scene = new Scene(fxmlLoader.load());
-            return scene;
-        }
-        catch (Exception e){
-            log.error("create stage fail {}", ExceptionUtil.stacktraceToString(e));
-        }
-        return null;
-    }
-
-
-    public static Scene applySinScene(String classPath) {
-        try{
-            Scene scene = sceneMap.computeIfAbsent(classPath, (k) -> {
-                URL resource = null;
-                try {
-                    resource = FileUtil.file(classPath).toURI().toURL();
-                } catch (Exception e) {
-                    log.info(ExceptionUtil.stacktraceToString(e));
-                }
-                return applyScene(resource);
-            });
-            sceneMap.put(classPath,scene);
-            return scene;
-        }
-        catch (Exception e){
-            log.warn(" fxml path wrong  can not wired {}",classPath);
-        }
-        return null;
-    }
 
 
     /**
-     * 获取单例的 Stage
-     * @param classPath
-     * @return
+     * 获取多例的 Stage
+     * @return 返回加载的 stage
      */
-    public static Stage applySinStage(String classPath){
-        Stage resStage = stageMap.computeIfAbsent(classPath, (path) -> {
+    public static Stage applyMultiStage(Class<?> clazz){
+        Stage resStage = stageMap.computeIfAbsent(clazz, (path) -> {
             Stage stage = new Stage();
-            Scene scene = applySinScene(classPath);
+            Scene scene = applySingleScene(clazz);
             stage.setScene(scene);
             return stage;
         });
 //        if windows is do close request  handler will close
         resStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST,(evt)-> {
+
             log.debug("{} frame  is doing {} event",evt.getSource(),evt.getEventType());
-            stageMap.remove(classPath);
+
+            stageMap.remove(clazz);
+
         });
 
-        stageMap.put(classPath,resStage);
+        stageMap.put(clazz,resStage);
+
         return resStage;
     }
 
+
     /**
      * 获取单例的 Stage
-     * @param classPath
-     * @return
+     * @return 返回加载的 stage
      */
-    public static Stage applySinStageSpring(String classPath){
-        Stage resStage = stageMap.computeIfAbsent(classPath, (path) -> {
+    public static Stage applySingleStage(Class<?> clazz){
+        Stage resStage = stageMap.computeIfAbsent(clazz, (path) -> {
             Stage stage = new Stage();
-            Scene scene = applySceneSpring(classPath);
+            Scene scene = applySingleScene(clazz);
             stage.setScene(scene);
             return stage;
         });
 //        if windows is do close request  handler will close
         resStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST,(evt)-> {
+
             log.debug("{} frame  is doing {} event",evt.getSource(),evt.getEventType());
-            stageMap.remove(classPath);
+
+            stageMap.remove(clazz);
+
         });
 
-        stageMap.put(classPath,resStage);
+        stageMap.put(clazz,resStage);
+
         return resStage;
     }
-
 
 
 }

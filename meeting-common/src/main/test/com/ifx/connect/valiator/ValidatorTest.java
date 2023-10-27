@@ -1,8 +1,8 @@
-package com.ifx.connect.valiator;
+package com.github.connect.valiator;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.ifx.common.base.AccountInfo;
-import com.ifx.common.utils.ValidatorUtil;
+import com.github.common.base.AccountInfo;
+import com.github.common.utils.ValidatorUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

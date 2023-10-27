@@ -10,7 +10,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 .idea
-
+*.iml
 # Package Files #
 *.jar
 *.war
@@ -19,6 +19,7 @@
 *.zip
 *.tar.gz
 *.rar
+
 meeting-common/target
 meeting-server/target
 meeting-gui/target

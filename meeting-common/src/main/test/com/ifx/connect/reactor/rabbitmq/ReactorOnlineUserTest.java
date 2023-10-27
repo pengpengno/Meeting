@@ -1,7 +1,7 @@
-package com.ifx.connect.reactor.rabbitmq;
+package com.github.connect.reactor.rabbitmq;
 
-import com.ifx.connect.proto.Account;
-import com.ifx.connect.proto.OnLineUser;
+import com.github.connect.proto.Account;
+import com.github.connect.proto.OnLineUser;
 import com.rabbitmq.client.Delivery;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;

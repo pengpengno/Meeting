@@ -1,4 +1,4 @@
-package com.ifx.connect.reactor.netty.http;
+package com.github.connect.reactor.netty.http;
 
 import org.junit.Test;
 import reactor.core.publisher.Mono;

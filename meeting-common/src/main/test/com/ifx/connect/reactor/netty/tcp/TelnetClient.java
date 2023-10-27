@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ifx.connect.reactor.netty.tcp;
+package com.github.connect.reactor.netty.tcp;
 
-import com.ifx.connect.handler.client.ClientInboundHandler;
+import com.github.connect.handler.client.ClientInboundHandler;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
 import io.netty.handler.logging.LogLevel;

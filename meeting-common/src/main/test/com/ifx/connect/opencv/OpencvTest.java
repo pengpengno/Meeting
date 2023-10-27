@@ -1,4 +1,4 @@
-package com.ifx.connect.opencv;
+package com.github.connect.opencv;
 
 /**
  * @author pengpeng

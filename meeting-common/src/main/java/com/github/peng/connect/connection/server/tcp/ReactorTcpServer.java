@@ -60,6 +60,7 @@ public class ReactorTcpServer implements ReactiveServer {
                 .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;
         log.info("startup netty  on port {}",address.getPort());
+
         return this;
     }
 

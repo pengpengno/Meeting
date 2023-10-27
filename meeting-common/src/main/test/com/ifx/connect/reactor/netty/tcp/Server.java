@@ -1,4 +1,4 @@
-package com.ifx.connect.reactor.netty.tcp;
+package com.github.connect.reactor.netty.tcp;
 
 import com.github.peng.connect.connection.server.ReactiveServer;
 import com.github.peng.connect.connection.server.ServerToolkit;

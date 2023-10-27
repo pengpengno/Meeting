@@ -1,6 +1,6 @@
-package com.ifx.connect.reactor.flux;
+package com.github.connect.reactor.flux;
 
-import com.ifx.common.ex.net.NetException;
+import com.github.common.ex.net.NetException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

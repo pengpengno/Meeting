@@ -1,4 +1,4 @@
-package com.ifx.connect.reactor.mono;
+package com.github.connect.reactor.mono;
 
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;

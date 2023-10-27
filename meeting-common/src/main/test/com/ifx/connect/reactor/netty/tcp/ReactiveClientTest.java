@@ -1,9 +1,9 @@
-package com.ifx.connect.reactor.netty.tcp;
+package com.github.connect.reactor.netty.tcp;
 
-import com.ifx.common.base.AccountInfo;
-import com.ifx.connect.handler.MessageParser;
-import com.ifx.connect.handler.client.ClientInboundHandler;
-import com.ifx.connect.proto.Account;
+import com.github.common.base.AccountInfo;
+import com.github.connect.handler.MessageParser;
+import com.github.connect.handler.client.ClientInboundHandler;
+import com.github.connect.proto.Account;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.handler.logging.LogLevel;
