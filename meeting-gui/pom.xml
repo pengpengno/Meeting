@@ -43,10 +43,7 @@
       <artifactId>javafx-fxml</artifactId>
       <version>${javafx.version}</version>
     </dependency>
-      <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-      </dependency>
+
     <dependency>
       <groupId>org.controlsfx</groupId>
       <artifactId>controlsfx</artifactId>
@@ -62,7 +59,8 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-    </dependency><dependency>
+    </dependency>
+    <dependency>
       <groupId>org.kordamp.bootstrapfx</groupId>
       <artifactId>bootstrapfx-core</artifactId>
       <version>0.4.0</version>
@@ -89,6 +87,7 @@
       <artifactId>jfoenix</artifactId>
       <version>9.0.10</version>
     </dependency>
+
       <dependency>
           <groupId>com.github.peng</groupId>
           <artifactId>meeting-common</artifactId>

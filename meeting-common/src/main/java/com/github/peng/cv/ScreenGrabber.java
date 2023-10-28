@@ -1,6 +1,7 @@
 package com.github.peng.cv;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
+import com.google.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
@@ -9,10 +10,17 @@ import org.bytedeco.javacv.FrameGrabber;
 import java.awt.*;
 
 @Slf4j
+/***
+ * 屏幕录制器
+ */
+@Singleton
 public class ScreenGrabber {
 
 
-
+    /***
+     * 桌面屏幕录制器
+     * @return 返回 FFmpeg 屏幕录制器
+     */
     public FrameGrabber desktopScreenCapture () {
 
         Integer screen = 1;

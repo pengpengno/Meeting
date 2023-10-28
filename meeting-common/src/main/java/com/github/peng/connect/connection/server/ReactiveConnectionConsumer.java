@@ -19,6 +19,7 @@ import reactor.netty.Connection;
 @Slf4j
 public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
+
     private static final LoggingHandler handler =  new LoggingHandler(LogLevel.INFO);
 
     private static final ProtobufEncoder protobufEncoder =  new ProtobufEncoder();
@@ -26,9 +27,9 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
     private static final RtspEncoder rtspEncoder =  new RtspEncoder();
 
 
-
     public ReactiveConnectionConsumer(){
         super((nettyInbound, nettyOutbound) -> {
+
             Flux<byte[]> handle = nettyInbound.receive().handle((byteBuf, sink) ->
 
                 nettyInbound.withConnection(connection -> {
@@ -51,7 +52,7 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                         log.error("reactor netty occur error {} ", ExceptionUtil.stacktraceToString(exception));
 
-                        sink.next("success".getBytes());
+                        sink.next(("occur error {} " + ExceptionUtil.stacktraceToString(exception)).getBytes());
 
                     }
 

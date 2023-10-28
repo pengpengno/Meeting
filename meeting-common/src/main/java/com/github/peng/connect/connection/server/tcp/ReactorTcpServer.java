@@ -55,7 +55,6 @@ public class ReactorTcpServer implements ReactiveServer {
         server = TcpServer
                 .create()
                 .wiretap("tcp-server", LogLevel.INFO)
-//                .host(address.getHostName())
                 .port(address.getPort())
                 .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;
