@@ -9,9 +9,10 @@
 
     <artifactId>meeting-server</artifactId>
     <packaging>jar</packaging>
-    <name>meeting-server Maven Plugin</name>
+    <name>meeting-server</name>
 
     <!-- FIXME change it to the project's website -->
+
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -29,6 +30,14 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.6.2</version>
+            </extension>
+        </extensions>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,0 +1,34 @@
+version: '3'
+services:
+  meeting-server:
+    container_name: meeting-server
+    build:
+        context: ./meeting-server
+        args:
+            - JAR_FILE=meeting-server-1.0.jar
+            - VERSION=1.0
+        dockerfile: Dockerfile
+          #    image: pengpeng163/meeting-server:1.0
+    volumes:
+      - ./logs:/etc/logs/meeting-server
+    ports:
+      - 8080:8080
+    environment:
+      JWT_HEADER: Authorization
+
+
+  meeting-gui:
+    container_name: meeting-gui
+    build:
+        context: ./meeting-gui
+#    volumes:
+    ports:
+      - 8090:8090
+      - 80:80
+      - 443:443
+    environment:
+      DB_TYPE: postgres
+
+
+
+# Path: ./elsbiz-office-service/src/main/resources/application.yml

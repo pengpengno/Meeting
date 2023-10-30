@@ -33,7 +33,7 @@ public class FxmlLoader {
      * @param clazz 传入的类
      * @return 返回加载的 stage
      */
-    private static Scene applySingleScene (Class<?> clazz) {
+    public static Scene applySingleScene (Class<?> clazz) {
         try{
 
             Assert.notNull(clazz,"指定路径不可为空！");

@@ -7,17 +7,17 @@
 ##RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g ~/.m2/settings.xml && \
 ##-s ./settings.xml
 #RUN mvn -f ./pom.xml clean install -DskipTests=true
-#
 
-ARG TAG=1.0
+
 FROM openjdk:21-jdk
 LABEL authors="王鹏"
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8
 MAINTAINER pengpeng_on@163.com
-ENV IMAGE_NAME=meeting-server
-ENV SERVICE_NAME=meeting-server
+ENV IMAGE_NAME=meeting-gui
+ENV SERVICE_NAME=meeting-gui
 ENV SERVICE_VERSION=1.0
 ENV JAR_NAME=${SERVICE_NAME}-${SERVICE_VERSION}.jar
+
 #COPY --from=builder /app/target/*.jar /app/*.jar
 
 ENV SERVER_PORT=${PORT}
