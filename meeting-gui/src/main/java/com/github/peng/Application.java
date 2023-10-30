@@ -14,9 +14,9 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("/HelloController.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("/HelloController.fxml"));
         var scene = FxmlLoader.applySingleScene(HelloController.class);
-        scene.heightProperty();
+//        scene.heightProperty();
 //        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 //        stage.setTitle("Hello!");
         stage.setScene(scene);

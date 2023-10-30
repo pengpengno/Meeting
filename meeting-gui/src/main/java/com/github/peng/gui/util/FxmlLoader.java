@@ -40,7 +40,7 @@ public class FxmlLoader {
 
             FXMLLoader fxmlLoader = new FXMLLoader(clazz.getResource(buildString(clazz)));
 
-            fxmlLoader.setControllerFactory(SpringUtil::getBean);
+//            fxmlLoader.setControllerFactory(SpringUtil::getBean);
 
             return new Scene(fxmlLoader.load());
 

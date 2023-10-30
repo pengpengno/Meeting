@@ -99,6 +99,17 @@
 
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/main/test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+
+    </resources>
     <extensions>
       <extension>
         <groupId>kr.motd.maven</groupId>
@@ -138,8 +149,16 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
+          <sourceDirectory>src/main/java</sourceDirectory>
           <mainClass>com.github.peng.Launcher</mainClass>
         </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.openjfx</groupId>
