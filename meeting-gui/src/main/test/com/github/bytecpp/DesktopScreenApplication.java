@@ -34,7 +34,6 @@ public class DesktopScreenApplication extends Application {
         for (var screenDevice : screenDevices) {
             log.info("{}",screenDevice);
         }
-        Integer screen = 1;
         VBox box = new VBox();
         box.getChildren().addAll( imageVideo);
         stage.setScene(new Scene(box));
@@ -47,6 +46,8 @@ public class DesktopScreenApplication extends Application {
                 System.exit(0);
             }
         });
+        Integer screen = 0;
+
 
         var screenDevice = screenDevices[screen];
 
@@ -56,17 +57,18 @@ public class DesktopScreenApplication extends Application {
 
         refreshRate = 10 ;
 
-        var desktop = FFmpegFrameGrabber.createDefault("desktop");
+//        var desktop = FFmpegFrameGrabber.createDefault("desktop");
+        var desktop = FFmpegFrameGrabber.createDefault("rtsp://127.0.0.1:5541/vod/desktop");
 
         var audio = FFmpegFrameGrabber.createDefault("audio=virtual-auodi-capturer");
 
         audio.setFormat("dshow");
 
-        desktop.setFormat("gdigrab");
-
+//        desktop.setFormat("gdigrab");
+        desktop.setFormat("rtsp");
         desktop.setFrameRate(refreshRate);
 
-        desktop.setVideoCodec(avcodec.AV_CODEC_ID_H264);
+//        desktop.setVideoCodec(avcodec.AV_CODEC_ID_H264);
 
         desktop.setVideoFrameNumber(0);
 
@@ -89,7 +91,7 @@ public class DesktopScreenApplication extends Application {
 
             var javaFXFrameConverter = new JavaFXFrameConverter();
 
-            recorder.start();
+//            recorder.start();
 
 
             new Thread(()->{
@@ -103,14 +105,14 @@ public class DesktopScreenApplication extends Application {
                         imageVideo.setImage(javaFXFrameConverter.convert(frame));
 //                        canvasFrame.showImage(frame);
 
-                        recorder.record(frame);
+//                        recorder.record(frame);
 
                     }
 
-                    recorder.stop();
+//                    recorder.stop();
                     desktop.stop();
 
-                    recorder.release();
+//                    recorder.release();
                     desktop.release();
                 }
                 catch (Exception ex){
