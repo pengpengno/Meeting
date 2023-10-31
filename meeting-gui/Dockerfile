@@ -1,9 +1,9 @@
-
-FROM maven:latest AS builder
-WORKDIR /app
-COPY ./pom.xml ./
-COPY ./src ./src
-RUN mvn clean install -DskipTests=true
+#
+#FROM maven:latest AS builder
+#WORKDIR /app
+#COPY ./pom.xml ./
+#COPY ./src ./src
+#RUN mvn clean install -DskipTests=true
 
 #RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g ~/.m2/settings.xml && \
 #-s ./settings.xml
