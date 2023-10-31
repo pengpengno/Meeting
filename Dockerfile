@@ -1,14 +1,4 @@
 
-FROM maven:3.8.5-eclipse-temurin-11-alpine AS builder
-WORKDIR /app
-COPY meeting-common .
-COPY meeting-gui .
-COPY meeting-server .
-COPY ./pom.xml .
-COPY setting.xml .
-#RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g ~/.m2/settings.xml && \
-RUN mvn -s setting.xml -f ./pom.xml clean install -DskipTests=true
-
 
 ARG TAG=1.0
 FROM openjdk:21-jdk
