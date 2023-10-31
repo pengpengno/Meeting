@@ -1,6 +1,6 @@
-package com.github.connect.reactor.rabbitmq;
+package com.github.peng.connect.reactor.rabbitmq;
 
-import com.github.connect.proto.OnLineUser;
+import com.github.peng.connect.model.proto.OnLineUser;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Delivery;

@@ -22,16 +22,22 @@ public class ModuleSPILoader {
      * @param <T>
      */
     public  synchronized static <T> T loadUniqueSPI(Class<T> loaderSPIClass){
-//        synchronized (loaderSPIClass){
+
             ServiceLoader<T> load = ServiceLoader.load(loaderSPIClass);
+
             Iterator<T> iterator = load.iterator();
+
             if (iterator.hasNext()){
+
                 return iterator.next();
+
             }else {
+
                 log.warn("尚未发现业务处理拓展点");
+
                 return null;
+
             }
-//        }
     }
 
 

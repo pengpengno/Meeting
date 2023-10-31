@@ -1,4 +1,4 @@
-package com.github.opencv;
+package com.github.bytecpp;
 
 import org.bytedeco.ffmpeg.avformat.AVFormatContext;
 import org.bytedeco.ffmpeg.global.avcodec;

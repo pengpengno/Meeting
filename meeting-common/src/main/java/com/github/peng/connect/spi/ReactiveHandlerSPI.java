@@ -47,7 +47,7 @@ public class ReactiveHandlerSPI {
         log.info("ReactiveHandlerSPI could not found handlerSPI , it will use  default handler!");
 
         return GuiceModuleInjector.injector.getInstance(ConnectionConsumer.class);
-//        return new ConnectionConsumer.DefaultConnectionConsumer();
+
     }
 
 

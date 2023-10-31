@@ -1,9 +1,9 @@
-package com.github.connect.reactor.netty.tcp;
+package com.github.peng.connect.reactor.netty.tcp;
 
-import com.github.common.base.AccountInfo;
-import com.github.connect.handler.MessageParser;
-import com.github.connect.handler.client.ClientInboundHandler;
-import com.github.connect.proto.Account;
+import com.github.peng.connect.handler.MessageParser;
+import com.github.peng.connect.handler.client.ClientInboundHandler;
+import com.github.peng.connect.model.proto.Account;
+import com.github.peng.model.AccountInfo;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.handler.logging.LogLevel;

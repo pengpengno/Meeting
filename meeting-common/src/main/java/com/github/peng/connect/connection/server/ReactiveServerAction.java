@@ -15,6 +15,13 @@ import java.net.ConnectException;
 public interface ReactiveServerAction {
 
 
+    /**
+     * 发送消息
+     * @param connection 连接
+     * @param message 消息
+     * @return Mono<Void>
+     * @throws ConnectException 连接异常
+     */
     Mono<Void>  sendString(IConnection connection, String message) throws ConnectException;
 
     Mono<Void>  sendString(String account,String  message) throws ConnectException;

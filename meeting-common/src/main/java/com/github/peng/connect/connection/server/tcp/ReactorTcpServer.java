@@ -1,8 +1,14 @@
 package com.github.peng.connect.connection.server.tcp;
 
 import com.github.peng.connect.connection.server.ReactiveServer;
+import com.github.peng.connect.handler.proto.ProtoBufMessageLiteScanner;
+import com.github.peng.connect.model.proto.Account;
 import com.github.peng.connect.spi.ReactiveHandlerSPI;
 import com.google.inject.Singleton;
+import com.google.protobuf.MessageLiteOrBuilder;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.rtsp.RtspDecoder;
+import io.netty.handler.codec.rtsp.RtspEncoder;
 import io.netty.handler.logging.LogLevel;
 import lombok.extern.slf4j.Slf4j;
 import reactor.netty.DisposableServer;
@@ -56,6 +62,19 @@ public class ReactorTcpServer implements ReactiveServer {
                 .create()
                 .wiretap("tcp-server", LogLevel.INFO)
                 .port(address.getPort())
+                .doOnConnection(connection -> {
+                    log.debug("connection has been established ");
+                    ProtoBufMessageLiteScanner.scanAllMessageLite().forEach(e->{
+
+                        connection.addHandlerLast(new ProtobufDecoder(e));
+
+                    });
+
+                    connection
+                            .addHandlerLast(new RtspEncoder())
+                            .addHandlerLast(new RtspDecoder())
+                            ;
+                })
                 .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;
         log.info("startup netty  on port {}",address.getPort());

@@ -1,7 +1,7 @@
-package com.github.connect.reactor.rabbitmq;
+package com.github.peng.connect.reactor.rabbitmq;
 
-import com.github.connect.proto.Account;
-import com.github.connect.proto.OnLineUser;
+import com.github.peng.connect.model.proto.Account;
+import com.github.peng.connect.model.proto.OnLineUser;
 import com.rabbitmq.client.Delivery;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;

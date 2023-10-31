@@ -1,6 +1,5 @@
-package com.github.connect.reactor.flux;
+package com.github.peng.connect.reactor.flux;
 
-import com.github.common.ex.net.NetException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,6 +8,7 @@ import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 import reactor.util.retry.Retry;
 
+import java.net.ConnectException;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,7 +24,7 @@ public class FluxTestCase {
     public void error(){
         AtomicInteger errorCount = new AtomicInteger();
         Flux<String> flux =
-                Flux.<String>error(new NetException("boom"))
+                Flux.<String>error(new ConnectException("boom"))
                         .doOnError(e -> {
                             errorCount.incrementAndGet();
                             log.info(e + " at  " + LocalTime.now() + errorCount.get());
@@ -33,7 +33,7 @@ public class FluxTestCase {
                         .retryWhen(
                                 Retry
                                 .backoff(3, Duration.ofSeconds(1)).jitter(0.3d)
-                                        .filter(throwable -> throwable instanceof NetException)
+                                        .filter(throwable -> throwable instanceof ConnectException)
                                 .doAfterRetry(rs -> log.info("retried at " + LocalTime.now() + ", attempt " + rs.totalRetries()))
                                 .onRetryExhaustedThrow((spec, rs) -> rs.failure())
                         );

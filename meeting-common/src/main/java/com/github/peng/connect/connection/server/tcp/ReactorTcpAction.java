@@ -54,7 +54,9 @@ public class ReactorTcpAction implements ReactiveServerAction {
         Connection clientConnection = connection.connection();
 
         if (ConnectionStatus.statusActive(connection.status())){
-            return clientConnection.outbound().sendString(Mono.just("message")).then();
+
+            return clientConnection.outbound().sendString(Mono.just(message)).then();
+
         }
 
         throw  new ConnectException("connection is ont active ");

@@ -17,12 +17,8 @@ import com.google.inject.Injector;
  */
 public class ServerToolkit {
 
-    private static final Injector inject = Guice.createInjector(new ConnectionModule());
-
-
 
     public static IConnectContextAction contextAction(){
-//        return inject.getInstance(IConnectContextAction.class);
         return IConnectContext.getInstance();
     }
 

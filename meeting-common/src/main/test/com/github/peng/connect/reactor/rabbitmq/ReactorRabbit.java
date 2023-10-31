@@ -1,4 +1,4 @@
-package com.github.connect.reactor.rabbitmq;
+package com.github.peng.connect.reactor.rabbitmq;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.ConnectionFactory;

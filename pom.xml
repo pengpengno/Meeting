@@ -14,8 +14,8 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.plugin.version>3.8.0</maven.plugin.version>
         <spring.starter.version>3.1.4</spring.starter.version>
@@ -33,6 +33,7 @@
         <r2dbc.version>0.8.1.RELEASE</r2dbc.version>
         <jasync.mysql.version>2.1.16</jasync.mysql.version>
         <guava.version>31.1-jre</guava.version>
+        <reactor.mq.version>1.5.6</reactor.mq.version>
         <junit.version>4.13.1</junit.version>
         <jackson.version>2.14.1</jackson.version>
         <jgrapht.version>1.5.1</jgrapht.version>
@@ -88,22 +89,6 @@
 
         <dependencies>
 
-            <!--            reactor bom-->
-            <dependency>
-                <groupId>io.projectreactor</groupId>
-                <artifactId>reactor-bom</artifactId>
-                <version>${reactor.bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!--            springboot 测试框架-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-test</artifactId>
-                <version>${spring.starter.version}</version>
-                <scope>test</scope>
-            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -237,12 +222,13 @@
                 <version>${sl4j.version}</version>
                 <scope>compile</scope>
             </dependency>
-
+            <!-- https://mvnrepository.com/artifact/io.projectreactor.rabbitmq/reactor-rabbitmq -->
             <dependency>
                 <groupId>io.projectreactor.rabbitmq</groupId>
                 <artifactId>reactor-rabbitmq</artifactId>
                 <version>${reactor.mq.version}</version>
             </dependency>
+
 
             <!-- Spring Boot BOM -->
             <dependency>

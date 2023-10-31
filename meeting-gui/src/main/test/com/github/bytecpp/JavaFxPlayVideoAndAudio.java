@@ -1,4 +1,4 @@
-package com.github.opencv;
+package com.github.bytecpp;
 
 import javafx.application.Application;
 import javafx.application.Platform;
