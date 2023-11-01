@@ -7,6 +7,7 @@ import com.github.peng.connect.spi.ReactiveHandlerSPI;
 import com.google.inject.Singleton;
 import com.google.protobuf.MessageLiteOrBuilder;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.rtsp.RtspDecoder;
 import io.netty.handler.codec.rtsp.RtspEncoder;
 import io.netty.handler.logging.LogLevel;
@@ -64,19 +65,20 @@ public class ReactorTcpServer implements ReactiveServer {
                 .port(address.getPort())
                 .doOnConnection(connection -> {
                     log.debug("connection has been established ");
-                    ProtoBufMessageLiteScanner.scanAllMessageLite().forEach(e->{
 
-                        connection.addHandlerLast(new ProtobufDecoder(e));
+                    connection.addHandlerLast(new ProtobufEncoder());
 
-                    });
+                    ProtoBufMessageLiteScanner.protobufDecoders()
+                                    .forEach(connection::addHandlerLast);
 
                     connection
                             .addHandlerLast(new RtspEncoder())
                             .addHandlerLast(new RtspDecoder())
                             ;
                 })
-                .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
+//                .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;
+
         log.info("startup netty  on port {}",address.getPort());
 
         return this;

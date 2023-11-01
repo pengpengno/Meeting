@@ -14,6 +14,7 @@ import com.github.peng.cv.ScreenGrabber;
 import com.google.inject.*;
 import com.google.inject.name.Names;
 import com.google.protobuf.MessageLite;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
 
 /**
  * @author pengpeng
@@ -25,6 +26,8 @@ public class ConnectionModule extends AbstractModule {
 
     @Override
     protected void configure() {
+
+        bind(ProtobufEncoder.class).toInstance(new ProtobufEncoder());
 
         bind(MessageLite.class).toProvider(Account.AccountInfo::getDefaultInstance).in(Scopes.NO_SCOPE);
 

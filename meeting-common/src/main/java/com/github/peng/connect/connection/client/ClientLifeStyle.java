@@ -16,20 +16,20 @@ public interface ClientLifeStyle {
 
 
 
-    public void config(InetSocketAddress address) ;
+    public ClientLifeStyle config(InetSocketAddress address) ;
     /***
      * 连接远程节点
      * @param address
      * @return
      */
-    public Boolean connect (InetSocketAddress address);
+    public ClientLifeStyle connect (InetSocketAddress address);
 
     /**
      * 开启channel 通道连接
      *
      * @return
      */
-    public Boolean connect() throws ConnectException;
+    public ClientLifeStyle connect() throws ConnectException;
 
 
     /***
@@ -41,12 +41,11 @@ public interface ClientLifeStyle {
             return Boolean.TRUE;
         }
 
-        Flux<Boolean> flux =
+        Flux<ClientLifeStyle> flux =
         Flux.just(connect())
             .retryWhen(
             Retry
             .backoff(3, Duration.ofSeconds(1)).jitter(0.3d)
-//            .filter(throwable ->  throwable instanceof  NetException)
             .filter(throwable -> throwable instanceof Exceptions.SourceException)
             .onRetryExhaustedThrow((spec, rs) -> new ConnectException("remote server is invalid !")));
         flux.subscribe();

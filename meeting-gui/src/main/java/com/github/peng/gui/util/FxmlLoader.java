@@ -2,7 +2,10 @@ package com.github.peng.gui.util;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.extra.spring.SpringUtil;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -10,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
+import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
@@ -38,11 +42,16 @@ public class FxmlLoader {
 
             Assert.notNull(clazz,"指定路径不可为空！");
 
-            FXMLLoader fxmlLoader = new FXMLLoader(clazz.getResource(buildString(clazz)));
+            URL resource = clazz.getResource(buildString(clazz));
 
+            FXMLLoader fxmlLoader = new FXMLLoader(resource);
+
+            Injector injector = Guice.createInjector();
+            fxmlLoader.setControllerFactory(injector::getInstance);
 //            fxmlLoader.setControllerFactory(SpringUtil::getBean);
 
-            return new Scene(fxmlLoader.load());
+            Parent load = fxmlLoader.load();
+            return new Scene(load);
 
         }
         catch (Exception e){
@@ -61,7 +70,7 @@ public class FxmlLoader {
      */
     private static String buildString (Class<?> clazz) {
 
-        return clazz.getName()+ FXML_SUFFIX;
+        return clazz.getSimpleName()+ FXML_SUFFIX;
 
     }
 

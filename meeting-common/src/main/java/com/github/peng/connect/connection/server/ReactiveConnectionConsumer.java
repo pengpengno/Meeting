@@ -20,11 +20,7 @@ import reactor.netty.Connection;
 public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
 
-    private static final LoggingHandler handler =  new LoggingHandler(LogLevel.INFO);
-
-    private static final ProtobufEncoder protobufEncoder =  new ProtobufEncoder();
-
-    private static final RtspEncoder rtspEncoder =  new RtspEncoder();
+//    private static final LoggingHandler handler =  new LoggingHandler(LogLevel.INFO);
 
 
     public ReactiveConnectionConsumer(){
@@ -34,11 +30,7 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                 nettyInbound.withConnection(connection -> {
 
-                    connection.addHandlerLast(handler);
-
-                    connection.addHandlerLast(protobufEncoder);
-
-                    connection.addHandlerLast(rtspEncoder);
+                log.debug("receive data ");
 
                 int i = byteBuf.readableBytes();
 
@@ -57,9 +49,13 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
                     }
 
                 }
+//                sink.next("sdasd".getBytes());
             }));
 
-            return nettyOutbound.sendByteArray(Flux.concat(handle));
+//            return nettyOutbound.sendObject("ssss");
+//            return nettyOutbound.neverComplete().then();
+            return nettyOutbound.neverComplete();
+//            return nettyOutbound.sendByteArray(Flux.concat(handle));
 
         });
         log.debug("The ReactorConnectionConsumer SPI FxReactiveClientHandler service provider has load ! ");

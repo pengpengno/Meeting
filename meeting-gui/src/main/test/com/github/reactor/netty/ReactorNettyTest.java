@@ -1,7 +1,13 @@
 package com.github.reactor.netty;
 
+import com.github.peng.connect.connection.client.ClientLifeStyle;
+import com.github.peng.connect.connection.client.ClientToolkit;
+import com.github.peng.connect.connection.client.ReactiveClientAction;
+import com.github.peng.connect.connection.client.tcp.reactive.ReactorTcpClient;
+import com.github.peng.connect.model.proto.Account;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
@@ -12,7 +18,9 @@ import reactor.netty.DisposableServer;
 import reactor.netty.tcp.TcpClient;
 import reactor.netty.tcp.TcpServer;
 import reactor.netty.tcp.TcpSslContextSpec;
+import reactor.test.StepVerifier;
 
+import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
@@ -27,7 +35,7 @@ public class ReactorNettyTest {
 
 
     public  static String  HOST = "127.0.0.1";
-    public  static Integer  PORT = 9087;
+    public  static Integer  PORT = 8080;
     public static String TCPLogger = "TCPLogger";
     @Test
     public void createServer(){
@@ -51,20 +59,47 @@ public class ReactorNettyTest {
     }
 
     @Test
+    @SneakyThrows
+    public void createClient() {
+        ClientLifeStyle connect = ReactorTcpClient.getInstance()
+                .config(new InetSocketAddress(HOST, PORT))
+                .connect();
+
+
+        Mono<Void> ssss = ClientToolkit.reactiveClientAction().sendString("ssss");
+        Mono<Void> message = ClientToolkit.reactiveClientAction()
+                .sendMessage(Account.AccountInfo.newBuilder()
+                .setEMail("pengpeng_on@163.com").build());
+
+        ssss.subscribe();
+
+        message.subscribe();
+
+        StepVerifier.create(message)
+                .expectComplete()
+                ;
+
+        Thread.sleep(100000l);
+
+
+    }
+    @Test
     public  void localClient() {
         TcpClient client =
                 TcpClient.create()
+                        .host(HOST)
                         .port(PORT)
 //                        .wiretap(WIRETAP)
                 ;
 
-            TcpSslContextSpec tcpSslContextSpec =
-                    TcpSslContextSpec.forClient()
-                            .configure(builder -> builder.trustManager(InsecureTrustManagerFactory.INSTANCE));
-            client = client.secure(spec -> spec.sslContext(tcpSslContextSpec));
+//            TcpSslContextSpec tcpSslContextSpec =
+//                    TcpSslContextSpec.forClient()
+//                            .configure(builder -> builder.trustManager(InsecureTrustManagerFactory.INSTANCE));
+//            client = client.secure(spec -> spec.sslContext(tcpSslContextSpec));
 
         Connection connection =
-                client.handle((in, out) -> out.send(Flux.concat(ByteBufFlux.fromString(Mono.just("echo")),
+                client.handle((in, out) ->
+                                out.send(Flux.concat(ByteBufFlux.fromString(Mono.just("echo")),
                                 in.receive().retain())))
                         .connectNow();
 
