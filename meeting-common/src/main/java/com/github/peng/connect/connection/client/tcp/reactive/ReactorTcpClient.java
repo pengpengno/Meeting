@@ -13,11 +13,13 @@ import com.github.peng.connect.spi.ReactiveHandlerSPI;
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelPipeline;
+import io.netty.handler.codec.http.DefaultFullHttpRequest;
+import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
-import io.netty.handler.codec.rtsp.RtspDecoder;
-import io.netty.handler.codec.rtsp.RtspEncoder;
+import io.netty.handler.codec.rtsp.*;
 import io.netty.handler.logging.LogLevel;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.Disposable;
@@ -26,6 +28,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.Connection;
 import reactor.netty.NettyOutbound;
 import reactor.netty.tcp.TcpClient;
+import reactor.netty.transport.ProxyProvider;
 import reactor.util.retry.Retry;
 
 import java.net.ConnectException;
@@ -68,6 +71,10 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
                         pipeline.addLast(new RtspDecoder());
                         pipeline.addLast(new RtspEncoder());
                     })
+//                    .proxy(()-> {
+//                        ProxyProvider.builder().type(ProxyProvider.Proxy.HTTP).address(new InetSocketAddress("",12)).build();
+//                    })
+
                     .doOnDisconnected(con -> {
                         Account.AccountInfo accountInfo = con.channel().attr(ConnectionConstants.BING_ACCOUNT_KEY).get();
                         if (accountInfo == null){
@@ -87,11 +94,24 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
     @Override
     public ClientLifeStyle connect(InetSocketAddress address)    {
         config(address);
+
         try{
             connection = client.connectNow();
+            var headers = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0, RtspMethods.OPTIONS, "/live");
+//            headers.set(RtspHeaders.Names.CSEQ, 1);
+//            headers.set(RtspHeaders.Names.METHOD, RtspMethods.OPTIONS);
+            ByteBuf content = Unpooled.EMPTY_BUFFER;
+//            FullHttpRequest request = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0, headers, content);
+//            connection.outbound().sendObject(Mono.just(headers)).var
 
-            connection.inbound().receive().asString().doOnNext(log::info)
-                    .subscribe();
+//            connection.
+            connection.inbound().withConnection((con)-> {
+                connection.inbound().receive().asString().doOnNext(log::info)
+                        .subscribe();
+            });
+
+//            connection.inbound().receive().asString().doOnNext(log::info)
+//                    .subscribe();
 
 //            connection.onDispose().block();
 
