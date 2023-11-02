@@ -67,6 +67,7 @@ public class ReactorNettyTest {
 
 
         Mono<Void> ssss = ClientToolkit.reactiveClientAction().sendString("ssss");
+
         Mono<Void> message = ClientToolkit.reactiveClientAction()
                 .sendMessage(Account.AccountInfo.newBuilder()
                 .setEMail("pengpeng_on@163.com").build());

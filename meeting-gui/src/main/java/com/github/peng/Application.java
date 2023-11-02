@@ -16,12 +16,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.URL;
 
+@Slf4j
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -29,15 +31,21 @@ public class Application extends javafx.application.Application {
 
         Scene scene = FxmlLoader.applySingleScene(HelloController.class);
 
+        log.debug("connect status  "  );
+
         ClientLifeStyle connect =
                 ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
                 .connect();
 
-//        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
+        log.debug("connect status {}", connect.isAlive()   );
+
+        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
 
         ClientToolkit.reactiveClientAction()
                 .sendMessage(Account.AccountInfo.newBuilder().setEMail("pen").build()).subscribe();
+
         stage.setScene(scene);
+
         stage.show();
     }
 

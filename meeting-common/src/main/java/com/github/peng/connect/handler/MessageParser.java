@@ -1,5 +1,6 @@
 package com.github.peng.connect.handler;
 
+import cn.hutool.core.exceptions.ExceptionUtil;
 import com.github.peng.connect.enums.ProtocolMessageMapEnum;
 import com.github.peng.connect.model.proto.Account;
 import com.github.peng.connect.model.proto.Chat;
@@ -92,11 +93,12 @@ public class MessageParser {
 
             }
             catch (InvalidProtocolBufferException invalidProtocolBufferException){
-                log.error("Illegal message ");
+                log.error("Illegal message {}", ExceptionUtil.stacktraceToString(invalidProtocolBufferException));
 
                 return null;
             }
             catch (Exception exception){
+                log.error("Illegal message {}", ExceptionUtil.stacktraceToString(exception));
 
                 return null;
 

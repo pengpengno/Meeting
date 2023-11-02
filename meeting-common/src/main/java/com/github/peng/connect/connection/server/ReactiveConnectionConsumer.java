@@ -2,13 +2,16 @@ package com.github.peng.connect.connection.server;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
 import com.github.peng.connect.connection.ConnectionConsumer;
+import io.netty.handler.codec.http.FullHttpMessage;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
+import io.netty.handler.codec.rtsp.RtspDecoder;
 import io.netty.handler.codec.rtsp.RtspEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.netty.Connection;
+import reactor.netty.NettyOutbound;
 
 /**
  * 响应式 服务处理 Handler
@@ -19,8 +22,6 @@ import reactor.netty.Connection;
 @Slf4j
 public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
-
-//    private static final LoggingHandler handler =  new LoggingHandler(LogLevel.INFO);
 
 
     public ReactiveConnectionConsumer(){
@@ -49,16 +50,17 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
                     }
 
                 }
-//                sink.next("sdasd".getBytes());
+
+                sink.next("receive".getBytes());
+
             }));
 
-//            return nettyOutbound.sendObject("ssss");
-//            return nettyOutbound.neverComplete().then();
-            return nettyOutbound.neverComplete();
-//            return nettyOutbound.sendByteArray(Flux.concat(handle));
+            var nettyOutbound1 = nettyOutbound.sendByteArray(Flux.concat(handle));
+            return nettyOutbound1.then();
 
         });
-        log.debug("The ReactorConnectionConsumer SPI FxReactiveClientHandler service provider has load ! ");
+
+//        log.debug("The ReactorConnectionConsumer SPI FxReactiveClientHandler service provider has load ! ");
     }
 
 

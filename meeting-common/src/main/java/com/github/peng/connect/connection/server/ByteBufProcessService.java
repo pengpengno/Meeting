@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import reactor.core.publisher.Mono;
 import reactor.netty.Connection;
 
 import java.util.Map;
@@ -44,7 +45,15 @@ public class ByteBufProcessService implements ApplicationContextAware ,ByteBufPr
     @Override
     public void process(Connection con, ByteBuf byteBuf) throws IllegalAccessException {
 
+        if (CollectionUtil.isEmpty(processMap)){
+            log.debug(" There is no process service ");
+            con.outbound().sendString(Mono.just("No reply message ！")).then().subscribe();
+            return;
+        }
+
         Message message = MessageParser.byteBuf2Message(byteBuf); //   parse the byteBuf to  Message
+
+        log.debug(" The message is {} ",message.getClass().getName());
 
         if (message != null){
 

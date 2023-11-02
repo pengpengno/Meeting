@@ -96,6 +96,16 @@ public class FluxTest {
     }
 
     @Test
+    public void takeUntil () {
+        var integerFlux = Flux.range(1, 10)
+                .takeUntil(v -> v > 3)
+                .doOnNext(System.out::println);
+        StepVerifier.create(integerFlux)
+                .expectNext(1, 2, 3, 4)
+                .verifyComplete();
+    }
+
+    @Test
     public void windows(){
         StepVerifier.create(
                         Flux.range(1, 10)

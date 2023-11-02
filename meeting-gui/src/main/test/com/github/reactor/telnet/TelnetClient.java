@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.telnet;
+package com.github.reactor.telnet;
 
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import reactor.core.publisher.Mono;
 import reactor.netty.Connection;
@@ -34,12 +35,26 @@ public class TelnetClient {
 	static final boolean WIRETAP = System.getProperty("wiretap") != null;
 
 	public static void main(String... args) {
+
 		TcpClient client =
 				TcpClient.create()
 				         .host(HOST)
 				         .port(PORT)
-				         .doOnConnected(connection ->
-				             connection.addHandlerLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter())))
+				         .doOnConnected(connection ->{
+									 connection.addHandlerLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+//									 connection.addHandlerLast(new ProtobufDecoder());
+								 }
+				             )
+//						.handle((in, out) ->
+//						{
+//							in
+//									.receive()
+//									.asString(StandardCharsets.UTF_8)
+//									.doOnNext(System.out::println)
+//									.subscribe();
+//							return out.sendString(Mono.just("hello\r\n"))
+//									.then();
+//						})
 				         .wiretap(WIRETAP);
 
 		if (SECURE) {
@@ -50,7 +65,6 @@ public class TelnetClient {
 		}
 
 		Connection conn = client.connectNow();
-
 		conn.inbound()
 		    .receive()
 		    .asString(StandardCharsets.UTF_8)
@@ -69,7 +83,7 @@ public class TelnetClient {
 			}
 		}
 
-//		conn.onDispose()
-//		    .block();
+		conn.onDispose()
+		    .block();
 	}
 }

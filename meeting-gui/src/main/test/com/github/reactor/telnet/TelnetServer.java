@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.telnet;
+package com.github.reactor.telnet;
 
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
@@ -54,7 +54,7 @@ public class TelnetServer {
 				                       // Signals completion when 'bye' is encountered.
 				                       // Reactor Netty will perform the necessary clean up, including
 				                       // disposing the channel.
-				                       .takeUntil("bye"::equalsIgnoreCase)
+//				                       .takeUntil("bye"::equalsIgnoreCase)
 				                       .map(text -> {
 				                           String response = "Did you say '" + text + "'?\r\n";
 				                           if (text.isEmpty()) {

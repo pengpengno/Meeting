@@ -64,19 +64,18 @@ public class ReactorTcpServer implements ReactiveServer {
                 .wiretap("tcp-server", LogLevel.INFO)
                 .port(address.getPort())
                 .doOnConnection(connection -> {
-                    log.debug("connection has been established ");
+//                    log.debug("connection has been established ");
 
-                    connection.addHandlerLast(new ProtobufEncoder());
-
-                    ProtoBufMessageLiteScanner.protobufDecoders()
-                                    .forEach(connection::addHandlerLast);
-
-                    connection
-                            .addHandlerLast(new RtspEncoder())
-                            .addHandlerLast(new RtspDecoder())
-                            ;
+//                    connection.addHandlerLast(new ProtobufEncoder());
+//
+//                    ProtoBufMessageLiteScanner.protobufDecoders()
+//                                    .forEach(connection::addHandlerLast);
+//                    connection
+//                            .addHandlerLast(new RtspEncoder())
+//                            .addHandlerLast(new RtspDecoder())
+//                            ;
                 })
-//                .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
+                .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;
 
         log.info("startup netty  on port {}",address.getPort());
@@ -86,6 +85,7 @@ public class ReactorTcpServer implements ReactiveServer {
 
 
     public ReactiveServer start(){
+        log.info("start netty server on port {}",address.getPort());
         disposableServer = server.bindNow();
         disposableServer.onDispose().block();
         return this;

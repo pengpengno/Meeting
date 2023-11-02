@@ -32,7 +32,7 @@ public class TelnetClient {
 
 	static final boolean SECURE = System.getProperty("secure") != null;
 	static final String HOST = System.getProperty("host", "127.0.0.1");
-	static final int PORT = Integer.parseInt(System.getProperty("port", SECURE ? "8094" : "8094"));
+	static final int PORT = Integer.parseInt(System.getProperty("port", SECURE ? "8080" : "8080"));
 	static final boolean WIRETAP = System.getProperty("wiretap") != null;
 	static String jwt = "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzgyNzM1ODcsImV4cCI6MTY3ODM1OTk4NywiQUNDT1VOVCI6eyJ1c2VySWQiOm51bGwsImFjY291bnQiOiJ3YW5ncGVuZyIsInVzZXJOYW1lIjpudWxsLCJlbWFpbCI6bnVsbH19.KjmiH4PXvzKmMOFMtpwWQjHdm8bpr8-c4_-oHxzH1vA";
 
@@ -42,8 +42,12 @@ public class TelnetClient {
 				         .host(HOST)
 				         .port(PORT)
 						.doOnChannelInit((connectionObserver, channel, remoteAddress) -> channel.pipeline().addFirst(new ClientInboundHandler(jwt)))
-				         .doOnConnected(connection ->
-				             connection.addHandlerLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter())))
+				         .doOnConnected(connection ->{
+//									 connection.addHandlerLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+//									 connection.addHandlerFirst(new ClientInboundHandler(jwt));
+								 }
+				             )
+
 				         .wiretap("WIRETAP", LogLevel.INFO);
 
 		if (SECURE) {
