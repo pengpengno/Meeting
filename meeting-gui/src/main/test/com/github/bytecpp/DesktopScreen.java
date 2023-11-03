@@ -21,6 +21,16 @@ public class DesktopScreen {
     }
 
 
+
+    @Test
+    public void startRtsp () {
+
+        DesktopScreenApplicationRtsp.main(new String[]{});
+
+    }
+
+
+
     @Test
     public void star2t () {
 
