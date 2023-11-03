@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.bytedeco.ffmpeg.global.avcodec;
@@ -72,7 +73,6 @@ public class MyLive extends Application {
                 System.exit(0);
             }
         });
-
 
         // 帧记录
         // window 建议使用 FFmpegFrameGrabber("desktop") 进行屏幕捕捉

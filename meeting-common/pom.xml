@@ -16,7 +16,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncod0ing>UTF-8</project.build.sourceEncod0ing>
         <javacv.platform.version>1.5.9</javacv.platform.version>
     </properties>
 
@@ -81,11 +81,11 @@
             <version>${javacv.platform.version}</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.bytedeco</groupId>-->
-<!--            <artifactId>javacv-platform</artifactId>-->
-<!--            <version>${javacv.platform.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>${javacv.platform.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>

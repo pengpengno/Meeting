@@ -57,12 +57,10 @@ public class DesktopScreenApplication extends Application {
 
         refreshRate = 60 ;
 
-        var desktop = FFmpegFrameGrabber.createDefault("desktop");
-//        var desktop = FFmpegFrameGrabber.createDefault("rtsp://127.0.0.1:5541/vod/desktop");
-
-        var audio = FFmpegFrameGrabber.createDefault("audio=virtual-auodi-capturer");
-
-        audio.setFormat("dshow");
+//        OpenCVFrameGrabber desktop = new OpenCVFrameGrabber(0);
+        FFmpegFrameGrabber desktop = new FFmpegFrameGrabber("desktop");
+//        var audio = FFmpegFrameGrabber.createDefault("audio=virtual-auodi-capturer");
+//        audio.setFormat("dshow");
 
         desktop.setFormat("gdigrab");
 //        desktop.setFormat("rtsp");
@@ -70,7 +68,7 @@ public class DesktopScreenApplication extends Application {
 
         desktop.setVideoCodec(avcodec.AV_CODEC_ID_H264);
 
-        desktop.setVideoFrameNumber(0);
+//        desktop.setVideoFrameNumber(0);
 
         desktop.start();
 
@@ -88,11 +86,9 @@ public class DesktopScreenApplication extends Application {
 
             recorder.setVideoBitrate(2000000);
 
-
             var javaFXFrameConverter = new JavaFXFrameConverter();
 
-//            recorder.start();
-
+            recorder.start();
 
             new Thread(()->{
                 try {
@@ -106,14 +102,12 @@ public class DesktopScreenApplication extends Application {
 
 //                        canvasFrame.showImage(frame);
 
-//                        recorder.record(frame);
+                        recorder.record(frame);
 
                     }
 
-//                    recorder.stop();
                     desktop.stop();
 
-//                    recorder.release();
                     desktop.release();
                 }
                 catch (Exception ex){

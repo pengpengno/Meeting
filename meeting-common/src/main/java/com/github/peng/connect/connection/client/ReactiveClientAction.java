@@ -15,4 +15,10 @@ public interface ReactiveClientAction {
 
 
     Mono<Void> sendString(String message);
+
+
+    default Mono<Void> sendObject(Object message){
+        return Mono.empty();
+    }
+
 }

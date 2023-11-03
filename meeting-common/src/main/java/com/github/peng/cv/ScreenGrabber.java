@@ -10,7 +10,7 @@ import org.bytedeco.javacv.FrameGrabber;
 import java.awt.*;
 
 @Slf4j
-/***
+/*
  * 屏幕录制器
  */
 @Singleton
@@ -60,9 +60,6 @@ public class ScreenGrabber {
             log.error("创建本地分享异常{}", ExceptionUtil.stacktraceToString(e));
 
         }
-
-
-
 
         return grabber;
     }
