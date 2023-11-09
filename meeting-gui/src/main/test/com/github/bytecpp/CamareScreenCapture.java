@@ -102,14 +102,14 @@ public class CamareScreenCapture {
      *
      * @return
      */
-    protected boolean createTransterOrRecodeRecorder() {
+    protected FFmpegFrameRecorder createTransterOrRecodeRecorder() {
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
         recorder = new FFmpegFrameRecorder(bos, grabber.getImageWidth(), grabber.getImageHeight(),
                 grabber.getAudioChannels());
-        recorder.setFormat("flv");
-        if (false) {
+        recorder.setFormat("avi");
+        if (true) {
             // 转码
             recorder.setInterleaved(false);
             recorder.setVideoOption("tune", "zerolatency");
@@ -133,7 +133,7 @@ public class CamareScreenCapture {
             recorder.setMaxDelay(0);// 设置延迟
             try {
                 recorder.start();
-                return true;
+                return recorder;
             } catch (org.bytedeco.javacv.FrameRecorder.Exception e1) {
                 log.info("启动转码录制器失败", e1);
 //                MediaService.cameras.remove(cameraDto.getMediaKey());
@@ -145,7 +145,7 @@ public class CamareScreenCapture {
             recorder.setCloseOutputStream(false);
             try {
                 recorder.start();
-                return true;
+                return recorder;
             } catch (org.bytedeco.javacv.FrameRecorder.Exception e) {
 //                log.warn("\r\n{}\r\n启动转复用录制器失败", cameraDto.getUrl());
                 // 如果转复用失败，则自动切换到转码模式
@@ -156,15 +156,15 @@ public class CamareScreenCapture {
                     } catch (org.bytedeco.javacv.FrameRecorder.Exception e1) {
                     }
                 }
-                if (createTransterOrRecodeRecorder()) {
-//                    log.error("\r\n{}\r\n切换到转码模式", cameraDto.getUrl());
-                    return true;
-                }
+//                if (createTransterOrRecodeRecorder()) {
+////                    log.error("\r\n{}\r\n切换到转码模式", cameraDto.getUrl());
+//                    return true;
+//                }
 //                log.error("\r\n{}\r\n切换转码模式失败", cameraDto.getUrl());
                 log.error("\r\n{}\r\n切换转码模式失败 \n {} ", ExceptionUtil.stacktraceToString(e));
             }
         }
-        return true;
+        return recorder;
     }
 
 

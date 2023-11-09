@@ -1,5 +1,13 @@
 package com.github.bytecpp;
 
+import com.github.peng.connect.connection.client.ClientLifeStyle;
+import com.github.peng.connect.connection.client.ClientToolkit;
+import com.github.peng.connect.connection.client.ReactiveClientAction;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.PooledByteBufAllocator;
+import io.netty.handler.codec.http.DefaultFullHttpRequest;
+import io.netty.handler.codec.rtsp.RtspMethods;
+import io.netty.handler.codec.rtsp.RtspVersions;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -7,21 +15,48 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.javacv.*;
 import org.bytedeco.javacv.Frame;
-import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.io.ByteArrayOutputStream;
+import java.net.InetSocketAddress;
 
 @Slf4j
-public class DesktopScreenApplication extends Application {
+public class DesktopScreenApplicationRtsp extends Application {
 
 
     @Override
     public void start(Stage stage) throws Exception {
+        ClientLifeStyle connect = ClientToolkit.clientLifeStyle()
+                .connect(new InetSocketAddress("localhost", 8080));
+
+        CamareScreenCapture camareScreenCapture = new CamareScreenCapture();
+
+        ReactiveClientAction reactiveClientAction = ClientToolkit.reactiveClientAction();
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+        new Thread(()-> {
+            while (true){
+//                recorder.get
+                if (bos.size() > 0){
+                    ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
+                    buffer.writeBytes(bos.toByteArray());
+
+                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
+                            RtspMethods.OPTIONS, "/live", buffer);
+
+                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe();
+
+                    bos.reset();
+                }
+
+            }
+        }).start();
+
         stage.setTitle("desktop screen");
 
         ImageView imageVideo = new ImageView();// 用于软件录制显示
@@ -40,9 +75,12 @@ public class DesktopScreenApplication extends Application {
         stage.setScene(new Scene(box));
 
         stage.show();
-        stage.setOnCloseRequest(event -> {// 退出时停止
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {// 退出时停止
 //                isStop = true;
-            System.exit(0);
+                System.exit(0);
+            }
         });
         Integer screen = 0;
 
@@ -57,7 +95,6 @@ public class DesktopScreenApplication extends Application {
 
 //        OpenCVFrameGrabber desktop = new OpenCVFrameGrabber(0);
         FFmpegFrameGrabber desktop = new FFmpegFrameGrabber("desktop");
-
 //        var audio = FFmpegFrameGrabber.createDefault("audio=virtual-auodi-capturer");
 //        audio.setFormat("dshow");
 
@@ -75,9 +112,11 @@ public class DesktopScreenApplication extends Application {
 
 
         try {
-
-            var recorder = FrameRecorder.createDefault("output2.avi",
-                    desktop.getImageWidth(), desktop.getImageHeight());
+            var recorder = new FFmpegFrameRecorder(bos, desktop.getImageWidth(), desktop.getImageHeight(),
+                    desktop.getAudioChannels());
+//            var recorder = FrameRecorder.createDefault(bos,
+//                    desktop.getImageWidth(), desktop.getImageHeight());
+            recorder.setFormat("avi");
 
             recorder.setGopSize(refreshRate * 2);
 

@@ -24,42 +24,49 @@ public class CameraScreen {
 
         ReactiveClientAction reactiveClientAction = ClientToolkit.reactiveClientAction();
 
-
         // Create a frame grabber for your camera (you can also load a video file)
-        FrameGrabber grabber = new OpenCVFrameGrabber(0);
+//        FrameGrabber grabber = new OpenCVFrameGrabber(0);
 //
 //        FrameGrabber grabber = camareScreenCapture
 //                .createGrabber(CamareScreenCapture.CameraType.DESKTOP);
+
+        FrameGrabber grabber = new FFmpegFrameGrabber("desktop");
+//        OpenCVFrameRecorder recorder = new OpenCVFrameRecorder("desktop.mp4", 1920, 1080);
+
         grabber.setFormat("gdigrab");
 //        linux use this
-        OpenCVFrameRecorder recorder = new OpenCVFrameRecorder("desktop.mp4", 1920, 1080);
-        grabber.setFormat("x11grab");
+//        grabber.setFormat("x11grab");
         grabber.setFrameRate(28);
-//        FrameGrabber grabber = new FFmpegFrameGrabber("desktop");
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
+
+        var recorder = camareScreenCapture.createTransterOrRecodeRecorder();
 //        FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(bos, grabber.getImageWidth(), grabber.getImageHeight());
 
 //        recorder.setFormat("avi");
-        recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);
-        recorder.start();
-        new Thread(()-> {
-            while (true){
-//                recorder.get
-                if (bos.size() > 0){
-                    ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
-                    buffer.writeBytes(bos.toByteArray());
 
-                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
-                            RtspMethods.OPTIONS, "/live", buffer);
+//        recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);
 
-                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe();
-                    bos.reset();
-                }
+//        recorder.start();
 
-            }
-        }).start();
+//        new Thread(()-> {
+//            while (true){
+////                recorder.get
+//                if (bos.size() > 0){
+//                    ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
+//                    buffer.writeBytes(bos.toByteArray());
+//
+//                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
+//                            RtspMethods.OPTIONS, "/live", buffer);
+//
+//                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe();
+//
+//                    bos.reset();
+//                }
+//
+//            }
+//        }).start();
 
         try {
             // Start the grabber
