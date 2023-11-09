@@ -86,10 +86,6 @@ public class MyLive extends Application {
         // grabber.setOption("offset_y", "200");//必须设置了大小才能指定区域起点，参数可参考 FFmpeg 入参
         grabber.start();
 
-//        File file = new File("D://output.avi");
-//        if (file.exists())
-//            file.delete();
-
         // 直播推流
 //        final FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(
 //                "rtmp://10.8.4.191/live/livestream",

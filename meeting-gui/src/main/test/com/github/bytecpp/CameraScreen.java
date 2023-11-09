@@ -6,7 +6,6 @@ import com.github.peng.connect.connection.client.ReactiveClientAction;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.handler.codec.http.DefaultFullHttpRequest;
-import io.netty.handler.codec.rtsp.RtspDecoder;
 import io.netty.handler.codec.rtsp.RtspMethods;
 import io.netty.handler.codec.rtsp.RtspVersions;
 import org.bytedeco.ffmpeg.global.avcodec;
@@ -14,17 +13,14 @@ import org.bytedeco.javacv.*;
 
 import java.io.ByteArrayOutputStream;
 import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
 
-public class Demo {
+public class CameraScreen {
     public static void main(String[] args) throws Exception {
 
         ClientLifeStyle connect = ClientToolkit.clientLifeStyle()
                 .connect(new InetSocketAddress("localhost", 8080));
 
         CamareScreenCapture camareScreenCapture = new CamareScreenCapture();
-
-
 
         ReactiveClientAction reactiveClientAction = ClientToolkit.reactiveClientAction();
 

@@ -19,6 +19,12 @@ public class DesktopScreen {
         DesktopScreenApplication.main(new String[]{});
 
     }
+    @Test
+    public void cameraShare () throws Exception {
+
+        CameraScreen.main(new String[]{});
+
+    }
 
 
     @Test

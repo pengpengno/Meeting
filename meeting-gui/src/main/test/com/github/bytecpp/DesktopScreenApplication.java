@@ -59,6 +59,7 @@ public class DesktopScreenApplication extends Application {
 
 //        OpenCVFrameGrabber desktop = new OpenCVFrameGrabber(0);
         FFmpegFrameGrabber desktop = new FFmpegFrameGrabber("desktop");
+
 //        var audio = FFmpegFrameGrabber.createDefault("audio=virtual-auodi-capturer");
 //        audio.setFormat("dshow");
 

@@ -6,16 +6,26 @@ package com.github.peng.cv;
 public interface Meeting {
 
 
-
-    public void screenShare () ;
+    /**
+     * screen share
+     */
+    public Meeting screenShare () ;
 
 
 
 
     public void screenRecord () ;
 
-
+    /***
+     * start meeting
+     */
     public void start () ;
+
+    /**
+     * get current frame data
+     * @return
+     */
+    public byte[] frameData () ;
 
 
     public void stop () ;
