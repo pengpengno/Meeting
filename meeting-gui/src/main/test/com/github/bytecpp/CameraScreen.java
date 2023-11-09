@@ -13,6 +13,7 @@ import org.bytedeco.javacv.*;
 
 import java.io.ByteArrayOutputStream;
 import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
 
 public class CameraScreen {
     public static void main(String[] args) throws Exception {
@@ -25,48 +26,48 @@ public class CameraScreen {
         ReactiveClientAction reactiveClientAction = ClientToolkit.reactiveClientAction();
 
         // Create a frame grabber for your camera (you can also load a video file)
-//        FrameGrabber grabber = new OpenCVFrameGrabber(0);
+        FrameGrabber grabber = camareScreenCapture.createCamera();
 //
-//        FrameGrabber grabber = camareScreenCapture
-//                .createGrabber(CamareScreenCapture.CameraType.DESKTOP);
-
-        FrameGrabber grabber = new FFmpegFrameGrabber("desktop");
-//        OpenCVFrameRecorder recorder = new OpenCVFrameRecorder("desktop.mp4", 1920, 1080);
-
-        grabber.setFormat("gdigrab");
-//        linux use this
-//        grabber.setFormat("x11grab");
-        grabber.setFrameRate(28);
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//        OpenCVFrameRecorder recorder = new OpenCVFrameRecorder("bos.avi",
+//                grabber.getImageWidth(), grabber.getImageHeight());
+//        var recorder = new FFmpegFrameRecorder(bos, grabber.getImageWidth(), grabber.getImageHeight(),
+//                grabber.getAudioChannels());
+//            var recorder = FrameRecorder.createDefault(bos,
+//                    desktop.getImageWidth(), desktop.getImageHeight());
+
+        OpenCVFrameRecorder recorder = OpenCVFrameRecorder.createDefault("bos.avi", grabber.getImageWidth(), grabber.getImageHeight());
+        recorder.setFormat("avi");
+
+//        recorder.setGopSize(refreshRate * 2);
+
+        recorder.setFrameRate(28);
+
+        recorder.setVideoBitrate(2000000);
 
 
-        var recorder = camareScreenCapture.createTransterOrRecodeRecorder();
-//        FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(bos, grabber.getImageWidth(), grabber.getImageHeight());
+        recorder.start();
 
-//        recorder.setFormat("avi");
+//        var recorder = camareScreenCapture.createTransterOrRecodeRecorder();
 
-//        recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);
+        new Thread(()-> {
+            while (true){
+//                recorder.get
+                if (bos.size() > 0){
+                    ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
+                    buffer.writeBytes(bos.toByteArray());
 
-//        recorder.start();
+                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
+                            RtspMethods.OPTIONS, "/live", buffer);
 
-//        new Thread(()-> {
-//            while (true){
-////                recorder.get
-//                if (bos.size() > 0){
-//                    ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
-//                    buffer.writeBytes(bos.toByteArray());
-//
-//                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
-//                            RtspMethods.OPTIONS, "/live", buffer);
-//
-//                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe();
-//
-//                    bos.reset();
-//                }
-//
-//            }
-//        }).start();
+                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe();
+
+                    bos.reset();
+                }
+
+            }
+        }).start();
 
         try {
             // Start the grabber
@@ -78,12 +79,15 @@ public class CameraScreen {
             canvasFrame.setCanvasSize(800, 600);
 
             // Create a frame converter
-            OpenCVFrameConverter.ToMat frameConverter = new OpenCVFrameConverter.ToMat();
 
             while (true) {
                 Frame frame = grabber.grab();
                 if (frame == null) {
                     break;
+                }
+                if (frame.data != null){
+                    ByteBuffer data = frame.data;
+                    bos.write(data.array());
                 }
 
                 // Display the processed frame

@@ -35,6 +35,23 @@ public class CamareScreenCapture {
 
     }
 
+    public FrameGrabber createCamera() {
+
+        FrameGrabber grabber = new OpenCVFrameGrabber(0);
+//
+
+
+//        FrameGrabber grabber = new FFmpegFrameGrabber("desktop");
+
+        grabber.setFormat("gdigrab");
+//        linux use this
+//        grabber.setFormat("x11grab");
+        grabber.setFrameRate(28);
+
+        this.grabber = grabber;
+        return grabber;
+    }
+
     /**
      * 创建拉流器
      *
@@ -97,6 +114,7 @@ public class CamareScreenCapture {
     }
 
 
+
     /**
      * 创建转码推流录制器
      *
@@ -108,6 +126,7 @@ public class CamareScreenCapture {
 
         recorder = new FFmpegFrameRecorder(bos, grabber.getImageWidth(), grabber.getImageHeight(),
                 grabber.getAudioChannels());
+
         recorder.setFormat("avi");
         if (true) {
             // 转码
@@ -135,9 +154,8 @@ public class CamareScreenCapture {
                 recorder.start();
                 return recorder;
             } catch (org.bytedeco.javacv.FrameRecorder.Exception e1) {
-                log.info("启动转码录制器失败", e1);
+                log.error("启动转码录制器失败", e1);
 //                MediaService.cameras.remove(cameraDto.getMediaKey());
-                e1.printStackTrace();
             }
         } else {
             // 转复用
