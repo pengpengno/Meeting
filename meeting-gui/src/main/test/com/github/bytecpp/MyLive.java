@@ -39,8 +39,8 @@ public class MyLive extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("lingkang-桌面录屏大师");
         ImageView imageVideo = new ImageView();// 用于软件录制显示
-//        imageVideo.setFitWidth(800);
-//        imageVideo.setFitHeight(600);
+        imageVideo.setFitWidth(800);
+        imageVideo.setFitHeight(600);
         Button button = new Button("停止录制");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -63,8 +63,8 @@ public class MyLive extends Application {
         VBox box = new VBox();
         box.getChildren().addAll(button, imageVideo);
         primaryStage.setScene(new Scene(box));
-//        primaryStage.setHeight(600);
-//        primaryStage.setWidth(800);
+        primaryStage.setHeight(600);
+        primaryStage.setWidth(800);
         primaryStage.show();
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 
 @Slf4j
-public class DesktopScreen {
+public class Tests {
 
 
     @Test
@@ -23,7 +23,7 @@ public class DesktopScreen {
 
 
     @Test
-    public void startRtsp () {
+    public void startDesktopRtsp () {
 
         DesktopScreenApplicationRtsp.main(new String[]{});
 
@@ -32,9 +32,17 @@ public class DesktopScreen {
 
 
     @Test
-    public void star2t () {
+    public void startMyLive () {
 
         MyLive.main(new String[]{});
+
+    }
+
+
+    @Test
+    public void startJavaFxPlayer () {
+
+        JavaFxPlayVideoAndAudio.main(new String[]{});
 
     }
 

@@ -40,12 +40,9 @@ public class DesktopScreenApplication extends Application {
         stage.setScene(new Scene(box));
 
         stage.show();
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {// 退出时停止
+        stage.setOnCloseRequest(event -> {// 退出时停止
 //                isStop = true;
-                System.exit(0);
-            }
+            System.exit(0);
         });
         Integer screen = 0;
 

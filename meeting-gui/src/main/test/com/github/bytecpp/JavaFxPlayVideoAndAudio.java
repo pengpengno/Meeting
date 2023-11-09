@@ -94,12 +94,15 @@ public class JavaFxPlayVideoAndAudio extends Application {
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 java.awt.Robot robot1 = new java.awt.Robot();
                 Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+
 //                Thumbnails.of(robot1.createScreenCapture(rectangle))
 //                        .scale(0.3f)
 //                        .outputQuality(0.3f)
 //                        .outputFormat("jpg")
 //                        .toOutputStream(byteArrayOutputStream);
+
                 byte[] bytes = byteArrayOutputStream.toByteArray();
+
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
                 FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(byteArrayInputStream);
                 grabber.start();
