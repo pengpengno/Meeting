@@ -104,29 +104,29 @@ public class DesktopScreenApplicationRtsp extends Application {
 
         desktop.setVideoCodec(avcodec.AV_CODEC_ID_H264);
 
-//        desktop.setVideoFrameNumber(0);
-
         desktop.start();
 
-//        desktop.setVideoBitrate(2000000);
+
+        var recorder = new FFmpegFrameRecorder(bos, desktop.getImageWidth(), desktop.getImageHeight(),
+                desktop.getAudioChannels());
+//            var recorder = FrameRecorder.createDefault(bos,
+//                    desktop.getImageWidth(), desktop.getImageHeight());
+        recorder.setFormat("avi");
+
+        recorder.setGopSize(refreshRate * 2);
+
+        recorder.setFrameRate(refreshRate);
+
+        recorder.setVideoBitrate(2000000);
+
+        recorder.start();
+
 
 
         try {
-            var recorder = new FFmpegFrameRecorder(bos, desktop.getImageWidth(), desktop.getImageHeight(),
-                    desktop.getAudioChannels());
-//            var recorder = FrameRecorder.createDefault(bos,
-//                    desktop.getImageWidth(), desktop.getImageHeight());
-            recorder.setFormat("avi");
-
-            recorder.setGopSize(refreshRate * 2);
-
-            recorder.setFrameRate(refreshRate);
-
-            recorder.setVideoBitrate(2000000);
 
             var javaFXFrameConverter = new JavaFXFrameConverter();
 
-            recorder.start();
 
             new Thread(()->{
                 try {
@@ -146,7 +146,12 @@ public class DesktopScreenApplicationRtsp extends Application {
 
                     desktop.stop();
 
+
                     desktop.release();
+
+
+                    recorder.stop();
+                    recorder.release();
                 }
                 catch (Exception ex){
                     log.error("{}",ex);

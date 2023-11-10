@@ -10,6 +10,7 @@ public class Application {
     public static void main(String[] args) {
 
         var instance = ReactorTcpServer.getInstance();
+
         instance
             .init(new InetSocketAddress("localhost", 8080))
             .start();

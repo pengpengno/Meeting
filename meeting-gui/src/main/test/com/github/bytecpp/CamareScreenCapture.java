@@ -38,9 +38,6 @@ public class CamareScreenCapture {
     public FrameGrabber createCamera() {
 
         FrameGrabber grabber = new OpenCVFrameGrabber(0);
-//
-
-
 //        FrameGrabber grabber = new FFmpegFrameGrabber("desktop");
 
         grabber.setFormat("gdigrab");

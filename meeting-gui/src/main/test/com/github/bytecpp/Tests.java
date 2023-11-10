@@ -35,6 +35,13 @@ public class Tests {
 
     }
 
+    @Test
+    public void startDesktopRtspBak () {
+
+        DesktopScreenApplicationRtspBack.main(new String[]{});
+
+    }
+
 
 
     @Test

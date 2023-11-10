@@ -55,28 +55,12 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
                     .doOnChannelInit((connectionObserver, channel, remoteAddress) -> {
                         log.debug("init channel pipeline ");
                         ChannelPipeline pipeline = channel.pipeline();
-                        pipeline.addFirst(new ClientInboundHandler("jwttttttttt"));
-                        pipeline.addLast(ProtoBufMessageLiteScanner.protobufEncoder());
+//                        pipeline.addFirst(new ClientInboundHandler("jwttttttttt"));
+//                        pipeline.addLast(ProtoBufMessageLiteScanner.protobufEncoder());
                         ProtoBufMessageLiteScanner.protobufDecoders()
                                 .forEach(handler -> pipeline.addLast(handler));
                         pipeline.addLast(new RtspDecoder());
                         pipeline.addLast(new RtspEncoder());
-                    })
-//                    .proxy(()-> {
-//                        ProxyProvider.builder().type(ProxyProvider.Proxy.HTTP).address(new InetSocketAddress("",12)).build();
-//                    })
-
-                    .doOnDisconnected(con -> {
-                        Account.AccountInfo accountInfo = con.channel().attr(ConnectionConstants.BING_ACCOUNT_KEY).get();
-                        if (accountInfo == null){
-                            return;
-                        }
-                        log.warn("the netty connection  is disconnect");
-                        try {
-                            ServerToolkit.contextAction().closeAndRmConnection(accountInfo.getAccount());
-                        } catch (ConnectException e) {
-                            throw new RuntimeException(e);
-                        }
                     })
                 ;
         return this;
