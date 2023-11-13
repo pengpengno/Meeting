@@ -63,16 +63,17 @@ public class ReactorTcpServer implements ReactiveServer {
                 .wiretap("tcp-server", LogLevel.INFO)
                 .port(address.getPort())
                 .doOnConnection(connection -> {
-                    log.debug("connection has been established ");
+//                    log.debug("connection has been established ");
 
-                    connection.addHandlerLast(new ProtobufEncoder());
-
-                    ProtoBufMessageLiteScanner.protobufDecoders()
-                                    .forEach(connection::addHandlerLast);
-                    connection
-                            .addHandlerLast(new RtspEncoder())
-                            .addHandlerLast(new RtspDecoder())
-                            ;
+//                    connection.addHandlerLast(new ProtobufEncoder());
+//
+//                    ProtoBufMessageLiteScanner.protobufDecoders()
+//                                    .forEach(connection::addHandlerLast);
+//                    connection
+//                            .addHandlerLast(new RtspEncoder())
+//                            .addHandlerLast(new RtspDecoder())
+//                            ;
+//                    connection.outbound().neverComplete();
                 })
                 .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;

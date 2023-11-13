@@ -2,11 +2,9 @@ package com.github.reactor.netty;
 
 import com.github.peng.connect.connection.client.ClientLifeStyle;
 import com.github.peng.connect.connection.client.ClientToolkit;
-import com.github.peng.connect.connection.client.ReactiveClientAction;
-import com.github.peng.connect.connection.client.tcp.reactive.ReactorTcpClient;
+import com.github.peng.connect.connection.client.tcp.ReactorTcpClient;
 import com.github.peng.connect.model.proto.Account;
 import io.netty.handler.logging.LogLevel;
-import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -17,13 +15,10 @@ import reactor.netty.Connection;
 import reactor.netty.DisposableServer;
 import reactor.netty.tcp.TcpClient;
 import reactor.netty.tcp.TcpServer;
-import reactor.netty.tcp.TcpSslContextSpec;
 import reactor.test.StepVerifier;
 
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
 /**
  * 异步线程处理

@@ -1,13 +1,10 @@
-package com.github.peng.connect.connection.client.tcp.reactive;
+package com.github.peng.connect.connection.client.tcp;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
-import com.github.peng.connect.connection.ConnectionConstants;
 import com.github.peng.connect.connection.client.ClientLifeStyle;
 import com.github.peng.connect.connection.client.ReactiveClientAction;
-import com.github.peng.connect.connection.server.ServerToolkit;
 import com.github.peng.connect.handler.client.ClientInboundHandler;
 import com.github.peng.connect.handler.proto.ProtoBufMessageLiteScanner;
-import com.github.peng.connect.model.proto.Account;
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -23,7 +20,7 @@ import reactor.netty.Connection;
 import reactor.netty.NettyOutbound;
 import reactor.netty.tcp.TcpClient;
 import reactor.util.retry.Retry;
-import java.net.ConnectException;
+
 import java.net.InetSocketAddress;
 import java.time.Duration;
 import java.util.concurrent.Callable;
@@ -55,7 +52,7 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
                     .doOnChannelInit((connectionObserver, channel, remoteAddress) -> {
                         log.debug("init channel pipeline ");
                         ChannelPipeline pipeline = channel.pipeline();
-//                        pipeline.addFirst(new ClientInboundHandler("jwttttttttt"));
+                        pipeline.addFirst(new ClientInboundHandler("jwttttttttt"));
 //                        pipeline.addLast(ProtoBufMessageLiteScanner.protobufEncoder());
                         ProtoBufMessageLiteScanner.protobufDecoders()
                                 .forEach(handler -> pipeline.addLast(handler));
