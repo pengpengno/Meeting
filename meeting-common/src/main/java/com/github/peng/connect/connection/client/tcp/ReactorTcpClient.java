@@ -52,7 +52,6 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
                     .doOnChannelInit((connectionObserver, channel, remoteAddress) -> {
                         log.debug("init channel pipeline ");
                         ChannelPipeline pipeline = channel.pipeline();
-                        pipeline.addFirst(new ClientInboundHandler("jwttttttttt"));
 //                        pipeline.addLast(ProtoBufMessageLiteScanner.protobufEncoder());
                         ProtoBufMessageLiteScanner.protobufDecoders()
                                 .forEach(handler -> pipeline.addLast(handler));

@@ -52,9 +52,9 @@ public class ByteBufProcessService implements ApplicationContextAware ,ByteBufPr
             .build();
 
     @Override
-    public void process(Connection con, ByteBuf byteBuf) throws IllegalAccessException {
-        String o = con.channel().attr(ConnectionConstants.ROOM_KEY).get();
-//        log.debug();
+    public void process(Connection con, ByteBuf byteBuf)  {
+        String roomKey = con.channel().attr(ConnectionConstants.ROOM_KEY).get();
+
         IConnectContextAction connectContext = ServerToolkit.contextAction();
 
         connectContext.addToGroup(con);
@@ -65,7 +65,6 @@ public class ByteBufProcessService implements ApplicationContextAware ,ByteBufPr
 //            return;
 //        }
 //        Message message = MessageParser.byteBuf2Message(byteBuf); //   parse the byteBuf to  Message
-//
 //        log.debug(" The message is {} ",message.getClass().getName());
 //
 //        if (message != null){

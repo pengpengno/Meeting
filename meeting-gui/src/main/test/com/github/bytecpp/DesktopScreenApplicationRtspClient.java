@@ -5,6 +5,10 @@ import com.github.peng.connect.connection.client.ClientLifeStyle;
 import com.github.peng.connect.connection.client.ClientToolkit;
 import com.github.peng.connect.connection.client.ReactiveClientAction;
 import com.github.peng.cv.ScreenShare;
+import io.netty.handler.codec.http.DefaultFullHttpRequest;
+import io.netty.handler.codec.http.DefaultHttpRequest;
+import io.netty.handler.codec.rtsp.RtspMethods;
+import io.netty.handler.codec.rtsp.RtspVersions;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -12,10 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.ffmpeg.avformat.AVFormatContext;
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.FrameGrabber;
-import org.bytedeco.javacv.JavaFXFrameConverter;
+import org.bytedeco.javacv.*;
 
 import java.net.InetSocketAddress;
 
@@ -27,9 +28,15 @@ public class DesktopScreenApplicationRtspClient extends Application {
     public void start(Stage stage) throws Exception {
         Boolean isStop = Boolean.TRUE;
 
-//        ScreenShare screenShare = new ScreenShare();
 
+//        ClientLifeStyle localhost = ClientToolkit.clientLifeStyle().connect(new InetSocketAddress("localhost", 8080));
 //        ReactiveClientAction reactiveClientAction = ClientToolkit.reactiveClientAction();
+
+
+        DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
+                RtspMethods.OPTIONS, "/live");
+
+//        reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe();
 
         stage.setTitle("desktop screen");
 
@@ -49,18 +56,16 @@ public class DesktopScreenApplicationRtspClient extends Application {
 
         String flowUrl1 = "rtsp://127.0.0.1:8080/desktop/group";
         FFmpegFrameGrabber fFmpegFrameGrabber = new FFmpegFrameGrabber(flowUrl1);
-//        fFmpegFrameGrabber.setFormat("rtsp");
         initGrabber(fFmpegFrameGrabber);
         try {
-
-//            screenShare.startGrabber();
-//            screenShare.recorderStart();
 
 //            screenShare.configSendConsumer((defaultFullHttpRequest) ->
 //                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe());
 
             var javaFXFrameConverter = new JavaFXFrameConverter();
 
+//            FFmpegLogCallback.set();
+//            fFmpegFrameGrabber.start();
             new Thread(()->{
                 try {
                     Frame frame = null;
@@ -88,21 +93,23 @@ public class DesktopScreenApplicationRtspClient extends Application {
         }
     }
     private static boolean initGrabber(FFmpegFrameGrabber grabber) {
-        grabber.setOption("stimeout", "15000000");
-        grabber.setOption("threads", "1");
-        grabber.setOption("buffer_size", "1024000");
-        grabber.setOption("rw_timeout", "5000000");
-        grabber.setOption("probesize", "5000000");
-        grabber.setOption("analyzeduration", "5000000");
-        grabber.setOption("rtsp_transport", "tcp");
-        grabber.setOption("rtsp_flags", "prefer_tcp");
+        grabber.setFormat("rtsp");
+//        grabber.setOption("stimeout", "15000000");
+//        grabber.setOption("threads", "1");
+//        grabber.setOption("buffer_size", "1024000");
+//        grabber.setOption("rw_timeout", "5000000");
+//        grabber.setOption("probesize", "5000000");
+//        grabber.setOption("analyzeduration", "5000000");
+//        grabber.setOption("rtsp_transport", "tcp");
+//        grabber.setOption("rtsp_flags", "prefer_tcp");
         try {
-            grabber.start(true);
-            AVFormatContext avFormatContext = grabber.getFormatContext();
-            int streamNum = avFormatContext.nb_streams();
-            if (streamNum < 1) {
-                return false;
-            }
+            grabber.start();
+//            grabber.start(true);
+//            AVFormatContext avFormatContext = grabber.getFormatContext();
+//            int streamNum = avFormatContext.nb_streams();
+//            if (streamNum < 1) {
+//                return false;
+//            }
             return true;
         } catch (FrameGrabber.Exception e) {
         }

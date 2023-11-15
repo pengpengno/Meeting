@@ -3,18 +3,18 @@ package com.github.peng.connect.connection.server;
 import cn.hutool.core.exceptions.ExceptionUtil;
 import com.github.peng.connect.connection.ConnectionConsumer;
 import io.netty.handler.codec.http.FullHttpMessage;
+import io.netty.handler.codec.http.HttpObjectDecoder;
+import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.rtsp.RtspDecoder;
 import io.netty.handler.codec.rtsp.RtspEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.netty.Connection;
 import reactor.netty.NettyOutbound;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * 响应式 服务处理 Handler
@@ -26,7 +26,7 @@ import java.util.concurrent.Executors;
 public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
 
-
+@SneakyThrows
     public ReactiveConnectionConsumer(){
         super((nettyInbound, nettyOutbound) -> {
 
@@ -34,11 +34,12 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                 nettyInbound.withConnection(connection -> {
 
+//                connection.add
                 log.debug("receive data ");
 
                 int i = byteBuf.readableBytes();
 
-                if (i > 0) {
+                    if (i > 0) {
 
                     try{
 
@@ -54,10 +55,13 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                 }
 
-                sink.next("server has receive your data ".getBytes());
-                }));
-            var nettyOutbound1 = nettyOutbound.sendByteArray(Flux.concat(handle));
-            return nettyOutbound1.then();
+                sink.next("receive the data from client".getBytes());
+
+            }));
+
+            var outbound = nettyOutbound.sendByteArray(Flux.concat(handle));
+
+            return outbound.then();
 
         });
 

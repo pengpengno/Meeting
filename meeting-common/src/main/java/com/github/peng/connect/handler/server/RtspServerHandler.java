@@ -3,34 +3,31 @@ package com.github.peng.connect.handler.server;
 import cn.hutool.core.util.StrUtil;
 import com.github.peng.connect.connection.server.ServerToolkit;
 import com.github.peng.connect.connection.server.context.ConnectionGroupRoom;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.*;
+import io.netty.handler.codec.rtsp.RtspHeaderNames;
 import io.netty.handler.codec.rtsp.RtspResponseStatuses;
 import io.netty.handler.codec.rtsp.RtspVersions;
+import io.netty.util.CharsetUtil;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 @ChannelHandler.Sharable
 @Slf4j
-public class RtspServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
-
-
-
-
+public class RtspServerHandler extends SimpleChannelInboundHandler<DefaultHttpRequest> {
 
 
         @Override
-        protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest o) throws Exception
-        {
-
-
-            FullHttpResponse response = new DefaultFullHttpResponse(RtspVersions.RTSP_1_0, RtspResponseStatuses.OK);
-            log.info("receive  rtsp request ");
+        protected void channelRead0(ChannelHandlerContext ctx, DefaultHttpRequest o) {
 
             QueryStringDecoder uri = new QueryStringDecoder(o.uri());
             String path = uri.path();
@@ -43,12 +40,27 @@ public class RtspServerHandler extends SimpleChannelInboundHandler<FullHttpReque
 
                 String group = split.getLast();
 
-                ConnectionGroupRoom connectionGroupRoom = ServerToolkit.contextAction().applyConnectionGroup(group);
+                ConnectionGroupRoom connectionGroupRoom = ServerToolkit.contextAction()
+                        .applyConnectionGroup(group);
+//                connectionGroupRoom.getByteFlux().
+                Flux<byte[]> flux = connectionGroupRoom.lastCache();
 
-                ctx.writeAndFlush(connectionGroupRoom.offerFrameData());
 
+                flux.subscribe(data -> {
+                    ByteBuf byteBuf = Unpooled.copiedBuffer(data);
+                    FullHttpResponse response = new DefaultFullHttpResponse(RtspVersions.RTSP_1_0,
+                            RtspResponseStatuses.OK , byteBuf );
+                    log.info("receive  rtsp request ");
+                    final String cseq = o.headers().get(RtspHeaderNames.CSEQ);
+                    response.headers().add(RtspHeaderNames.CSEQ, cseq);
+//                ctx.writeAndFlush(connectionGroupRoom.offerFrameData());
+                    ctx.writeAndFlush(response);
+                });
+
+
+            }else {
+//                super.channelRead(ctx, o);
             }
-            super.channelRead(ctx, o);
         }
 
 }

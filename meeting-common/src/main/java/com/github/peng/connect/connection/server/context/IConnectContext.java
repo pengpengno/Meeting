@@ -5,6 +5,7 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.peng.connect.connection.ConnectionConstants;
 import com.github.peng.util.ValidatorUtil;
 import io.netty.buffer.ByteBuf;
+import io.netty.handler.codec.http.DefaultFullHttpRequest;
 import lombok.extern.slf4j.Slf4j;
 import reactor.netty.Connection;
 
@@ -56,7 +57,7 @@ public class IConnectContext implements IConnectContextAction {
 
     @Override
     public ConnectionGroupRoom applyConnectionGroup(String roomKey) {
-        return null;
+        return connectionGroup.getIfPresent(roomKey);
     }
 
     @Override
@@ -88,18 +89,14 @@ public class IConnectContext implements IConnectContextAction {
                 .connection(connection)
                 .build();
 
-
-        ConnectionGroupRoom connectionGroupRoom = connectionGroup.getIfPresent(roomKey);
-        log.info("connectionGroupRoom is null ? {} ",connectionGroupRoom == null);
-        if (connectionGroupRoom == null){
-            connectionGroupRoom = new ConnectionGroupRoom();
-            connectionGroupRoom.setConnection(build);
-            connectionGroupRoom.setByteFlux(connection.inbound().receive().asByteArray());
-            connectionGroupRoom.setRoomKey(roomKey);
-        }
-
-//        connectionGroupRoom.addConnection(build);
-        connectionGroup.put(roomKey,connectionGroupRoom);
+        ConnectionGroupRoom data = connectionGroup.get(roomKey, (key) ->{
+            ConnectionGroupRoom  connectionGroupRoom = new ConnectionGroupRoom();
+                connectionGroupRoom.setConnection(build);
+                connectionGroupRoom.setByteFlux(connection.inbound().receive().asByteArray());
+                connectionGroupRoom.setRoomKey(key);
+                connectionGroupRoom.replayCache();
+            return connectionGroupRoom;
+        });
     }
 
 

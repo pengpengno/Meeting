@@ -1,8 +1,12 @@
 package com.github.peng.connect.connection.server.tcp;
 
+import com.github.peng.connect.connection.ConnectionConstants;
 import com.github.peng.connect.connection.server.ReactiveServer;
+import com.github.peng.connect.connection.server.ServerToolkit;
+import com.github.peng.connect.connection.server.context.IConnectContextAction;
 import com.github.peng.connect.handler.proto.ProtoBufMessageLiteScanner;
 import com.github.peng.connect.handler.server.RtspServerHandler;
+import com.github.peng.connect.handler.server.ServerInboundHandler;
 import com.github.peng.connect.model.proto.Account;
 import com.github.peng.connect.spi.ReactiveHandlerSPI;
 import com.google.inject.Singleton;
@@ -64,15 +68,18 @@ public class ReactorTcpServer implements ReactiveServer {
                 .wiretap("tcp-server", LogLevel.INFO)
                 .port(address.getPort())
                 .doOnConnection(connection -> {
-//                    log.debug("connection has been established ");
 
-//                    connection.addHandlerLast(new ProtobufEncoder());
-//
-//                    ProtoBufMessageLiteScanner.protobufDecoders()
-//                                    .forEach(connection::addHandlerLast);
+                    connection.channel().attr(ConnectionConstants.ROOM_KEY).set("group");
+
+                    IConnectContextAction connectContext = ServerToolkit.contextAction();
+
+                    connectContext.addToGroup(connection);
+
                     connection
+                            .addHandlerLast(new RtspDecoder())
                             .addHandlerLast(new RtspServerHandler())
-//                            .addHandlerLast(new RtspEncoder())
+//                            .addHandlerLast(new ServerInboundHandler())
+                            .addHandlerLast(new RtspEncoder())
 //                            .addHandlerLast(new RtspDecoder())
                             ;
 //                    connection.outbound().neverComplete();

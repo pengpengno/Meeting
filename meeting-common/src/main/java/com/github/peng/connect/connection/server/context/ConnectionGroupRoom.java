@@ -2,7 +2,7 @@ package com.github.peng.connect.connection.server.context;
 
 import io.netty.buffer.ByteBuf;
 import lombok.Data;
-import reactor.core.publisher.Flux;
+import reactor.core.publisher.*;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -34,6 +34,13 @@ public class ConnectionGroupRoom {
     private Flux<byte[]> byteFlux ;
 
     public void addConnection(IConnection connection){
+
+        Mono.create(sink -> {
+            sink.success(connection);
+
+        }).subscribe();
+
+
         if (connections == null){
             synchronized (object){
                 if (connections == null){
@@ -45,17 +52,17 @@ public class ConnectionGroupRoom {
 
     }
 
-    public void addData(byte[] bytes){
+    ReplayProcessor<byte[]> objectReplayProcessor = ReplayProcessor.create(50);
+    public void replayCache (){
+        byteFlux.subscribe(objectReplayProcessor);
+//        ConnectableFlux<byte[]> replay = byteFlux.replay(50);
 
-        if (data == null){
-            synchronized (object){
-                if (data == null){
-                    data = new ArrayDeque<>();
-                }
-            }
-        }
-        data.add(bytes);
     }
+
+    public Flux<byte[]>  lastCache (){
+        return objectReplayProcessor;
+    }
+
 
 
     public byte[] offerFrameData () {
@@ -67,9 +74,6 @@ public class ConnectionGroupRoom {
 //        return data.poll();
     }
 
-//    public
-
-//    public void Byte
 
 
 }
