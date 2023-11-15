@@ -2,6 +2,7 @@ package com.github.peng.connect.connection.server.tcp;
 
 import com.github.peng.connect.connection.server.ReactiveServer;
 import com.github.peng.connect.handler.proto.ProtoBufMessageLiteScanner;
+import com.github.peng.connect.handler.server.RtspServerHandler;
 import com.github.peng.connect.model.proto.Account;
 import com.github.peng.connect.spi.ReactiveHandlerSPI;
 import com.google.inject.Singleton;
@@ -69,10 +70,11 @@ public class ReactorTcpServer implements ReactiveServer {
 //
 //                    ProtoBufMessageLiteScanner.protobufDecoders()
 //                                    .forEach(connection::addHandlerLast);
-//                    connection
+                    connection
+                            .addHandlerLast(new RtspServerHandler())
 //                            .addHandlerLast(new RtspEncoder())
 //                            .addHandlerLast(new RtspDecoder())
-//                            ;
+                            ;
 //                    connection.outbound().neverComplete();
                 })
                 .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())

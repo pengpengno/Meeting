@@ -1,11 +1,17 @@
 package com.github.peng.connect.connection.server;
 
 import cn.hutool.core.collection.CollectionUtil;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.peng.connect.connection.ConnectionConstants;
+import com.github.peng.connect.connection.server.context.IConnectContextAction;
 import com.github.peng.connect.handler.MessageParser;
+import com.google.common.cache.CacheBuilder;
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import reactor.core.publisher.Mono;
@@ -42,25 +48,32 @@ public class ByteBufProcessService implements ApplicationContextAware ,ByteBufPr
     }
 
 
+    private Cache<String, Connection> connectionCache = Caffeine.newBuilder()
+            .build();
+
     @Override
     public void process(Connection con, ByteBuf byteBuf) throws IllegalAccessException {
+        String o = con.channel().attr(ConnectionConstants.ROOM_KEY).get();
+//        log.debug();
+        IConnectContextAction connectContext = ServerToolkit.contextAction();
 
-        if (CollectionUtil.isEmpty(processMap)){
-            log.debug(" There is no process service ");
-            con.outbound().sendString(Mono.just("No reply message ！")).then().subscribe();
-            return;
-        }
+        connectContext.addToGroup(con);
 
-        Message message = MessageParser.byteBuf2Message(byteBuf); //   parse the byteBuf to  Message
-
-        log.debug(" The message is {} ",message.getClass().getName());
-
-        if (message != null){
-
-            processMap.get(message.getClass()).process(con,message); // process service via message
-
-            log.debug(" Program Handle the  message ");
-        }
+//        if (CollectionUtil.isEmpty(processMap)){
+//            log.debug(" There is no process service ");
+//            con.outbound().sendString(Mono.just("No reply message ！")).then().subscribe();
+//            return;
+//        }
+//        Message message = MessageParser.byteBuf2Message(byteBuf); //   parse the byteBuf to  Message
+//
+//        log.debug(" The message is {} ",message.getClass().getName());
+//
+//        if (message != null){
+//
+//            processMap.get(message.getClass()).process(con,message); // process service via message
+//
+//            log.debug(" Program Handle the  message ");
+//        }
     }
 
 

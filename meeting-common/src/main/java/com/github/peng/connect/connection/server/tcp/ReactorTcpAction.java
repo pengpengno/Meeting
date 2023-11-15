@@ -27,7 +27,6 @@ public class ReactorTcpAction implements ReactiveServerAction {
 
     private final IConnectContextAction contextAction ;
 
-
     private ReactorTcpAction(){
         contextAction = ServerToolkit.contextAction();
     }

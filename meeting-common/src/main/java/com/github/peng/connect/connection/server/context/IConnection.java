@@ -29,6 +29,11 @@ public interface IConnection {
 
     public void close();
 
+    /**
+     * group
+     * @return
+     */
+    public String group ();
 
 
 

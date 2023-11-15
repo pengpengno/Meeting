@@ -30,6 +30,8 @@ public class ReactorConnection implements IConnection{
 
     private Account.AccountInfo accountInfo;
 
+    private String group ;
+
 
     @Override
     public Channel channel() {
@@ -62,6 +64,12 @@ public class ReactorConnection implements IConnection{
     @Override
     public Boolean online() {
          return status() == ConnectionStatus.ACTIVE;
+    }
+
+
+    @Override
+    public String group() {
+        return group;
     }
 
     @Override

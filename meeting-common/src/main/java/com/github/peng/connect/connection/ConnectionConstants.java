@@ -11,4 +11,9 @@ import io.netty.util.AttributeKey;
 public interface ConnectionConstants {
 
     public static AttributeKey<Account.AccountInfo> BING_ACCOUNT_KEY = AttributeKey.valueOf("Account");
+
+
+
+    AttributeKey<String> ROOM_KEY = AttributeKey.valueOf("group");
+
 }

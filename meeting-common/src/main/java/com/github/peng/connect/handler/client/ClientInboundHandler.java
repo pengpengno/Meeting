@@ -1,5 +1,6 @@
 package com.github.peng.connect.handler.client;
 
+import com.github.peng.connect.connection.ConnectionConstants;
 import com.github.peng.connect.model.proto.Account;
 import com.github.peng.connect.model.proto.ProtocolType;
 import io.netty.buffer.ByteBuf;
@@ -7,6 +8,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -28,22 +30,24 @@ public class ClientInboundHandler extends ChannelInboundHandlerAdapter {
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         log.info("channel  register success");
         Channel channel = ctx.channel();
+        channel.attr(ConnectionConstants.ROOM_KEY).set("group");
+//        channel.attr(ProtocolType.CHANNEL_JWT).set(jwt
         Account.Authenticate auth = Account.Authenticate.newBuilder()
                 .setJwt(jwt)
                 .build();
-        try {
-            byte[] bytes = auth.toByteArray();
-            int length = bytes.length;
-            ByteBuf buffer = channel.alloc().buffer(8+ length);
-//            ByteBuf buf = Unpooled.buffer(8 + length);
-            buffer.writeInt(length);
-            buffer.writeInt(ProtocolType.ProtocolMessageEnum.AUTH_VALUE);
-            buffer.writeBytes(bytes);
-            channel.writeAndFlush(buffer);
-//            buffer.release();
-        } catch (Exception e) {
-            log.error("[client] msg encode has error", e);
-        }
+//        try {
+//            byte[] bytes = auth.toByteArray();
+//            int length = bytes.length;
+//            ByteBuf buffer = channel.alloc().buffer(8+ length);
+////            ByteBuf buf = Unpooled.buffer(8 + length);
+//            buffer.writeInt(length);
+//            buffer.writeInt(ProtocolType.ProtocolMessageEnum.AUTH_VALUE);
+//            buffer.writeBytes(bytes);
+//            channel.writeAndFlush(buffer);
+////            buffer.release();
+//        } catch (Exception e) {
+//            log.error("[client] msg encode has error", e);
+//        }
         super.channelRegistered(ctx);
     }
 

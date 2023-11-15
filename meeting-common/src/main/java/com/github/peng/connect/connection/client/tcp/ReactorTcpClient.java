@@ -69,14 +69,12 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
 
         try{
             connection = client.connectNow();
-            var headers = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0, RtspMethods.OPTIONS, "/live");
+//            var headers = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0, RtspMethods.OPTIONS, "/live");
 //            headers.set(RtspHeaders.Names.CSEQ, 1);
 //            headers.set(RtspHeaders.Names.METHOD, RtspMethods.OPTIONS);
-            ByteBuf content = Unpooled.EMPTY_BUFFER;
+//            ByteBuf content = Unpooled.EMPTY_BUFFER;
 //            FullHttpRequest request = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0, headers, content);
 //            connection.outbound().sendObject(Mono.just(headers)).var
-
-//            connection.
             connection.inbound().withConnection((con)-> {
                 connection.inbound().receive().asString().doOnNext(log::info)
                         .subscribe();

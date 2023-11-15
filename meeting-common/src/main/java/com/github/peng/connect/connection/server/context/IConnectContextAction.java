@@ -15,25 +15,26 @@ public interface IConnectContextAction {
 
 
     /***
-     * 获取指定 account 对应的connection
-     * @param account
+     * @param bindKey 绑定key
      * @return  返回指定账户的 connection 如果不存在则返回空
      */
-    public IConnection applyConnection(String account) ;
+    public IConnection applyConnection(String bindKey) ;
+
+    public void putConnection(IConnection connection);
 
 
+    public void addToGroup (Connection connection);
 
-    public IConnection putConnection(IConnection connection);
+
+    public ConnectionGroupRoom applyConnectionGroup(String roomKey);
 
     /***
      * 关闭指定账户的连接
-     * @param account
-     * @return
+     * @param bindKey  attr bind to channel
      */
-    public Boolean closeAndRmConnection(String account) throws ConnectException;
+    public void closeAndRmConnection(String bindKey) throws ConnectException;
 
 
-    public void close(Connection connection);
 
 
 

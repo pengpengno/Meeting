@@ -27,6 +27,10 @@ public class Tests {
     }
 
 
+    public void receiveDataFrom () {
+
+    }
+
 
     @Test
     public void startDesktopRtsp () {
@@ -39,6 +43,13 @@ public class Tests {
     public void startDesktopRtspBak () {
 
         DesktopScreenApplicationRtspBack.main(new String[]{});
+
+    }
+
+    @Test
+    public void DesktopScreenApplicationRtspClient () {
+
+        DesktopScreenApplicationRtspClient.main(new String[]{});
 
     }
 

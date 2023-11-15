@@ -106,6 +106,8 @@ public class MessageParser {
 
     }
 
+    private byte[] bytes;
+
 
 
 }

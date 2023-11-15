@@ -51,7 +51,7 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                 }
 
-                sink.next("receive".getBytes());
+                sink.next("receive the data from client".getBytes());
 
             }));
 
@@ -60,7 +60,7 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
         });
 
-//        log.debug("The ReactorConnectionConsumer SPI FxReactiveClientHandler service provider has load ! ");
+        log.debug("The ReactorConnectionConsumer SPI FxReactiveClientHandler service provider has load ! ");
     }
 
 
