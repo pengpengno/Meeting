@@ -13,6 +13,9 @@ import reactor.core.publisher.Flux;
 import reactor.netty.Connection;
 import reactor.netty.NettyOutbound;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * 响应式 服务处理 Handler
  * @author pengpeng
@@ -51,10 +54,8 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                 }
 
-                sink.next("receive the data from client".getBytes());
-
-            }));
-
+                sink.next("server has receive your data ".getBytes());
+                }));
             var nettyOutbound1 = nettyOutbound.sendByteArray(Flux.concat(handle));
             return nettyOutbound1.then();
 

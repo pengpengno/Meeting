@@ -27,10 +27,6 @@ public class Tests {
     }
 
 
-    public void receiveDataFrom () {
-
-    }
-
 
     @Test
     public void startDesktopRtsp () {

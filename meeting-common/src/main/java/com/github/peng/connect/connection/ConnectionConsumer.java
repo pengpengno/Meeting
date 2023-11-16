@@ -34,12 +34,13 @@ public abstract class ConnectionConsumer implements Consumer<Connection> {
     }
 
     /***
-     * 默认的 connection consumer
+     * default connection consumer
      */
     public static final class DefaultConnectionConsumer extends ConnectionConsumer {
 
         static final BiFunction<? super NettyInbound, ? super NettyOutbound, ? extends Publisher<Void>> handler = (nettyInbound, nettyOutbound) -> {
             log.info(" The Default Handler is Active ! There is no logic to do ");
+
             return Mono.never();
         };
 
