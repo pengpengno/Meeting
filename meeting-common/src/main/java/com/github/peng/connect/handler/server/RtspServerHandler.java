@@ -3,12 +3,10 @@ package com.github.peng.connect.handler.server;
 import cn.hutool.core.util.StrUtil;
 import com.github.peng.connect.connection.server.ServerToolkit;
 import com.github.peng.connect.connection.server.context.ConnectionGroupRoom;
+import com.github.peng.connect.utils.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.rtsp.RtspHeaderNames;
 import io.netty.handler.codec.rtsp.RtspResponseStatuses;
@@ -43,19 +41,20 @@ public class RtspServerHandler extends SimpleChannelInboundHandler<DefaultHttpRe
                 ConnectionGroupRoom connectionGroupRoom = ServerToolkit.contextAction()
                         .applyConnectionGroup(group);
 //                connectionGroupRoom.getByteFlux().
-                Flux<byte[]> flux = connectionGroupRoom.lastCache();
 
+                ByteBuf byteBuf1 = connectionGroupRoom.pollByteBuf();
 
-                flux.subscribe(data -> {
-                    ByteBuf byteBuf = Unpooled.copiedBuffer(data);
-                    FullHttpResponse response = new DefaultFullHttpResponse(RtspVersions.RTSP_1_0,
-                            RtspResponseStatuses.OK , byteBuf );
-                    log.info("receive  rtsp request ");
-                    final String cseq = o.headers().get(RtspHeaderNames.CSEQ);
-                    response.headers().add(RtspHeaderNames.CSEQ, cseq);
+                byte[] bytes = ByteBufUtils.readByteBuf2Array(byteBuf1);
+
+                ByteBuf byteBuf = Unpooled.copiedBuffer(bytes);
+
+                FullHttpResponse response = new DefaultFullHttpResponse(RtspVersions.RTSP_1_0,
+                        RtspResponseStatuses.OK , byteBuf );
+                log.info("receive  rtsp request ");
+                final String cseq = o.headers().get(RtspHeaderNames.CSEQ);
+                response.headers().add(RtspHeaderNames.CSEQ, cseq);
 //                ctx.writeAndFlush(connectionGroupRoom.offerFrameData());
-                    ctx.writeAndFlush(response);
-                });
+                ctx.writeAndFlush(response);
 
 
             }else {

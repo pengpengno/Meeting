@@ -26,7 +26,7 @@ import reactor.netty.NettyOutbound;
 public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
 
-@SneakyThrows
+    @SneakyThrows
     public ReactiveConnectionConsumer(){
         super((nettyInbound, nettyOutbound) -> {
 
@@ -43,7 +43,8 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                     try{
 
-                        ByteBufProcessService.getInstance().process(connection,byteBuf);
+//                        ByteBufProcessService.getInstance().process(connection,byteBuf);
+                        DataFrameProcessService.getInstance().process(connection,byteBuf);
 
                     }catch (Exception exception){
 

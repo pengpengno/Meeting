@@ -71,12 +71,12 @@ public class ReactorTcpServer implements ReactiveServer {
 
                     connection.channel().attr(ConnectionConstants.ROOM_KEY).set("group");
 
-                    IConnectContextAction connectContext = ServerToolkit.contextAction();
+//                    IConnectContextAction connectContext = ServerToolkit.contextAction();
 
-                    connectContext.addToGroup(connection);
+//                    connectContext.addToGroup(connection);
 
                     connection
-                            .addHandlerLast(new RtspDecoder())
+//                            .addHandlerLast(new RtspDecoder())
                             .addHandlerLast(new RtspServerHandler())
 //                            .addHandlerLast(new ServerInboundHandler())
                             .addHandlerLast(new RtspEncoder())

@@ -53,8 +53,8 @@ public class DesktopScreenApplicationRtspBack extends Application {
             screenShare.startGrabber();
             screenShare.recorderStart();
 
-            screenShare.configSendConsumer((defaultFullHttpRequest) ->
-                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe());
+            screenShare.configSendConsumer((data) ->
+                    reactiveClientAction.sendObject(data).subscribe());
 
             var javaFXFrameConverter = new JavaFXFrameConverter();
 

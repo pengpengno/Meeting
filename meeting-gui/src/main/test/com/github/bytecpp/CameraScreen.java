@@ -58,10 +58,10 @@ public class CameraScreen {
                     ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
                     buffer.writeBytes(bos.toByteArray());
 
-                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
-                            RtspMethods.OPTIONS, "/live", buffer);
+//                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
+//                            RtspMethods.OPTIONS, "/live", buffer);
 
-                    reactiveClientAction.sendObject(defaultFullHttpRequest).subscribe();
+                    reactiveClientAction.sendObject(buffer).subscribe();
 
                     bos.reset();
                 }

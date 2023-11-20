@@ -103,7 +103,7 @@ private Integer refreshRate;
 
 
 
-    public void configSendConsumer (Consumer<DefaultFullHttpRequest> consumer) {
+    public void configSendConsumer (Consumer<ByteBuf> consumer) {
         new Thread(()-> {
             while (true){
 //                recorder.get
@@ -111,10 +111,10 @@ private Integer refreshRate;
                     ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
 
                     buffer.writeBytes(bos.toByteArray());
-
-                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
-                            RtspMethods.OPTIONS, "/live", buffer);
-                    consumer.accept(defaultFullHttpRequest);
+//
+//                    DefaultFullHttpRequest defaultFullHttpRequest = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0,
+//                            RtspMethods.OPTIONS, "/live", buffer);
+                    consumer.accept(buffer);
 
                     bos.reset();
                 }

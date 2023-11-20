@@ -9,6 +9,9 @@ import io.netty.handler.codec.http.DefaultFullHttpRequest;
 import lombok.extern.slf4j.Slf4j;
 import reactor.netty.Connection;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
+
 /**
  * connection 容器
  * @author pengpeng
@@ -75,30 +78,12 @@ public class IConnectContext implements IConnectContextAction {
         }
     }
 
+
+
     @Override
-    public void addToGroup(Connection connection) {
-
-         connection.channel().attr(ConnectionConstants.ROOM_KEY).set("group");
-
-        String roomKey = connection.channel().attr(ConnectionConstants.ROOM_KEY).get();
-        log.debug("add room key {} ",roomKey);
-        ReactorConnection build = ReactorConnection.builder()
-                .group(roomKey)
-                .connection(connection)
-                .channel(connection.channel())
-                .connection(connection)
-                .build();
-
-        ConnectionGroupRoom data = connectionGroup.get(roomKey, (key) ->{
-            ConnectionGroupRoom  connectionGroupRoom = new ConnectionGroupRoom();
-                connectionGroupRoom.setConnection(build);
-                connectionGroupRoom.setByteFlux(connection.inbound().receive().asByteArray());
-                connectionGroupRoom.setRoomKey(key);
-                connectionGroupRoom.replayCache();
-            return connectionGroupRoom;
-        });
+    public ConnectionGroupRoom getOrSupplier(String roomKey, Function<String, Supplier<ConnectionGroupRoom>> connectionFactor) {
+        return connectionGroup.get(roomKey, (key) -> connectionFactor.apply(key).get());
     }
-
 
     private byte[] getData (ByteBuf byteBuf){
         byte[] bytes = null;

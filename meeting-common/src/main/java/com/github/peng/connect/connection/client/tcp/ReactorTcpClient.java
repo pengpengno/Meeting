@@ -52,7 +52,6 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
                     .doOnChannelInit((connectionObserver, channel, remoteAddress) -> {
                         log.debug("init channel pipeline ");
                         ChannelPipeline pipeline = channel.pipeline();
-//                        pipeline.addLast(ProtoBufMessageLiteScanner.protobufEncoder());
                         ProtoBufMessageLiteScanner.protobufDecoders()
                                 .forEach(handler -> pipeline.addLast(handler));
                         pipeline.addLast(new RtspDecoder());
@@ -68,12 +67,6 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
 
         try{
             connection = client.connectNow();
-//            var headers = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0, RtspMethods.OPTIONS, "/live");
-//            headers.set(RtspHeaders.Names.CSEQ, 1);
-//            headers.set(RtspHeaders.Names.METHOD, RtspMethods.OPTIONS);
-//            ByteBuf content = Unpooled.EMPTY_BUFFER;
-//            FullHttpRequest request = new DefaultFullHttpRequest(RtspVersions.RTSP_1_0, headers, content);
-//            connection.outbound().sendObject(Mono.just(headers)).var
             connection.inbound().withConnection((con)-> {
                 connection.inbound().receive().asString().doOnNext(log::info)
                         .subscribe();
@@ -103,7 +96,7 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
     }
 
     @Override
-    public Mono<Void>    sendString(String message) {
+    public Mono<Void> sendString(String message) {
         if (isAlive()) {
 
             NettyOutbound nettyOutbound = connection.outbound().sendString(Mono.just(message));
@@ -156,20 +149,10 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
     public Mono<Void> sendMessage(Message message) {
         if (isAlive()){
 
-//            ByteBufAllocator alloc = connection.channel().alloc();
-
-//            ByteBuf byteBuf = ProtoParseUtil.parseMessage2ByteBuf(message, alloc.buffer());
-
-//            return connection.outbound().send(Mono.just(byteBuf)).then();
-
             NettyOutbound nettyOutbound = connection.outbound().sendObject(Mono.just(message));
 
             return nettyOutbound.then();
         }
-
-//        if (reTryConnect()){
-//            return sendMessage(message);
-//        }
 
         throw new IllegalArgumentException("connection is invalid !");
     }

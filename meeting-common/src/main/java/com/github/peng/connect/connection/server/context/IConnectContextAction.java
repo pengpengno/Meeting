@@ -2,6 +2,8 @@ package com.github.peng.connect.connection.server.context;
 
 import reactor.netty.Connection;
 import java.net.ConnectException;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  *
@@ -23,7 +25,7 @@ public interface IConnectContextAction {
     public void putConnection(IConnection connection);
 
 
-    public void addToGroup (Connection connection);
+    public ConnectionGroupRoom getOrSupplier (String key ,  Function<String, Supplier<ConnectionGroupRoom>> connectionFactor);
 
 
     public ConnectionGroupRoom applyConnectionGroup(String roomKey);

@@ -1,13 +1,17 @@
 package com.github.peng.connect.connection.server.context;
 
+import cn.hutool.core.collection.CollUtil;
 import io.netty.buffer.ByteBuf;
+import lombok.Builder;
 import lombok.Data;
+import net.bytebuddy.agent.builder.AgentBuilder;
 import reactor.core.publisher.*;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.DelayQueue;
 
 /***
@@ -15,6 +19,7 @@ import java.util.concurrent.DelayQueue;
  */
 
 @Data
+@Builder
 public class ConnectionGroupRoom {
 
     private String roomKey ;
@@ -26,16 +31,46 @@ public class ConnectionGroupRoom {
 
     private IConnection connection ;
 
-    public ByteBuf byteBuf;
+    public volatile Queue<ByteBuf> byteBufQueue;
 
-    public Object object = new Object();
+    public final Object object = new Object();
 
+private ByteBuf lastByteBuf ;
 
     private Flux<byte[]> byteFlux ;
 
+    public void offerByteBuf (ByteBuf byteBuf){
+        if (byteBufQueue == null){
+            synchronized (object){
+                if (byteBufQueue == null){
+                    byteBufQueue = new ConcurrentLinkedQueue<>();
+                }
+            }
+        }
+        boolean offer = byteBufQueue.offer(byteBuf);
+//        TODO  not thread safety
+        if (!offer){
+            lastByteBuf = byteBufQueue.poll();
+
+            byteBufQueue.offer(byteBuf);
+
+        }
+    }
+
+
+    public ByteBuf pollByteBuf () {
+
+        if (CollUtil.isNotEmpty(byteBufQueue)){
+            lastByteBuf = byteBufQueue.poll();
+            return lastByteBuf;
+        }
+
+        return lastByteBuf;
+    }
     public void addConnection(IConnection connection){
 
         Mono.create(sink -> {
+
             sink.success(connection);
 
         }).subscribe();
