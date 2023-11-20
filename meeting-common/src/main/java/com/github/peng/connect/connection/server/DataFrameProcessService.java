@@ -13,12 +13,15 @@ import com.github.peng.connect.utils.ByteBufUtils;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.netty.buffer.ByteBuf;
+import io.netty.handler.codec.http.HttpServerExpectContinueHandler;
+import io.netty.handler.codec.rtsp.RtspDecoder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import reactor.netty.Connection;
 
+import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -59,7 +62,13 @@ public class DataFrameProcessService implements ApplicationContextAware ,ByteBuf
 
         IConnectContextAction connectContext = ServerToolkit.contextAction();
 //        con.inbound().receive().asString().
+        con.addHandlerLast(new RtspDecoder());
+
         ConnectionGroupRoom orSupplier = connectContext.getOrSupplier(roomKey, e -> () -> {
+//            HttpObjectAggregator httpObjectAggregator = new HttpObjectAggregator(1024 * 1024 * 10);
+
+//            String s = new String(ByteBufUtils.readByteBuf2Array(byteBuf), Charset.defaultCharset());
+//            HttpServerExpectContinueHandler
 
             ReactorConnection reactorConnection = ReactorConnection.builder()
                     .group(roomKey)

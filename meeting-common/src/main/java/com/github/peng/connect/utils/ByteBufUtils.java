@@ -12,15 +12,16 @@ public class ByteBufUtils {
 
     public  static byte[] readByteBuf2Array (ByteBuf byteBuf){
         try{
-            int length = byteBuf.readInt();
+            int length = byteBuf.readableBytes();
+//            int length = byteBuf.readInt();
 
-            int type = byteBuf.readInt();
+//            int type = byteBuf.readInt();
 
-            ProtocolType.ProtocolMessageEnum messageEnum = ProtocolType.ProtocolMessageEnum.forNumber(type);
-
-            if (messageEnum == null){
-                throw new IllegalAccessException("The send data package is null of type, pls refer to the  ProtocolMessageEnum!");
-            }
+//            ProtocolType.ProtocolMessageEnum messageEnum = ProtocolType.ProtocolMessageEnum.forNumber(type);
+//
+//            if (messageEnum == null){
+//                throw new IllegalAccessException("The send data package is null of type, pls refer to the  ProtocolMessageEnum!");
+//            }
             byte[] bytes;
 
             if (byteBuf.hasArray()) {  //  jvm  heap byteBuf 处理

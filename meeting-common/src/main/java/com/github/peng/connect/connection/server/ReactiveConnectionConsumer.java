@@ -34,7 +34,6 @@ public class ReactiveConnectionConsumer extends ConnectionConsumer {
 
                 nettyInbound.withConnection(connection -> {
 
-//                connection.add
                 log.debug("receive data ");
 
                 int i = byteBuf.readableBytes();
