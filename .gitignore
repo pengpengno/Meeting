@@ -1,6 +1,6 @@
 # Compiled class file
 *.class
-
+/.idea
 # Log file
 *.log
 
@@ -9,7 +9,7 @@
 ../.idea
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-.idea
+.idea/**
 *.iml
 # Package Files #
 *.jar
@@ -19,7 +19,7 @@
 *.zip
 *.tar.gz
 *.rar
-
+logs
 meeting-common/target
 meeting-server/target
 meeting-gui/target
