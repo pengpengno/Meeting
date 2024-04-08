@@ -27,6 +27,8 @@
             <version>1.0</version>
         </dependency>
 
+
+
     </dependencies>
 
     <build>
@@ -45,7 +47,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <sourceDirectory>src/main/java</sourceDirectory>
-                    <mainClass>com.github.peng.server.Application</mainClass>
+                    <mainClass>com.github.meeting.server.Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>

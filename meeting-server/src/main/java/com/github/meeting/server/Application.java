@@ -1,4 +1,4 @@
-package com.github.peng.server;
+package com.github.meeting.server;
 
 import com.github.peng.connect.connection.server.tcp.ReactorTcpServer;
 import lombok.SneakyThrows;

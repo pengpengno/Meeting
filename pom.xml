@@ -11,6 +11,7 @@
         <module>meeting-gui</module>
         <module>meeting-server</module>
         <module>meeting-common</module>
+        <module>Meeting-web</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -18,7 +19,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.plugin.version>3.8.0</maven.plugin.version>
-        <spring.starter.version>3.1.4</spring.starter.version>
+        <spring.starter.version>3.2.0</spring.starter.version>
         <sl4j.version>2.0.2</sl4j.version>
         <hutool-all.version>5.8.4</hutool-all.version>
         <fastjson2.version>2.0.8</fastjson2.version>
@@ -43,8 +44,8 @@
         <jaxb.version>4.0.0</jaxb.version>
         <jjwt.version>0.11.2</jjwt.version>
         <mapstruct-binding.version>0.2.0</mapstruct-binding.version>
-        <javacv.platform.version>1.5.9</javacv.platform.version>
-
+        <javacv.platform.version>1.5.10</javacv.platform.version>
+        <thymeleaf.version>3.1.2RELEASE</thymeleaf.version>
     </properties>
     <dependencies>
 
@@ -89,6 +90,24 @@
 
         <dependencies>
 
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring6</artifactId>
+                <version>${thymeleaf.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.bytedeco</groupId>
+                <artifactId>javacv</artifactId>
+                <version>${javacv.platform.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.bytedeco</groupId>
+                <artifactId>javacv-platform</artifactId>
+                <version>${javacv.platform.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
