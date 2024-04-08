@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>实时视频会议</title>
+</head>
+<body>
+<h1>实时视频会议</h1>
+<video id="localVideo" autoplay></video>
+<video id="remoteVideo" autoplay></video>
+
+<script>
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
+            const localVideo = document.getElementById("localVideo");
+            localVideo.srcObject = stream;
+        })
+        .catch(error => {
+            console.error('getUserMedia error:', error);
+        });
+</script>
+</body>
+</html>

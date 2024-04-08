@@ -1,0 +1,11 @@
+server:
+  port: 8080
+logback:
+  level: info
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template: false
+    mode: html
