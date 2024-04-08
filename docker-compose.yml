@@ -31,7 +31,7 @@ services:
   meeting-web:
     container_name: meeting-web
     build:
-        context: Meeting-web
+        context: meeting-web
 #    volumes:
     ports:
       - 8080:8080
