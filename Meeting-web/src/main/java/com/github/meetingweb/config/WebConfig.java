@@ -19,31 +19,4 @@ public class WebConfig implements WebFluxConfigurer {
     private final ISpringWebFluxTemplateEngine templateEngine;
 
 
-//    @Bean
-//    @Description("Thymeleaf Template Engine")
-//    public SpringTemplateEngine templateEngine() {
-//        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//        templateEngine.setTemplateResolver(templateResolver());
-//        templateEngine.setTemplateEngineMessageSource(messageSource());
-//        return templateEngine;
-//    }
-
-
-//
-//    @Bean
-//    public SpringTemplateEngine templateEngine(){
-//        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//        templateEngine.setEnableSpringELCompiler(true);
-//        templateEngine.setTemplateResolver(templateResolver());
-//        templateEngine.addDialect(new HelloDialect());
-//        return templateEngine;
-//    }
-//    @Bean
-//    public ThymeleafReactiveViewResolver thymeleafChunkedAndDataDrivenViewResolver() {
-//        final ThymeleafReactiveViewResolver viewResolver = new ThymeleafReactiveViewResolver();
-//        viewResolver.setTemplateEngine(templateEngine);
-//        viewResolver.setOrder(1);
-//        viewResolver.setResponseMaxChunkSizeBytes(8192); // OUTPUT BUFFER size limit
-//        return viewResolver;
-//    }
 }
