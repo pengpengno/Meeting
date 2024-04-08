@@ -21,6 +21,7 @@
 *.rar
 logs
 meeting-common/target
+Meeting-web/target
 meeting-server/target
 meeting-gui/target
 
