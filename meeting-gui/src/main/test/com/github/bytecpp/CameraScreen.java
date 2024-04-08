@@ -30,12 +30,7 @@ public class CameraScreen {
 //
 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//        OpenCVFrameRecorder recorder = new OpenCVFrameRecorder("bos.avi",
-//                grabber.getImageWidth(), grabber.getImageHeight());
-//        var recorder = new FFmpegFrameRecorder(bos, grabber.getImageWidth(), grabber.getImageHeight(),
-//                grabber.getAudioChannels());
-//            var recorder = FrameRecorder.createDefault(bos,
-//                    desktop.getImageWidth(), desktop.getImageHeight());
+
 
         OpenCVFrameRecorder recorder = OpenCVFrameRecorder.createDefault("bos.avi", grabber.getImageWidth(), grabber.getImageHeight());
         recorder.setFormat("avi");
@@ -49,7 +44,6 @@ public class CameraScreen {
 
         recorder.start();
 
-//        var recorder = camareScreenCapture.createTransterOrRecodeRecorder();
 
         new Thread(()-> {
             while (true){

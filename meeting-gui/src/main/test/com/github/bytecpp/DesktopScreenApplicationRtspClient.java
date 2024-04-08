@@ -54,7 +54,8 @@ public class DesktopScreenApplicationRtspClient extends Application {
             System.exit(0);
         });
 
-        String flowUrl1 = "rtsp://127.0.0.1:8080/desktop/group";
+//        String flowUrl1 = "rtsp://127.0.0.1:5541/desktop/group";
+        String flowUrl1 = "rtsp://127.0.0.1:5541/desktop/vod/desktop";
         FFmpegFrameGrabber fFmpegFrameGrabber = new FFmpegFrameGrabber(flowUrl1);
         initGrabber(fFmpegFrameGrabber);
         try {
@@ -94,14 +95,14 @@ public class DesktopScreenApplicationRtspClient extends Application {
     }
     private static boolean initGrabber(FFmpegFrameGrabber grabber) {
         grabber.setFormat("rtsp");
-//        grabber.setOption("stimeout", "15000000");
-//        grabber.setOption("threads", "1");
-//        grabber.setOption("buffer_size", "1024000");
-//        grabber.setOption("rw_timeout", "5000000");
-//        grabber.setOption("probesize", "5000000");
-//        grabber.setOption("analyzeduration", "5000000");
-//        grabber.setOption("rtsp_transport", "tcp");
-//        grabber.setOption("rtsp_flags", "prefer_tcp");
+        grabber.setOption("stimeout", "15000000");
+        grabber.setOption("threads", "1");
+        grabber.setOption("buffer_size", "1024000");
+        grabber.setOption("rw_timeout", "5000000");
+        grabber.setOption("probesize", "5000000");
+        grabber.setOption("analyzeduration", "5000000");
+        grabber.setOption("rtsp_transport", "tcp");
+        grabber.setOption("rtsp_flags", "prefer_tcp");
         try {
             grabber.start();
 //            grabber.start(true);
