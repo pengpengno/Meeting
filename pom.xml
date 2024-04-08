@@ -11,7 +11,7 @@
         <module>meeting-gui</module>
         <module>meeting-server</module>
         <module>meeting-common</module>
-        <module>Meeting-web</module>
+        <module>meeting-web</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
