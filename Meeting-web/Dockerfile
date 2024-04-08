@@ -8,7 +8,6 @@ ENV IMAGE_NAME=meeting-web
 ENV SERVICE_NAME=meeting-web
 ENV SERVICE_VERSION=1.0
 ENV JAR_NAME=${SERVICE_NAME}-${SERVICE_VERSION}.jar
-#COPY --from=builder /app/target/*.jar /app/*.jar
 
 ENV SERVER_PORT=${PORT}
 

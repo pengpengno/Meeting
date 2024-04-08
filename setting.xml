@@ -53,7 +53,7 @@
       <activation>
         <!-- 默认激活当前配置 -->
         <activeByDefault>true</activeByDefault>
-        <jdk>19</jdk>
+        <jdk>21</jdk>
       </activation>
       <properties>
 <!--        <maven.compiler.source>19</maven.compiler.source>-->

@@ -8,4 +8,9 @@ Internal network meeting application
 
 
 
+### deploy 
+```shell
+mvn clean package -DskipTests -s setting.xml -f pom.xml
+```
+
 
