@@ -1,9 +1,9 @@
 package com.github.reactor.netty;
 
-import com.github.peng.connect.connection.client.ClientLifeStyle;
-import com.github.peng.connect.connection.client.ClientToolkit;
-import com.github.peng.connect.connection.client.tcp.ReactorTcpClient;
-import com.github.peng.connect.model.proto.Account;
+import com.github.meeting.common.connect.connection.client.ClientLifeStyle;
+import com.github.meeting.common.connect.connection.client.ClientToolkit;
+import com.github.meeting.common.connect.connection.client.tcp.ReactorTcpClient;
+import com.github.meeting.common.connect.model.proto.Account;
 import io.netty.handler.logging.LogLevel;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

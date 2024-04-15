@@ -2,7 +2,7 @@
 Internal network meeting application
 
 
-1. start the Application which is defined  in  ```package com.github.peng.server```;
+1. start the Application which is defined  in  ```package com.github.meeting.server```;
 
 2. client starter test is ```Tests``` which is in ```test``` package and path is ```package com.github.bytecpp;```
 

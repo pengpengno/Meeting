@@ -1,13 +1,10 @@
 package com.github.bytecpp;
 
-import com.github.peng.connect.connection.client.ClientLifeStyle;
-import com.github.peng.connect.connection.client.ClientToolkit;
-import com.github.peng.connect.connection.client.ReactiveClientAction;
+import com.github.meeting.common.connect.connection.client.ClientLifeStyle;
+import com.github.meeting.common.connect.connection.client.ClientToolkit;
+import com.github.meeting.common.connect.connection.client.ReactiveClientAction;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
-import io.netty.handler.codec.http.DefaultFullHttpRequest;
-import io.netty.handler.codec.rtsp.RtspMethods;
-import io.netty.handler.codec.rtsp.RtspVersions;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

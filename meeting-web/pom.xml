@@ -68,7 +68,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <sourceDirectory>src/main/java</sourceDirectory>
-                    <mainClass>com.github.meetingweb.Application</mainClass>
+                    <mainClass>com.github.meeting.web.Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>

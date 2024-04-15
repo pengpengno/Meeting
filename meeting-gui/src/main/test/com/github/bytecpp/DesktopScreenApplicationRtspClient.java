@@ -1,12 +1,7 @@
 package com.github.bytecpp;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
-import com.github.peng.connect.connection.client.ClientLifeStyle;
-import com.github.peng.connect.connection.client.ClientToolkit;
-import com.github.peng.connect.connection.client.ReactiveClientAction;
-import com.github.peng.cv.ScreenShare;
 import io.netty.handler.codec.http.DefaultFullHttpRequest;
-import io.netty.handler.codec.http.DefaultHttpRequest;
 import io.netty.handler.codec.rtsp.RtspMethods;
 import io.netty.handler.codec.rtsp.RtspVersions;
 import javafx.application.Application;
@@ -15,10 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
-import org.bytedeco.ffmpeg.avformat.AVFormatContext;
 import org.bytedeco.javacv.*;
-
-import java.net.InetSocketAddress;
 
 @Slf4j
 public class DesktopScreenApplicationRtspClient extends Application {
