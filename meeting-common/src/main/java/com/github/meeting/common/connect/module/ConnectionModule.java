@@ -55,6 +55,8 @@ public class ConnectionModule extends AbstractModule {
 
         bind(ScreenGrabber.class).in(Singleton.class);
 
+//        bind(ScreenGrabber.class).in(Singleton.class);
+
         bind(ReactiveServer.class).annotatedWith(Names.named("ReactorTcpServer")).toInstance(ReactorTcpServer.getInstance());
     }
 }

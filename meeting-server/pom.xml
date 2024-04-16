@@ -47,7 +47,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <sourceDirectory>src/main/java</sourceDirectory>
-                    <mainClass>com.github.meeting.server.Application</mainClass>
+                    <mainClass>com.github.meeting.server.TcpServerApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -10,6 +10,10 @@ public class GuiceModuleInjector {
 
     public static Injector injector = Guice.createInjector(new ConnectionModule());
 
+    public static <T> T getInstance(Class<T> clazz) {
+        return injector.getInstance(clazz);
+    }
+
 
 
 }

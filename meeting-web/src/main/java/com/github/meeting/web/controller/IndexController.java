@@ -7,6 +7,7 @@ import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.socket.client.WebSocketClient;
 
 //@RestController
 @Controller
@@ -21,6 +22,7 @@ public class IndexController {
 
     @GetMapping("/view")
     public String view(Model model) {
+//        WebSocketClient
         return "view";
     }
 

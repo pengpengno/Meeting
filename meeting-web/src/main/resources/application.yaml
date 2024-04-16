@@ -4,6 +4,9 @@ logback:
   level: info
 
 spring:
+  ai:
+    openai:
+      api-key: sess-QEmiMRUspplcZcGTSAUnSCV0WKPbY98TjudMgRb8
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
