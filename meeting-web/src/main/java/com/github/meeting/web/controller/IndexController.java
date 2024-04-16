@@ -32,4 +32,9 @@ public class IndexController {
     public String meetingroom(Model model) {
         return "meetingroom";
     }
+
+    @GetMapping("/rtc")
+    public String webRtcMeeting(Model model) {
+        return "webRtcMeeting";
+    }
 }

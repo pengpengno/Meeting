@@ -32,6 +32,8 @@
                     <h2 class="card-title">Create Meeting</h2>
                     <div class="mb-3">
                         <label for="topic" class="form-label">Meeting Topic:</label>
+                        <label for="topic" class="form-label">Meeting Topic:</label>
+                        <label for="topic" class="form-label">Meeting Topic:</label>
                         <input type="text" class="form-control" id="topic" placeholder="Enter meeting topic">
                     </div>
                     <button class="btn btn-primary" onclick="createMeeting()">Create Meeting</button>
@@ -66,95 +68,134 @@
             </div>
         </div>
     </div>
+
+    <div>
+        <button class="btn btn-primary" id="startButton" onclick="createPeerConnection()">Start</button>
+        <button class="btn btn-primary" id="callButton">Call</button>
+        <button class="btn btn-primary" id="hangupButton" onclick="stopLocalPreview()">Hang Up</button>
+    </div>
 </div>
 <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+<script th:src="@{/js/meeting/webRTCVideo.js}"></script>
+<script th:src="@{/js/adapter-latest.js}"></script>
 
-<script>
-    let localStream;
-    let remoteStream;
+    <script>
+        // 停止本地预览
 
-    async function createMeeting() {
-        const topic = $('#topic').val();
-        const response = await fetch('/meetings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ topic })
-        });
-        const data = await response.json();
-        startMeeting(data.id);
-    }
+        let localStream;
+        let remoteStream;
 
+        var currentDomain = window.location.host;
+        const ws = new WebSocket('ws://'+currentDomain+'/path');
+         const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
 
+<!--        startLocalPreview(ws);-->
 
-    async function startLocalPreview() {
-        try {
-            const constraints = {
-                video: true,
-                audio: true // 不需要音频
-            };
-            const stream = await navigator.mediaDevices.getUserMedia(constraints);
-            const videoElement = document.getElementById('localVideo');
-            videoElement.srcObject = stream;
-
-
-            sendVideoStream(videoElement);
-
-        } catch (error) {
-            console.error('Error accessing local camera:', error);
+        function stopLocalPreview() {
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+                localStream = null;
+                localVideo.srcObject = null;
+            }
+                localVideo.srcObject = null;
         }
-    }
 
-    startLocalPreview();
-
-    async function joinMeeting() {
-        const meetingId = $('#meetingId').val();
-        const participantId = $('#participantId').val();
-        const response = await fetch(`/meetings/${meetingId}/join?participantId=${participantId}`, {
-            method: 'POST'
-        });
-        const data = await response.json();
-        startMeeting(meetingId);
-    }
-
-    async function startMeeting(meetingId) {
-        const constraints = {
-            video: true,
-            audio: true
-        };
-        try {
-            localStream = await navigator.mediaDevices.getUserMedia(constraints);
-            $('#localVideo').attr('srcObject', localStream);
-            const peerConnection = new RTCPeerConnection();
-            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-
-            peerConnection.ontrack = (event) => {
-                remoteStream = event.streams[0];
-                $('#remoteVideo').attr('srcObject', remoteStream);
-            };
-
-            const offer = await peerConnection.createOffer();
-            await peerConnection.setLocalDescription(offer);
-
-            const response = await fetch(`/offer/${meetingId}`, {
+        async function createMeeting() {
+            const topic = $('#topic').val();
+            const response = await fetch('/meetings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    sdp: peerConnection.localDescription
-                })
+                body: JSON.stringify({ topic })
             });
             const data = await response.json();
-            await peerConnection.setRemoteDescription(data.answer);
-        } catch (error) {
-            console.error('Error starting meeting:', error);
+            startMeeting(data.id);
         }
 
-        $('#createMeeting, #joinMeeting').hide();
-        $('#meetingRoom').show();
-    }
-</script>
+
+
+
+     // 创建peerConnection
+         function createPeerConnection() {
+         if(localStream != null){
+            return;
+         }
+
+            // 获取本地视频流
+                navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                    .then(stream => {
+                    // 将本地视频流绑定到video元素上
+                        localVideo.srcObject = stream;
+                        localStream = stream;
+
+                        // 创建RTCPeerConnection对象
+                        peerConnection = new RTCPeerConnection();
+
+                        // 添加本地视频流到RTCPeerConnection
+                        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+                        // 监听远程流
+                        peerConnection.ontrack = event => {
+                            remoteVideo.srcObject = event.streams[0];
+                        };
+
+                        // 发送offer
+                        peerConnection.createOffer()
+                            .then(offer => {
+                                peerConnection.setLocalDescription(offer);
+                                // 发送offer到远程
+                                ws.send(JSON.stringify(offer));
+                            })
+                            .catch(error => {
+                                console.error('创建offer失败:', error);
+                            });
+                    })
+                    .catch(error => {
+                        console.error('获取本地视频流失败:', error);
+                    });
+        }
+
+        function joinMeeting () {
+             $('#createMeeting, #joinMeeting').hide();
+             $('#meetingRoom').show();
+            // 处理WebSocket连接打开事件
+            createPeerConnection();
+
+            // 处理WebSocket消息
+            ws.onmessage = event => {
+                const message = JSON.parse(event.data);
+                 if (message.type === 'offer') {
+                     try {
+                        // 设置远程描述
+                         peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+
+                        // 创建answer
+                        const answer =  peerConnection.createAnswer();
+
+                        // 设置本地描述
+                         peerConnection.setLocalDescription(answer);
+
+                        // 发送answer到远程
+                        ws.send(JSON.stringify(answer));
+                    } catch (error) {
+                        console.error('处理offer时出错:', error);
+                    }
+                }
+                else if (message.type === 'answer') {
+                // 收到answer，设置远程描述
+                     peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+                } else if (message.type === 'candidate') {
+                        // 添加远程的ICE候选者
+                    peerConnection.addIceCandidate(new RTCIceCandidate(message.candidate));
+                }
+            };
+        }
+
+
+
+
+    </script>
 </body>
 </html>

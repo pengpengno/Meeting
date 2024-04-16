@@ -7,6 +7,10 @@ Internal network meeting application
 2. client starter test is ```Tests``` which is in ```test``` package and path is ```package com.github.bytecpp;```
 
 
+### ssl/tls
+please read the following link :
+[https-spring-boot-ssl-certificate](https://www.thomasvitale.com/https-spring-boot-ssl-certificate/)
+
 
 ### deploy 
 ```shell

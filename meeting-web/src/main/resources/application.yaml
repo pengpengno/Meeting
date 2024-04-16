@@ -4,6 +4,9 @@ logback:
   level: info
 
 spring:
+  devtools:
+    restart:
+      enabled: true
   ai:
     openai:
       api-key: sess-QEmiMRUspplcZcGTSAUnSCV0WKPbY98TjudMgRb8
