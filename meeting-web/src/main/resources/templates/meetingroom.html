@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Meeting System</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        #createMeeting, #joinMeeting {
+            margin-bottom: 20px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Online Meeting System</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div id="createMeeting" class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Create Meeting</h2>
+                    <div class="mb-3">
+                        <label for="topic" class="form-label">Meeting Topic:</label>
+                        <input type="text" class="form-control" id="topic" placeholder="Enter meeting topic">
+                    </div>
+                    <button class="btn btn-primary" onclick="createMeeting()">Create Meeting</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="joinMeeting" class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Join Meeting</h2>
+                    <div class="mb-3">
+                        <label for="meetingId" class="form-label">Meeting ID:</label>
+                        <input type="text" class="form-control" id="meetingId" placeholder="Enter meeting ID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="participantId" class="form-label">Your ID:</label>
+                        <input type="text" class="form-control" id="participantId" placeholder="Enter your ID">
+                    </div>
+                    <button class="btn btn-primary" onclick="joinMeeting()">Join Meeting</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="meetingRoom" class="mt-5" style="display: none;">
+        <h2 class="text-center">Meeting Room</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <video id="localVideo" class="mb-3" autoplay muted></video>
+            </div>
+            <div class="col-md-6">
+                <video id="remoteVideo" class="mb-3" autoplay></video>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<script>
+    let localStream;
+    let remoteStream;
+
+    async function createMeeting() {
+        const topic = $('#topic').val();
+        const response = await fetch('/meetings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ topic })
+        });
+        const data = await response.json();
+        startMeeting(data.id);
+    }
+
+
+
+    async function startLocalPreview() {
+        try {
+            const constraints = {
+                video: true,
+                audio: false // 不需要音频
+            };
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            const videoElement = document.getElementById('localVideo');
+            videoElement.srcObject = stream;
+        } catch (error) {
+            console.error('Error accessing local camera:', error);
+        }
+    }
+
+    startLocalPreview();
+
+    async function joinMeeting() {
+        const meetingId = $('#meetingId').val();
+        const participantId = $('#participantId').val();
+        const response = await fetch(`/meetings/${meetingId}/join?participantId=${participantId}`, {
+            method: 'POST'
+        });
+        const data = await response.json();
+        startMeeting(meetingId);
+    }
+
+    async function startMeeting(meetingId) {
+        const constraints = {
+            video: true,
+            audio: true
+        };
+        try {
+            localStream = await navigator.mediaDevices.getUserMedia(constraints);
+            $('#localVideo').attr('srcObject', localStream);
+            const peerConnection = new RTCPeerConnection();
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            peerConnection.ontrack = (event) => {
+                remoteStream = event.streams[0];
+                $('#remoteVideo').attr('srcObject', remoteStream);
+            };
+
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+
+            const response = await fetch(`/offer/${meetingId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sdp: peerConnection.localDescription
+                })
+            });
+            const data = await response.json();
+            await peerConnection.setRemoteDescription(data.answer);
+        } catch (error) {
+            console.error('Error starting meeting:', error);
+        }
+
+        $('#createMeeting, #joinMeeting').hide();
+        $('#meetingRoom').show();
+    }
+</script>
+</body>
+</html>

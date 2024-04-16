@@ -1,5 +1,15 @@
 version: '3'
 services:
+
+  postgres:
+    container_name: postgres
+    image: postgres:12.1
+    ports:
+      - 5432:5432
+    volumes:
+      - ./logs/postgres:/etc/logs/postgres
+      - ./logs/postgres:/var/log/postgres
+      - ./data/postgres:/var/lib/postgresql/data
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management
@@ -12,7 +22,6 @@ services:
       RABBITMQ_DEFAULT_PASS: admin
       RABBITMQ_DEFAULT_VHOST: /
     volumes:
-      - ./logs/rabbitmq:/etc/logs/rabbitmq
       - ./logs/rabbitmq:/var/log/rabbitmq
 
   meeting-server:

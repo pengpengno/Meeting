@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 //@RestController
 @Controller
-@RequestMapping("/video")
+@RequestMapping()
 @Slf4j
 public class IndexController {
     @GetMapping("/")
@@ -22,5 +22,12 @@ public class IndexController {
     @GetMapping("/view")
     public String view(Model model) {
         return "view";
+    }
+
+
+
+    @GetMapping("/meetingroom")
+    public String meetingroom(Model model) {
+        return "meetingroom";
     }
 }
