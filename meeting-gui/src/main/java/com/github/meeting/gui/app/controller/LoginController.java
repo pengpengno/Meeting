@@ -72,6 +72,7 @@ public class LoginController  implements Initializable {
                 .password(accountField.getText()).build();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("登录状态");
+
 //        accountApi.login(accountVo)
 //                .doOnNext(acc -> {
 //                    Platform.runLater(()->  {

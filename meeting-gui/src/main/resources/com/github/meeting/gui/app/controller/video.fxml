@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="your.package.MainController"
+            prefWidth="800" prefHeight="600">
+
+    <top>
+        <HBox>
+            <!-- Camera View -->
+            <ImageView fx:id="cameraView" fitWidth="300" fitHeight="200"/>
+
+            <!-- Screen Share View -->
+            <ImageView fx:id="screenShareView" fitWidth="300" fitHeight="200"/>
+
+            <!-- Share Camera Button -->
+            <Button text="Share Camera" onAction="#shareCamera"/>
+
+            <!-- Share Screen Button -->
+            <Button text="Share Screen" onAction="#shareScreen"/>
+        </HBox>
+    </top>
+
+    <center>
+        <!-- Video View -->
+        <MediaView fx:id="videoView"/>
+    </center>
+
+</BorderPane>
