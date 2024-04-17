@@ -1,5 +1,7 @@
 package com.github.bytecpp;
 
+import com.github.meeting.common.connect.module.GuiceModuleInjector;
+import com.github.meeting.common.cv.ScreenGrabber;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.ffmpeg.global.avcodec;
@@ -62,6 +64,15 @@ public class Tests {
 
 
     @Test
+    public void startJavaFxPlayer1 () {
+
+        ScreenGrabber instance = GuiceModuleInjector.getInstance(ScreenGrabber.class);
+
+        FrameGrabber frameGrabber = instance.desktopScreenCapture();
+
+
+    }
+    @Test
     public void startJavaFxPlayer () {
 
         JavaFxPlayVideoAndAudio.main(new String[]{});
@@ -81,7 +92,7 @@ public class Tests {
         for (var screenDevice : screenDevices) {
             log.info("{}",screenDevice);
         }
-        Integer screen = 1;
+        Integer screen = 0;
 
         var screenDevice = screenDevices[screen];
         var refreshRate = screenDevice.getDisplayMode().getRefreshRate();

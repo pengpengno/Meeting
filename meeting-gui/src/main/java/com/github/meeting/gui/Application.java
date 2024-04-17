@@ -6,6 +6,8 @@ import com.github.meeting.common.connect.connection.client.tcp.ReactorTcpClient;
 import com.github.meeting.common.connect.model.proto.Account;
 import com.github.meeting.gui.app.controller.HelloController;
 import com.github.meeting.gui.app.controller.LoginController;
+import com.github.meeting.gui.app.controller.MainController;
+import com.github.meeting.gui.app.controller.VideoController;
 import com.github.meeting.gui.util.FxmlLoader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,22 +25,24 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        Scene scene = FxmlLoader.applySingleScene(LoginController.class);
+        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
 
         log.debug("connect status  "  );
 
-        ClientLifeStyle connect =
-                ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
-                .connect();
+        try{
+            ClientLifeStyle connect =
+                    ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
+                            .connect();
+            log.debug("connect status {}", connect.isAlive());
 
-        log.debug("connect status {}", connect.isAlive());
+        }catch (Exception ex){
+            log.error("1");
+        }
+
 
 //        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
 
-//        ClientToolkit.reactiveClientAction()
-//                .sendMessage(Account.AccountInfo.newBuilder().
-//                        setEMail("pen").build())
-//                .subscribe();
+
 
         stage.setScene(scene);
 

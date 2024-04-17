@@ -49,7 +49,8 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         log.info("Main Controller is init");
-
+//        mainView = new MainView()
+        mainView = MainView.getInstance();
         mainView.initialize(null,null);
 
         mainView.prefWidthProperty().bind(viewMainPane.widthProperty());

@@ -92,13 +92,13 @@ public class JavaFxPlayVideoAndAudio extends Application {
                 FFmpegFrameGrabber.tryLoad();
                 boolean isStart = true;
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                java.awt.Robot robot1 = new java.awt.Robot();
-                Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
 
                 byte[] bytes = byteArrayOutputStream.toByteArray();
 
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(byteArrayInputStream);
+//                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(byteArrayInputStream);
+                FFmpegFrameGrabber grabber = new FFmpegFrameGrabber("desktop");
+                grabber.setFormat("gdigrab");
                 grabber.start();
                 primaryStage.setWidth(grabber.getImageWidth());
                 primaryStage.setHeight(grabber.getImageHeight());

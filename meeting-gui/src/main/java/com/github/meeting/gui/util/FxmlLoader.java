@@ -46,8 +46,8 @@ public class FxmlLoader {
 
             FXMLLoader fxmlLoader = new FXMLLoader(resource);
 
-            Injector injector = Guice.createInjector();
-            fxmlLoader.setControllerFactory(injector::getInstance);
+//            Injector injector = Guice.createInjector();
+//            fxmlLoader.setControllerFactory(injector::getInstance);
 //            fxmlLoader.setControllerFactory(SpringUtil::getBean);
 
             Parent load = fxmlLoader.load();

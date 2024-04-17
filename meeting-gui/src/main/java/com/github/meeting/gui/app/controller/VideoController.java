@@ -6,11 +6,15 @@ import com.github.meeting.common.cv.ScreenGrabber;
 import com.sun.javafx.fxml.builder.JavaFXImageBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.FrameGrabber;
 import org.bytedeco.javacv.Java2DFrameUtils;
@@ -36,6 +40,8 @@ import java.util.ResourceBundle;
  * @version 1.0
  * @since 2024/4/17
  */
+
+@Slf4j
 public class VideoController implements Initializable {
 
     @FXML
@@ -47,17 +53,27 @@ public class VideoController implements Initializable {
     @FXML
     private MediaView videoView;
 
+    @FXML
+    private Button camera;
+
+    @FXML
+    private Button screen;
+
 
     private final ScreenGrabber screenGrabber = GuiceModuleInjector.getInstance(ScreenGrabber.class);
-//    private final ScreenGrabber screenGrabber = GuiceModuleInjector.getInstance(ScreenGrabber.class);
 
+
+    private FrameGrabber desktopGrabber;
+    private FrameGrabber cameraGrabber;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        startScreenCapture();
+        initialize();
     }
 
     public void initialize() {
+//        Scene scene = cameraView.getScene();
+//        scene.getc
         // Load camera data (replace with your camera logic)
 //        Image cameraImage = new Image("path/to/your/camera/image.jpg");
 //        cameraView.setImage(cameraImage);
@@ -72,7 +88,7 @@ public class VideoController implements Initializable {
 //        MediaPlayer mediaPlayer = new MediaPlayer(media);
 //        videoView.setMediaPlayer(mediaPlayer);
 //        mediaPlayer.setAutoPlay(true);
-        startScreenCapture();
+//        startScreenCapture();
     }
 
 
@@ -87,15 +103,20 @@ public class VideoController implements Initializable {
             ByteArrayInputStream is = new ByteArrayInputStream(imageData);
             return new Image(is);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("error",e);
             return null;
         }
     }
 
-    private void startScreenCapture() {
-        var grabber = screenGrabber.desktopScreenCapture();
+    private FrameGrabber startScreenCapture() {
+        var grabber = screenGrabber.desktop();
         new Thread(() -> {
             try {
+//                if (!grabber.isTriggerMode()){
+//                    log.error("local desktop screen could not open!");
+//                    return;
+//                }
+
                 while (!Thread.interrupted()) {
                     Frame frame = grabber.grab();
                     if (frame != null) {
@@ -105,20 +126,64 @@ public class VideoController implements Initializable {
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error("errror",e);
             }
         }).start();
+        return grabber;
+    }
+
+
+    @SneakyThrows
+    public FrameGrabber camera() {
+        FrameGrabber camera1 = screenGrabber.camera();
+//        if (!camera1.isTriggerMode()){
+//            return null;
+//        }
+
+        new Thread(()-> {
+            try{
+//                while(true){
+                while (!Thread.interrupted()) {
+                    Frame frame = camera1.grab();
+                    if (frame!= null){
+                        var bufferedImage = Java2DFrameUtils.toBufferedImage(frame);
+
+                        cameraView.setImage(bufferedImageToImage(bufferedImage));
+
+                    }
+                }
+            }
+              catch (FrameGrabber.Exception exception){
+                        log.error("camera exception ",exception);
+              }
+        }).start();
+        return camera1;
     }
 
     @FXML
+    @SneakyThrows
     private void shareCamera() {
         // Add logic to share camera
+        log.info("click camera");
+
+        if (cameraGrabber!=null){
+            cameraGrabber.close();
+            cameraGrabber = null;
+        }
+        cameraGrabber = camera();
+
         System.out.println("Sharing camera...");
     }
 
     @FXML
+    @SneakyThrows
     private void shareScreen() {
         // Add logic to share screen
-        System.out.println("Sharing screen...");
+        log.info("click screen");
+        if (desktopGrabber!=null){
+            desktopGrabber.close();
+            desktopGrabber = null;
+        }
+        desktopGrabber = startScreenCapture();
     }
 }
