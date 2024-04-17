@@ -1,0 +1,27 @@
+@startuml
+class Subject {
+    + registerObserver(Observer observer)
+    + removeObserver(Observer observer)
+    + notifyObservers()
+}
+
+class NewsPublisher {
+    - observers: List<Observer>
+    + registerObserver(Observer observer)
+    + removeObserver(Observer observer)
+    + notifyObservers(String news)
+    + publishNews(String news)
+}
+
+interface Observer {
+    + update(String news)
+}
+
+class Reader {
+    - name: String
+    + Reader(String name)
+    + update(String news)
+}
+Subject o-- NewsPublisher: implements
+Observer o-- Reader: implements
+@enduml

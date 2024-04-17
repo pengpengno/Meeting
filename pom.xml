@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.peng</groupId>
+    <groupId>com.github.meeting</groupId>
     <artifactId>meeting</artifactId>
     <version>1.0</version>
     <modules>
@@ -12,6 +12,7 @@
         <module>meeting-server</module>
         <module>meeting-common</module>
         <module>meeting-web</module>
+        <module>demo</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -45,7 +46,6 @@
         <jjwt.version>0.11.2</jjwt.version>
         <mapstruct-binding.version>0.2.0</mapstruct-binding.version>
         <javacv.platform.version>1.5.10</javacv.platform.version>
-<!--        <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>-->
     </properties>
     <dependencies>
 
@@ -90,22 +90,9 @@
 
         <dependencies>
 
-<!--            <dependency>-->
-<!--                <groupId>org.thymeleaf</groupId>-->
-<!--                <artifactId>thymeleaf-spring6</artifactId>-->
-<!--                <version>${thymeleaf.version}</version>-->
-<!--            </dependency>-->
-
-
             <dependency>
                 <groupId>org.bytedeco</groupId>
                 <artifactId>javacv</artifactId>
-                <version>${javacv.platform.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.bytedeco</groupId>
-                <artifactId>javacv-platform</artifactId>
                 <version>${javacv.platform.version}</version>
             </dependency>
 
