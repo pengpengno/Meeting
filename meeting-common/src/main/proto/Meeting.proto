@@ -62,31 +62,7 @@ message ChatMessage  {
 
 
 }
-enum MessageOperationType{
 
-  SEND = 0 ;
-
-  RECEIVE = 1 ;
-
-//  UPDATE = 2 ;
-//
-//  QUERY = 3 ;
-//
-//  QUERYBYNAME = 6 ;
-//
-//  QUERYBYACCOUNT = 7 ;
-//
-//  QUERYBYEMAIL = 8 ;
-//
-//  QUERYBYPHONE = 9 ;
-//
-//  QUERYBYGROUP = 10 ;
-//
-//  QUERYBYGROUPNAME = 11 ;
-//
-//  QUERYBYGROUPID = 12 ;
-
-}
 
 
 enum MessageType{

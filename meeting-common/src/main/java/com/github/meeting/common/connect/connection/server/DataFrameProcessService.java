@@ -30,6 +30,9 @@ public class DataFrameProcessService implements ApplicationContextAware ,ByteBuf
 
     public Map<Class<? extends Message> , ProtoBufProcess> processMap;
 
+    private final Cache<String, Connection> connectionCache = Caffeine.newBuilder()
+            .build();
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 
@@ -47,8 +50,7 @@ public class DataFrameProcessService implements ApplicationContextAware ,ByteBuf
     }
 
 
-    private final Cache<String, Connection> connectionCache = Caffeine.newBuilder()
-            .build();
+
 
     @Override
     public void process(Connection con, ByteBuf byteBuf)  {

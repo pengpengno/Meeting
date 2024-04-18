@@ -1,4 +1,4 @@
-package com.github.meeting.common.connect.handler;
+package com.github.meeting.server.handler;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
 import com.github.meeting.common.connect.enums.ProtocolMessageMapEnum;

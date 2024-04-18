@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 /**
  * message process
  * @author pengpeng
- * @description 根据网络传输过来的 Message 处理指定的业务
+ * @description 处理
  * @date 2023/3/16
  */
 @Slf4j

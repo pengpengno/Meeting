@@ -4,6 +4,7 @@ import cn.hutool.core.exceptions.ExceptionUtil;
 import com.github.meeting.common.connect.connection.client.ClientLifeStyle;
 import com.github.meeting.common.connect.connection.client.ReactiveClientAction;
 import com.github.meeting.common.connect.handler.proto.ProtoBufMessageLiteScanner;
+import com.github.meeting.common.connect.spi.ReactiveHandlerSPI;
 import com.google.protobuf.Message;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.rtsp.*;
@@ -53,7 +54,9 @@ public class ReactorTcpClient implements ClientLifeStyle, ReactiveClientAction {
                         pipeline.addLast(new RtspDecoder());
                         pipeline.addLast(new RtspEncoder());
                     })
-                ;
+                    .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
+
+        ;
         return this;
     }
 

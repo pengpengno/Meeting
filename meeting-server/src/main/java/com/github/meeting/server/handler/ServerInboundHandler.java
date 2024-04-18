@@ -1,4 +1,4 @@
-package com.github.meeting.common.connect.handler.server;
+package com.github.meeting.server.handler;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;

@@ -6,6 +6,12 @@ Internal network meeting application
 
 2. client starter test is ```Tests``` which is in ```test``` package and path is ```package com.github.bytecpp;```
 
+### compile protobuf
+
+```shell
+mvn protobuf:compile protobuf:compile-custom
+```
+
 
 ### ssl/tls
 please read the following link :

@@ -814,7 +814,7 @@ public final class OnLineUser {
   static {
     java.lang.String[] descriptorData = {
       "\n\020OnlineUser.proto\022\036com.github.connect.m" +
-      "odel.proto\032\nAuth.proto\"K\n\nUserSearch\022=\n\010" +
+      "odel.proto\032\nAccount.proto\"K\n\nUserSearch\022=\n\010" +
       "accounts\030\001 \003(\0132+.com.github.connect.mode" +
       "l.proto.AccountInfoB1\n#com.github.peng.c" +
       "onnect.model.protoB\nOnLineUserb\006proto3"

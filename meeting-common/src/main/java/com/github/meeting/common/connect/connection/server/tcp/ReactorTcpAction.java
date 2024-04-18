@@ -72,6 +72,11 @@ public class ReactorTcpAction implements ReactiveServerAction {
     }
 
     @Override
+    public Mono<Void> sendMessage(Message message) throws ConnectException {
+        return null;
+    }
+
+    @Override
     public Mono<Void> sendMessage(String account, Message message) throws ConnectException {
 
         IConnection iConnection = contextAction.applyConnection(account);

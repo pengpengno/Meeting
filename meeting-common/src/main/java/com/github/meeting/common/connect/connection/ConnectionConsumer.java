@@ -1,5 +1,6 @@
 package com.github.meeting.common.connect.connection;
 
+import com.github.meeting.common.connect.connection.client.tcp.ReactorTcpClient;
 import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Mono;
@@ -12,8 +13,12 @@ import static reactor.netty.ReactorNetty.format;
 
 /**
  * reactor connection consumer
+ * {@link ConnectionConsumer} 用于抽象在使用  Reactor
+ * 组件创建 Client {@link  ReactorTcpClient}和 Server {@link com.github.meeting.common.connect.connection.server.tcp.ReactorTcpServer} 是，注入 {@link Connection} 的处理
  * @author pengpeng
- * @description
+ * <pre>{@code  ReactiveHandlerSPI.wiredSpiHandler().handler()}</pre>
+ *
+ * @description 用以处理 reactor Connection 通道中的数据
  * @date 2023/3/13
  */
 @Slf4j

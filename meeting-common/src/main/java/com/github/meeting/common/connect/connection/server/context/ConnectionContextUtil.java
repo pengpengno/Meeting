@@ -50,6 +50,8 @@ public class ConnectionContextUtil {
     public Set<String> filterOnlineAccount(Set<String> account){
         return filterOnlineIConnection(account).stream().map(e-> e.accountInfo().getAccount()).collect(Collectors.toSet());
     }
+
+
     @SneakyThrows
     public OnLineUser.UserSearch filterOnlineByUserSearch(OnLineUser.UserSearch userSearch){
         if (userSearch != null ){

@@ -19,6 +19,8 @@ import java.util.Arrays;
 @AllArgsConstructor
 public enum ProtocolMessageMapEnum {
 
+
+
     CHAT (ProtocolType.ProtocolMessageEnum.CHAT, Chat.ChatMessage.class),
     AUTH (ProtocolType.ProtocolMessageEnum.AUTH, Account.Authenticate.class),
     ACCOUNT (ProtocolType.ProtocolMessageEnum.ACCOUNTINFO, Account.AccountInfo.class),

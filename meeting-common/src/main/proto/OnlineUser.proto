@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package com.github.connect.model.proto;
-option java_package = "com.github.peng.connect.model.proto";
+package com.github.meeting.common.connect.model.proto;
+option java_package = "com.github.meeting.common.connect.model.proto";
 option java_outer_classname = "OnLineUser";
-import "Auth.proto";
+import "Account.proto";
 
 
 message UserSearch{

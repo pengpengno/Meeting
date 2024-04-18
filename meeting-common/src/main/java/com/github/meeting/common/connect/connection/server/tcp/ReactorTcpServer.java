@@ -1,8 +1,8 @@
 package com.github.meeting.common.connect.connection.server.tcp;
 
+import com.github.meeting.common.connect.connection.ConnectionConsumer;
 import com.github.meeting.common.connect.connection.server.ReactiveServer;
 import com.github.meeting.common.connect.connection.ConnectionConstants;
-import com.github.meeting.common.connect.handler.server.RtspServerHandler;
 import com.github.meeting.common.connect.spi.ReactiveHandlerSPI;
 import com.google.inject.Singleton;
 import io.netty.handler.codec.rtsp.RtspDecoder;
@@ -61,17 +61,18 @@ public class ReactorTcpServer implements ReactiveServer {
                 .wiretap("tcp-server", LogLevel.INFO)
                 .port(address.getPort())
                 .doOnConnection(connection -> {
-
+//                    ConnectionConsumer.getInstance(connection).accept(connection);
                     connection.channel().attr(ConnectionConstants.ROOM_KEY).set("group");
 
                     connection
-                            .addHandlerLast(new RtspDecoder())
-                            .addHandlerLast(new RtspServerHandler())
+//                            .addHandlerLast(new RtspDecoder())
+//                            .addHandlerLast(new RtspServerHandler())
 //                            .addHandlerLast(new ServerInboundHandler())
                             .addHandlerLast(new RtspEncoder())
 //                            .addHandlerLast(new RtspDecoder())
                             ;
                 })
+                //  注入 执行的handler
                 .handle(ReactiveHandlerSPI.wiredSpiHandler().handler())
         ;
 
