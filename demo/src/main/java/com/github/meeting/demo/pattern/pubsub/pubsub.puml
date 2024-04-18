@@ -1,0 +1,37 @@
+@startuml
+
+
+package 观察者{
+    node Subject {
+    }
+
+    node Observer{
+    }
+}
+
+package 发布订阅 {
+    node Publisher {
+    }
+
+    node EventChannel{
+    }
+
+    node Subscriber {
+    }
+}
+
+
+Publisher --> EventChannel: 发布事件
+EventChannel --> Subscriber: 触发事件
+Subscriber-->EventChannel: 订阅事件
+
+
+
+
+
+Subject --> Observer: 触发事件
+Observer --> Subject: 订阅主题
+
+}
+
+@enduml
