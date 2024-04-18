@@ -31,7 +31,7 @@ public class ConnectionModule extends AbstractModule {
 
         bind(MessageLite.class).toProvider(Account.AccountInfo::getDefaultInstance).in(Scopes.NO_SCOPE);
 
-        bind(MessageLite.class).annotatedWith(Names.named("Authenticate")).toInstance(Account.Authenticate.getDefaultInstance());
+//        bind(MessageLite.class).annotatedWith(Names.named("Authenticate")).toInstance(Account.Authenticate.getDefaultInstance());
 
         bind(MessageLite.class).annotatedWith(Names.named("ChatMessage")).toInstance(Chat.ChatMessage.getDefaultInstance());
 

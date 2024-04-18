@@ -28,7 +28,7 @@ public class MessageParser {
     static {
         parseMap.put(ProtocolType.ProtocolMessageEnum.CHAT, Chat.ChatMessage.parser());
         parseMap.put(ProtocolType.ProtocolMessageEnum.ACCOUNTINFO, Account.AccountInfo.parser());
-        parseMap.put(ProtocolType.ProtocolMessageEnum.AUTH, Account.Authenticate.parser());
+//        parseMap.put(ProtocolType.ProtocolMessageEnum.AUTH, Account.Authenticate.parser());
     }
 
 

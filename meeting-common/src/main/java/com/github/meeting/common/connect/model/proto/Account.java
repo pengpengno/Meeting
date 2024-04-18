@@ -14,759 +14,116 @@ public final class Account {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface AuthenticateOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.connect.model.proto.Authenticate)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string jwt = 1;</code>
-     * @return The jwt.
-     */
-    java.lang.String getJwt();
-    /**
-     * <code>string jwt = 1;</code>
-     * @return The bytes for jwt.
-     */
-    com.google.protobuf.ByteString
-        getJwtBytes();
-
-    /**
-     * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-     * @return Whether the accountInfo field is set.
-     */
-    boolean hasAccountInfo();
-    /**
-     * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-     * @return The accountInfo.
-     */
-    Account.AccountInfo getAccountInfo();
-    /**
-     * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-     */
-    Account.AccountInfoOrBuilder getAccountInfoOrBuilder();
-  }
   /**
-   * Protobuf type {@code com.github.connect.model.proto.Authenticate}
+   * Protobuf enum {@code com.github.meeting.common.connect.model.proto.AccountOperationType}
    */
-  public static final class Authenticate extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.github.connect.model.proto.Authenticate)
-      AuthenticateOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Authenticate.newBuilder() to construct.
-    private Authenticate(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Authenticate() {
-      jwt_ = "";
+  public enum AccountOperationType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SIGNIN = 0;</code>
+     */
+    SIGNIN(0),
+    /**
+     * <code>LOGOUT = 1;</code>
+     */
+    LOGOUT(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>SIGNIN = 0;</code>
+     */
+    public static final int SIGNIN_VALUE = 0;
+    /**
+     * <code>LOGOUT = 1;</code>
+     */
+    public static final int LOGOUT_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
     }
 
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Authenticate();
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static AccountOperationType valueOf(int value) {
+      return forNumber(value);
     }
 
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static AccountOperationType forNumber(int value) {
+      switch (value) {
+        case 0: return SIGNIN;
+        case 1: return LOGOUT;
+        default: return null;
+      }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+
+    public static com.google.protobuf.Internal.EnumLiteMap<AccountOperationType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        AccountOperationType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<AccountOperationType>() {
+            public AccountOperationType findValueByNumber(int number) {
+              return AccountOperationType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return Account.internal_static_com_github_connect_model_proto_Authenticate_descriptor;
+      return com.github.meeting.common.connect.model.proto.Account.getDescriptor().getEnumTypes().get(0);
     }
 
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return Account.internal_static_com_github_connect_model_proto_Authenticate_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              Account.Authenticate.class, Account.Authenticate.Builder.class);
+    private static final AccountOperationType[] VALUES = values();
+
+    public static AccountOperationType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
     }
 
-    public static final int JWT_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object jwt_ = "";
-    /**
-     * <code>string jwt = 1;</code>
-     * @return The jwt.
-     */
-    @java.lang.Override
-    public java.lang.String getJwt() {
-      java.lang.Object ref = jwt_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        jwt_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string jwt = 1;</code>
-     * @return The bytes for jwt.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getJwtBytes() {
-      java.lang.Object ref = jwt_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        jwt_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    private final int value;
+
+    private AccountOperationType(int value) {
+      this.value = value;
     }
 
-    public static final int ACCOUNTINFO_FIELD_NUMBER = 2;
-    private Account.AccountInfo accountInfo_;
-    /**
-     * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-     * @return Whether the accountInfo field is set.
-     */
-    @java.lang.Override
-    public boolean hasAccountInfo() {
-      return accountInfo_ != null;
-    }
-    /**
-     * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-     * @return The accountInfo.
-     */
-    @java.lang.Override
-    public Account.AccountInfo getAccountInfo() {
-      return accountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : accountInfo_;
-    }
-    /**
-     * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-     */
-    @java.lang.Override
-    public Account.AccountInfoOrBuilder getAccountInfoOrBuilder() {
-      return accountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : accountInfo_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jwt_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, jwt_);
-      }
-      if (accountInfo_ != null) {
-        output.writeMessage(2, getAccountInfo());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jwt_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, jwt_);
-      }
-      if (accountInfo_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getAccountInfo());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof Account.Authenticate)) {
-        return super.equals(obj);
-      }
-      Account.Authenticate other = (Account.Authenticate) obj;
-
-      if (!getJwt()
-          .equals(other.getJwt())) return false;
-      if (hasAccountInfo() != other.hasAccountInfo()) return false;
-      if (hasAccountInfo()) {
-        if (!getAccountInfo()
-            .equals(other.getAccountInfo())) return false;
-      }
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + JWT_FIELD_NUMBER;
-      hash = (53 * hash) + getJwt().hashCode();
-      if (hasAccountInfo()) {
-        hash = (37 * hash) + ACCOUNTINFO_FIELD_NUMBER;
-        hash = (53 * hash) + getAccountInfo().hashCode();
-      }
-      hash = (29 * hash) + getUnknownFields().hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static Account.Authenticate parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Account.Authenticate parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Account.Authenticate parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Account.Authenticate parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Account.Authenticate parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static Account.Authenticate parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static Account.Authenticate parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static Account.Authenticate parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static Account.Authenticate parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static Account.Authenticate parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static Account.Authenticate parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static Account.Authenticate parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(Account.Authenticate prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.github.connect.model.proto.Authenticate}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.connect.model.proto.Authenticate)
-        Account.AuthenticateOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return Account.internal_static_com_github_connect_model_proto_Authenticate_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return Account.internal_static_com_github_connect_model_proto_Authenticate_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                Account.Authenticate.class, Account.Authenticate.Builder.class);
-      }
-
-      // Construct using com.github.peng.connect.model.proto.Account.Authenticate.newBuilder()
-      private Builder() {
-
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        bitField0_ = 0;
-        jwt_ = "";
-        accountInfo_ = null;
-        if (accountInfoBuilder_ != null) {
-          accountInfoBuilder_.dispose();
-          accountInfoBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return Account.internal_static_com_github_connect_model_proto_Authenticate_descriptor;
-      }
-
-      @java.lang.Override
-      public Account.Authenticate getDefaultInstanceForType() {
-        return Account.Authenticate.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public Account.Authenticate build() {
-        Account.Authenticate result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public Account.Authenticate buildPartial() {
-        Account.Authenticate result = new Account.Authenticate(this);
-        if (bitField0_ != 0) { buildPartial0(result); }
-        onBuilt();
-        return result;
-      }
-
-      private void buildPartial0(Account.Authenticate result) {
-        int from_bitField0_ = bitField0_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.jwt_ = jwt_;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.accountInfo_ = accountInfoBuilder_ == null
-              ? accountInfo_
-              : accountInfoBuilder_.build();
-        }
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Account.Authenticate) {
-          return mergeFrom((Account.Authenticate)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(Account.Authenticate other) {
-        if (other == Account.Authenticate.getDefaultInstance()) return this;
-        if (!other.getJwt().isEmpty()) {
-          jwt_ = other.jwt_;
-          bitField0_ |= 0x00000001;
-          onChanged();
-        }
-        if (other.hasAccountInfo()) {
-          mergeAccountInfo(other.getAccountInfo());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                jwt_ = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                break;
-              } // case 10
-              case 18: {
-                input.readMessage(
-                    getAccountInfoFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000002;
-                break;
-              } // case 18
-              default: {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-            } // switch (tag)
-          } // while (!done)
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.unwrapIOException();
-        } finally {
-          onChanged();
-        } // finally
-        return this;
-      }
-      private int bitField0_;
-
-      private java.lang.Object jwt_ = "";
-      /**
-       * <code>string jwt = 1;</code>
-       * @return The jwt.
-       */
-      public java.lang.String getJwt() {
-        java.lang.Object ref = jwt_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          jwt_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string jwt = 1;</code>
-       * @return The bytes for jwt.
-       */
-      public com.google.protobuf.ByteString
-          getJwtBytes() {
-        java.lang.Object ref = jwt_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          jwt_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string jwt = 1;</code>
-       * @param value The jwt to set.
-       * @return This builder for chaining.
-       */
-      public Builder setJwt(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        jwt_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string jwt = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearJwt() {
-        jwt_ = getDefaultInstance().getJwt();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string jwt = 1;</code>
-       * @param value The bytes for jwt to set.
-       * @return This builder for chaining.
-       */
-      public Builder setJwtBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        jwt_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-
-      private Account.AccountInfo accountInfo_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder> accountInfoBuilder_;
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       * @return Whether the accountInfo field is set.
-       */
-      public boolean hasAccountInfo() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       * @return The accountInfo.
-       */
-      public Account.AccountInfo getAccountInfo() {
-        if (accountInfoBuilder_ == null) {
-          return accountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : accountInfo_;
-        } else {
-          return accountInfoBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       */
-      public Builder setAccountInfo(Account.AccountInfo value) {
-        if (accountInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          accountInfo_ = value;
-        } else {
-          accountInfoBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       */
-      public Builder setAccountInfo(
-          Account.AccountInfo.Builder builderForValue) {
-        if (accountInfoBuilder_ == null) {
-          accountInfo_ = builderForValue.build();
-        } else {
-          accountInfoBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       */
-      public Builder mergeAccountInfo(Account.AccountInfo value) {
-        if (accountInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-            accountInfo_ != null &&
-            accountInfo_ != Account.AccountInfo.getDefaultInstance()) {
-            getAccountInfoBuilder().mergeFrom(value);
-          } else {
-            accountInfo_ = value;
-          }
-        } else {
-          accountInfoBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       */
-      public Builder clearAccountInfo() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        accountInfo_ = null;
-        if (accountInfoBuilder_ != null) {
-          accountInfoBuilder_.dispose();
-          accountInfoBuilder_ = null;
-        }
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       */
-      public Account.AccountInfo.Builder getAccountInfoBuilder() {
-        bitField0_ |= 0x00000002;
-        onChanged();
-        return getAccountInfoFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       */
-      public Account.AccountInfoOrBuilder getAccountInfoOrBuilder() {
-        if (accountInfoBuilder_ != null) {
-          return accountInfoBuilder_.getMessageOrBuilder();
-        } else {
-          return accountInfo_ == null ?
-              Account.AccountInfo.getDefaultInstance() : accountInfo_;
-        }
-      }
-      /**
-       * <code>.com.github.connect.model.proto.AccountInfo accountInfo = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>
-          getAccountInfoFieldBuilder() {
-        if (accountInfoBuilder_ == null) {
-          accountInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>(
-                  getAccountInfo(),
-                  getParentForChildren(),
-                  isClean());
-          accountInfo_ = null;
-        }
-        return accountInfoBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.github.connect.model.proto.Authenticate)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.github.connect.model.proto.Authenticate)
-    private static final Account.Authenticate DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new Account.Authenticate();
-    }
-
-    public static Account.Authenticate getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Authenticate>
-        PARSER = new com.google.protobuf.AbstractParser<Authenticate>() {
-      @java.lang.Override
-      public Authenticate parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        Builder builder = newBuilder();
-        try {
-          builder.mergeFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(builder.buildPartial());
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(builder.buildPartial());
-        }
-        return builder.buildPartial();
-      }
-    };
-
-    public static com.google.protobuf.Parser<Authenticate> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Authenticate> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public Account.Authenticate getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
+    // @@protoc_insertion_point(enum_scope:com.github.meeting.common.connect.model.proto.AccountOperationType)
   }
 
   public interface AccountInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.connect.model.proto.AccountInfo)
+      // @@protoc_insertion_point(interface_extends:com.github.meeting.common.connect.model.proto.AccountInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -812,11 +169,11 @@ public final class Account {
         getEMailBytes();
   }
   /**
-   * Protobuf type {@code com.github.connect.model.proto.AccountInfo}
+   * Protobuf type {@code com.github.meeting.common.connect.model.proto.AccountInfo}
    */
   public static final class AccountInfo extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.github.connect.model.proto.AccountInfo)
+      // @@protoc_insertion_point(message_implements:com.github.meeting.common.connect.model.proto.AccountInfo)
       AccountInfoOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use AccountInfo.newBuilder() to construct.
@@ -843,15 +200,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Account.internal_static_com_github_connect_model_proto_AccountInfo_descriptor;
+      return com.github.meeting.common.connect.model.proto.Account.internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Account.internal_static_com_github_connect_model_proto_AccountInfo_fieldAccessorTable
+      return com.github.meeting.common.connect.model.proto.Account.internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Account.AccountInfo.class, Account.AccountInfo.Builder.class);
+              com.github.meeting.common.connect.model.proto.Account.AccountInfo.class, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder.class);
     }
 
     public static final int ACCOUNT_FIELD_NUMBER = 1;
@@ -1040,10 +397,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Account.AccountInfo)) {
+      if (!(obj instanceof com.github.meeting.common.connect.model.proto.Account.AccountInfo)) {
         return super.equals(obj);
       }
-      Account.AccountInfo other = (Account.AccountInfo) obj;
+      com.github.meeting.common.connect.model.proto.Account.AccountInfo other = (com.github.meeting.common.connect.model.proto.Account.AccountInfo) obj;
 
       if (!getAccount()
           .equals(other.getAccount())) return false;
@@ -1078,69 +435,69 @@ public final class Account {
       return hash;
     }
 
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Account.AccountInfo parseFrom(byte[] data)
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Account.AccountInfo parseFrom(java.io.InputStream input)
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Account.AccountInfo parseDelimitedFrom(java.io.InputStream input)
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Account.AccountInfo parseDelimitedFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Account.AccountInfo parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1153,7 +510,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Account.AccountInfo prototype) {
+    public static Builder newBuilder(com.github.meeting.common.connect.model.proto.Account.AccountInfo prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1169,26 +526,26 @@ public final class Account {
       return builder;
     }
     /**
-     * Protobuf type {@code com.github.connect.model.proto.AccountInfo}
+     * Protobuf type {@code com.github.meeting.common.connect.model.proto.AccountInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.connect.model.proto.AccountInfo)
-        Account.AccountInfoOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.github.meeting.common.connect.model.proto.AccountInfo)
+        com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Account.internal_static_com_github_connect_model_proto_AccountInfo_descriptor;
+        return com.github.meeting.common.connect.model.proto.Account.internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Account.internal_static_com_github_connect_model_proto_AccountInfo_fieldAccessorTable
+        return com.github.meeting.common.connect.model.proto.Account.internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Account.AccountInfo.class, Account.AccountInfo.Builder.class);
+                com.github.meeting.common.connect.model.proto.Account.AccountInfo.class, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder.class);
       }
 
-      // Construct using com.github.peng.connect.model.proto.Account.AccountInfo.newBuilder()
+      // Construct using com.github.meeting.common.connect.model.proto.Account.AccountInfo.newBuilder()
       private Builder() {
 
       }
@@ -1212,17 +569,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Account.internal_static_com_github_connect_model_proto_AccountInfo_descriptor;
+        return com.github.meeting.common.connect.model.proto.Account.internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_descriptor;
       }
 
       @java.lang.Override
-      public Account.AccountInfo getDefaultInstanceForType() {
-        return Account.AccountInfo.getDefaultInstance();
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo getDefaultInstanceForType() {
+        return com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Account.AccountInfo build() {
-        Account.AccountInfo result = buildPartial();
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo build() {
+        com.github.meeting.common.connect.model.proto.Account.AccountInfo result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1230,14 +587,14 @@ public final class Account {
       }
 
       @java.lang.Override
-      public Account.AccountInfo buildPartial() {
-        Account.AccountInfo result = new Account.AccountInfo(this);
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo buildPartial() {
+        com.github.meeting.common.connect.model.proto.Account.AccountInfo result = new com.github.meeting.common.connect.model.proto.Account.AccountInfo(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(Account.AccountInfo result) {
+      private void buildPartial0(com.github.meeting.common.connect.model.proto.Account.AccountInfo result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.account_ = account_;
@@ -1287,16 +644,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Account.AccountInfo) {
-          return mergeFrom((Account.AccountInfo)other);
+        if (other instanceof com.github.meeting.common.connect.model.proto.Account.AccountInfo) {
+          return mergeFrom((com.github.meeting.common.connect.model.proto.Account.AccountInfo)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Account.AccountInfo other) {
-        if (other == Account.AccountInfo.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.github.meeting.common.connect.model.proto.Account.AccountInfo other) {
+        if (other == com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance()) return this;
         if (!other.getAccount().isEmpty()) {
           account_ = other.account_;
           bitField0_ |= 0x00000001;
@@ -1638,16 +995,16 @@ public final class Account {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.github.connect.model.proto.AccountInfo)
+      // @@protoc_insertion_point(builder_scope:com.github.meeting.common.connect.model.proto.AccountInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:com.github.connect.model.proto.AccountInfo)
-    private static final Account.AccountInfo DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.github.meeting.common.connect.model.proto.AccountInfo)
+    private static final com.github.meeting.common.connect.model.proto.Account.AccountInfo DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Account.AccountInfo();
+      DEFAULT_INSTANCE = new com.github.meeting.common.connect.model.proto.Account.AccountInfo();
     }
 
-    public static Account.AccountInfo getDefaultInstance() {
+    public static com.github.meeting.common.connect.model.proto.Account.AccountInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1683,22 +1040,17 @@ public final class Account {
     }
 
     @java.lang.Override
-    public Account.AccountInfo getDefaultInstanceForType() {
+    public com.github.meeting.common.connect.model.proto.Account.AccountInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_connect_model_proto_Authenticate_descriptor;
+    internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_github_connect_model_proto_Authenticate_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_connect_model_proto_AccountInfo_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_github_connect_model_proto_AccountInfo_fieldAccessorTable;
+      internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1708,29 +1060,23 @@ public final class Account {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nAccount.proto\022\036com.github.connect.model.p" +
-      "roto\"]\n\014Authenticate\022\013\n\003jwt\030\001 \001(\t\022@\n\013acc" +
-      "ountInfo\030\002 \001(\0132+.com.github.connect.mode" +
-      "l.proto.AccountInfo\"R\n\013AccountInfo\022\017\n\007ac" +
-      "count\030\001 \001(\t\022\023\n\013accountName\030\002 \001(\t\022\016\n\006user" +
-      "Id\030\003 \001(\003\022\r\n\005eMail\030\004 \001(\tB.\n#com.github.pe" +
-      "ng.connect.model.protoB\007Accountb\006proto3"
+      "\n\rAccount.proto\022-com.github.meeting.comm" +
+      "on.connect.model.proto\"R\n\013AccountInfo\022\017\n" +
+      "\007account\030\001 \001(\t\022\023\n\013accountName\030\002 \001(\t\022\016\n\006u" +
+      "serId\030\003 \001(\003\022\r\n\005eMail\030\004 \001(\t*.\n\024AccountOpe" +
+      "rationType\022\n\n\006SIGNIN\020\000\022\n\n\006LOGOUT\020\001B8\n-co" +
+      "m.github.meeting.common.connect.model.pr" +
+      "otoB\007Accountb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_com_github_connect_model_proto_Authenticate_descriptor =
+    internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_github_connect_model_proto_Authenticate_fieldAccessorTable = new
+    internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_github_connect_model_proto_Authenticate_descriptor,
-        new java.lang.String[] { "Jwt", "AccountInfo", });
-    internal_static_com_github_connect_model_proto_AccountInfo_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_com_github_connect_model_proto_AccountInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_github_connect_model_proto_AccountInfo_descriptor,
+        internal_static_com_github_meeting_common_connect_model_proto_AccountInfo_descriptor,
         new java.lang.String[] { "Account", "AccountName", "UserId", "EMail", });
   }
 

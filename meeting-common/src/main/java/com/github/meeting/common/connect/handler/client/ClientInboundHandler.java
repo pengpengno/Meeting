@@ -31,9 +31,9 @@ public class ClientInboundHandler extends ChannelInboundHandlerAdapter {
         Channel channel = ctx.channel();
         channel.attr(ConnectionConstants.ROOM_KEY).set("group");
 //        channel.attr(ProtocolType.CHANNEL_JWT).set(jwt
-        Account.Authenticate auth = Account.Authenticate.newBuilder()
-                .setJwt(jwt)
-                .build();
+//        Account.Authenticate auth = Account.Authenticate.newBuilder()
+//                .setJwt(jwt)
+//                .build();
 //        try {
 //            byte[] bytes = auth.toByteArray();
 //            int length = bytes.length;
@@ -59,18 +59,18 @@ public class ClientInboundHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("channel register success");
         Channel channel = ctx.channel();
-        Account.Authenticate auth = Account.Authenticate.newBuilder()
-                .setJwt(jwt)
-                .build();
+//        Account.Authenticate auth = Account.Authenticate.newBuilder()
+//                .setJwt(jwt)
+//                .build();
         try {
-            byte[] bytes = auth.toByteArray();
-            int length = bytes.length;
-            ByteBuf buffer = channel.alloc().buffer(8+ length);
+//            byte[] bytes = auth.toByteArray();
+//            int length = bytes.length;
+//            ByteBuf buffer = channel.alloc().buffer(8+ length);
 //            ByteBuf buf = Unpooled.buffer(8 + length);
-            buffer.writeInt(length);
-            buffer.writeInt(ProtocolType.ProtocolMessageEnum.AUTH_VALUE);
-            buffer.writeBytes(bytes);
-            channel.writeAndFlush(buffer);
+//            buffer.writeInt(length);
+//            buffer.writeInt(ProtocolType.ProtocolMessageEnum.AUTH_VALUE);
+//            buffer.writeBytes(bytes);
+//            channel.writeAndFlush(buffer);
 //            buffer.release();
         } catch (Exception e) {
             log.error("[client] msg encode has error", e);

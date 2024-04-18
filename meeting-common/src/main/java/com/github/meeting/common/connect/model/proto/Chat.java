@@ -15,7 +15,115 @@ public final class Chat {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code com.github.connect.model.proto.MessageType}
+   * Protobuf enum {@code com.github.meeting.common.connect.model.proto.MessageOperationType}
+   */
+  public enum MessageOperationType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>SEND = 0;</code>
+     */
+    SEND(0),
+    /**
+     * <code>RECEIVE = 1;</code>
+     */
+    RECEIVE(1),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>SEND = 0;</code>
+     */
+    public static final int SEND_VALUE = 0;
+    /**
+     * <code>RECEIVE = 1;</code>
+     */
+    public static final int RECEIVE_VALUE = 1;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static MessageOperationType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static MessageOperationType forNumber(int value) {
+      switch (value) {
+        case 0: return SEND;
+        case 1: return RECEIVE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<MessageOperationType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        MessageOperationType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<MessageOperationType>() {
+            public MessageOperationType findValueByNumber(int number) {
+              return MessageOperationType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.github.meeting.common.connect.model.proto.Chat.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final MessageOperationType[] VALUES = values();
+
+    public static MessageOperationType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private MessageOperationType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.github.meeting.common.connect.model.proto.MessageOperationType)
+  }
+
+  /**
+   * Protobuf enum {@code com.github.meeting.common.connect.model.proto.MessageType}
    */
   public enum MessageType
       implements com.google.protobuf.ProtocolMessageEnum {
@@ -123,7 +231,7 @@ public final class Chat {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return Chat.getDescriptor().getEnumTypes().get(0);
+      return com.github.meeting.common.connect.model.proto.Chat.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final MessageType[] VALUES = values();
@@ -146,11 +254,11 @@ public final class Chat {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:com.github.connect.model.proto.MessageType)
+    // @@protoc_insertion_point(enum_scope:com.github.meeting.common.connect.model.proto.MessageType)
   }
 
   public interface ChatMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.connect.model.proto.ChatMessage)
+      // @@protoc_insertion_point(interface_extends:com.github.meeting.common.connect.model.proto.ChatMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -178,45 +286,45 @@ public final class Chat {
         getContentBytes();
 
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
      * @return Whether the fromAccountInfo field is set.
      */
     boolean hasFromAccountInfo();
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
      * @return The fromAccountInfo.
      */
-    Account.AccountInfo getFromAccountInfo();
+    com.github.meeting.common.connect.model.proto.Account.AccountInfo getFromAccountInfo();
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
      */
-    Account.AccountInfoOrBuilder getFromAccountInfoOrBuilder();
+    com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getFromAccountInfoOrBuilder();
 
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
      * @return Whether the toAccountInfo field is set.
      */
     boolean hasToAccountInfo();
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
      * @return The toAccountInfo.
      */
-    Account.AccountInfo getToAccountInfo();
+    com.github.meeting.common.connect.model.proto.Account.AccountInfo getToAccountInfo();
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
      */
-    Account.AccountInfoOrBuilder getToAccountInfoOrBuilder();
+    com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getToAccountInfoOrBuilder();
 
     /**
-     * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
      * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
-     * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
      * @return The type.
      */
-    Chat.MessageType getType();
+    com.github.meeting.common.connect.model.proto.Chat.MessageType getType();
 
     /**
      * <code>.google.protobuf.Any chat = 10;</code>
@@ -234,22 +342,22 @@ public final class Chat {
     com.google.protobuf.AnyOrBuilder getChatOrBuilder();
 
     /**
-     * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
      * @return The enum numeric value on the wire for messagesStatus.
      */
     int getMessagesStatusValue();
     /**
-     * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
      * @return The messagesStatus.
      */
-    Chat.ChatMessage.MessagesStatus getMessagesStatus();
+    com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus getMessagesStatus();
   }
   /**
-   * Protobuf type {@code com.github.connect.model.proto.ChatMessage}
+   * Protobuf type {@code com.github.meeting.common.connect.model.proto.ChatMessage}
    */
   public static final class ChatMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.github.connect.model.proto.ChatMessage)
+      // @@protoc_insertion_point(message_implements:com.github.meeting.common.connect.model.proto.ChatMessage)
       ChatMessageOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use ChatMessage.newBuilder() to construct.
@@ -276,19 +384,19 @@ public final class Chat {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Chat.internal_static_com_github_connect_model_proto_ChatMessage_descriptor;
+      return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Chat.internal_static_com_github_connect_model_proto_ChatMessage_fieldAccessorTable
+      return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Chat.ChatMessage.class, Chat.ChatMessage.Builder.class);
+              com.github.meeting.common.connect.model.proto.Chat.ChatMessage.class, com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code com.github.connect.model.proto.ChatMessage.MessagesStatus}
+     * Protobuf enum {@code com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus}
      */
     public enum MessagesStatus
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -423,7 +531,7 @@ public final class Chat {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return Chat.ChatMessage.getDescriptor().getEnumTypes().get(0);
+        return com.github.meeting.common.connect.model.proto.Chat.ChatMessage.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final MessagesStatus[] VALUES = values();
@@ -446,11 +554,11 @@ public final class Chat {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:com.github.connect.model.proto.ChatMessage.MessagesStatus)
+      // @@protoc_insertion_point(enum_scope:com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus)
     }
 
     public interface GroupOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:com.github.connect.model.proto.ChatMessage.Group)
+        // @@protoc_insertion_point(interface_extends:com.github.meeting.common.connect.model.proto.ChatMessage.Group)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -501,11 +609,11 @@ public final class Chat {
           getToAccountsBytes(int index);
     }
     /**
-     * Protobuf type {@code com.github.connect.model.proto.ChatMessage.Group}
+     * Protobuf type {@code com.github.meeting.common.connect.model.proto.ChatMessage.Group}
      */
     public static final class Group extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:com.github.connect.model.proto.ChatMessage.Group)
+        // @@protoc_insertion_point(message_implements:com.github.meeting.common.connect.model.proto.ChatMessage.Group)
         GroupOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use Group.newBuilder() to construct.
@@ -530,15 +638,15 @@ public final class Chat {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Group_descriptor;
+        return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Group_fieldAccessorTable
+        return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Chat.ChatMessage.Group.class, Chat.ChatMessage.Group.Builder.class);
+                com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group.class, com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group.Builder.class);
       }
 
       public static final int SESSIONID_FIELD_NUMBER = 1;
@@ -655,10 +763,10 @@ public final class Chat {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof Chat.ChatMessage.Group)) {
+        if (!(obj instanceof com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group)) {
           return super.equals(obj);
         }
-        Chat.ChatMessage.Group other = (Chat.ChatMessage.Group) obj;
+        com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group other = (com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group) obj;
 
         if (java.lang.Float.floatToIntBits(getSessionId())
             != java.lang.Float.floatToIntBits(
@@ -688,69 +796,69 @@ public final class Chat {
         return hash;
       }
 
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static Chat.ChatMessage.Group parseFrom(byte[] data)
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static Chat.ChatMessage.Group parseFrom(java.io.InputStream input)
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static Chat.ChatMessage.Group parseDelimitedFrom(java.io.InputStream input)
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static Chat.ChatMessage.Group parseDelimitedFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static Chat.ChatMessage.Group parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -763,7 +871,7 @@ public final class Chat {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Chat.ChatMessage.Group prototype) {
+      public static Builder newBuilder(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -779,26 +887,26 @@ public final class Chat {
         return builder;
       }
       /**
-       * Protobuf type {@code com.github.connect.model.proto.ChatMessage.Group}
+       * Protobuf type {@code com.github.meeting.common.connect.model.proto.ChatMessage.Group}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:com.github.connect.model.proto.ChatMessage.Group)
-          Chat.ChatMessage.GroupOrBuilder {
+          // @@protoc_insertion_point(builder_implements:com.github.meeting.common.connect.model.proto.ChatMessage.Group)
+          com.github.meeting.common.connect.model.proto.Chat.ChatMessage.GroupOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Group_descriptor;
+          return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Group_fieldAccessorTable
+          return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  Chat.ChatMessage.Group.class, Chat.ChatMessage.Group.Builder.class);
+                  com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group.class, com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group.Builder.class);
         }
 
-        // Construct using com.github.peng.connect.model.proto.Chat.ChatMessage.Group.newBuilder()
+        // Construct using com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group.newBuilder()
         private Builder() {
 
         }
@@ -821,17 +929,17 @@ public final class Chat {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Group_descriptor;
+          return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_descriptor;
         }
 
         @java.lang.Override
-        public Chat.ChatMessage.Group getDefaultInstanceForType() {
-          return Chat.ChatMessage.Group.getDefaultInstance();
+        public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group getDefaultInstanceForType() {
+          return com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group.getDefaultInstance();
         }
 
         @java.lang.Override
-        public Chat.ChatMessage.Group build() {
-          Chat.ChatMessage.Group result = buildPartial();
+        public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group build() {
+          com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -839,15 +947,15 @@ public final class Chat {
         }
 
         @java.lang.Override
-        public Chat.ChatMessage.Group buildPartial() {
-          Chat.ChatMessage.Group result = new Chat.ChatMessage.Group(this);
+        public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group buildPartial() {
+          com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group result = new com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group(this);
           buildPartialRepeatedFields(result);
           if (bitField0_ != 0) { buildPartial0(result); }
           onBuilt();
           return result;
         }
 
-        private void buildPartialRepeatedFields(Chat.ChatMessage.Group result) {
+        private void buildPartialRepeatedFields(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group result) {
           if (((bitField0_ & 0x00000002) != 0)) {
             toAccounts_ = toAccounts_.getUnmodifiableView();
             bitField0_ = (bitField0_ & ~0x00000002);
@@ -855,7 +963,7 @@ public final class Chat {
           result.toAccounts_ = toAccounts_;
         }
 
-        private void buildPartial0(Chat.ChatMessage.Group result) {
+        private void buildPartial0(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group result) {
           int from_bitField0_ = bitField0_;
           if (((from_bitField0_ & 0x00000001) != 0)) {
             result.sessionId_ = sessionId_;
@@ -896,16 +1004,16 @@ public final class Chat {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof Chat.ChatMessage.Group) {
-            return mergeFrom((Chat.ChatMessage.Group)other);
+          if (other instanceof com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group) {
+            return mergeFrom((com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(Chat.ChatMessage.Group other) {
-          if (other == Chat.ChatMessage.Group.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group other) {
+          if (other == com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group.getDefaultInstance()) return this;
           if (other.getSessionId() != 0F) {
             setSessionId(other.getSessionId());
           }
@@ -1157,16 +1265,16 @@ public final class Chat {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:com.github.connect.model.proto.ChatMessage.Group)
+        // @@protoc_insertion_point(builder_scope:com.github.meeting.common.connect.model.proto.ChatMessage.Group)
       }
 
-      // @@protoc_insertion_point(class_scope:com.github.connect.model.proto.ChatMessage.Group)
-      private static final Chat.ChatMessage.Group DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:com.github.meeting.common.connect.model.proto.ChatMessage.Group)
+      private static final com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new Chat.ChatMessage.Group();
+        DEFAULT_INSTANCE = new com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group();
       }
 
-      public static Chat.ChatMessage.Group getDefaultInstance() {
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1202,14 +1310,14 @@ public final class Chat {
       }
 
       @java.lang.Override
-      public Chat.ChatMessage.Group getDefaultInstanceForType() {
+      public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Group getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public interface SingleOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:com.github.connect.model.proto.ChatMessage.Single)
+        // @@protoc_insertion_point(interface_extends:com.github.meeting.common.connect.model.proto.ChatMessage.Single)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -1219,11 +1327,11 @@ public final class Chat {
       float getToAccount();
     }
     /**
-     * Protobuf type {@code com.github.connect.model.proto.ChatMessage.Single}
+     * Protobuf type {@code com.github.meeting.common.connect.model.proto.ChatMessage.Single}
      */
     public static final class Single extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:com.github.connect.model.proto.ChatMessage.Single)
+        // @@protoc_insertion_point(message_implements:com.github.meeting.common.connect.model.proto.ChatMessage.Single)
         SingleOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use Single.newBuilder() to construct.
@@ -1247,15 +1355,15 @@ public final class Chat {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Single_descriptor;
+        return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Single_fieldAccessorTable
+        return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Chat.ChatMessage.Single.class, Chat.ChatMessage.Single.Builder.class);
+                com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single.class, com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single.Builder.class);
       }
 
       public static final int TOACCOUNT_FIELD_NUMBER = 1;
@@ -1309,10 +1417,10 @@ public final class Chat {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof Chat.ChatMessage.Single)) {
+        if (!(obj instanceof com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single)) {
           return super.equals(obj);
         }
-        Chat.ChatMessage.Single other = (Chat.ChatMessage.Single) obj;
+        com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single other = (com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single) obj;
 
         if (java.lang.Float.floatToIntBits(getToAccount())
             != java.lang.Float.floatToIntBits(
@@ -1336,69 +1444,69 @@ public final class Chat {
         return hash;
       }
 
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static Chat.ChatMessage.Single parseFrom(byte[] data)
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static Chat.ChatMessage.Single parseFrom(java.io.InputStream input)
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static Chat.ChatMessage.Single parseDelimitedFrom(java.io.InputStream input)
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static Chat.ChatMessage.Single parseDelimitedFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static Chat.ChatMessage.Single parseFrom(
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1411,7 +1519,7 @@ public final class Chat {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(Chat.ChatMessage.Single prototype) {
+      public static Builder newBuilder(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -1427,26 +1535,26 @@ public final class Chat {
         return builder;
       }
       /**
-       * Protobuf type {@code com.github.connect.model.proto.ChatMessage.Single}
+       * Protobuf type {@code com.github.meeting.common.connect.model.proto.ChatMessage.Single}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:com.github.connect.model.proto.ChatMessage.Single)
-          Chat.ChatMessage.SingleOrBuilder {
+          // @@protoc_insertion_point(builder_implements:com.github.meeting.common.connect.model.proto.ChatMessage.Single)
+          com.github.meeting.common.connect.model.proto.Chat.ChatMessage.SingleOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Single_descriptor;
+          return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Single_fieldAccessorTable
+          return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  Chat.ChatMessage.Single.class, Chat.ChatMessage.Single.Builder.class);
+                  com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single.class, com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single.Builder.class);
         }
 
-        // Construct using com.github.peng.connect.model.proto.Chat.ChatMessage.Single.newBuilder()
+        // Construct using com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single.newBuilder()
         private Builder() {
 
         }
@@ -1467,17 +1575,17 @@ public final class Chat {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return Chat.internal_static_com_github_connect_model_proto_ChatMessage_Single_descriptor;
+          return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_descriptor;
         }
 
         @java.lang.Override
-        public Chat.ChatMessage.Single getDefaultInstanceForType() {
-          return Chat.ChatMessage.Single.getDefaultInstance();
+        public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single getDefaultInstanceForType() {
+          return com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single.getDefaultInstance();
         }
 
         @java.lang.Override
-        public Chat.ChatMessage.Single build() {
-          Chat.ChatMessage.Single result = buildPartial();
+        public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single build() {
+          com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -1485,14 +1593,14 @@ public final class Chat {
         }
 
         @java.lang.Override
-        public Chat.ChatMessage.Single buildPartial() {
-          Chat.ChatMessage.Single result = new Chat.ChatMessage.Single(this);
+        public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single buildPartial() {
+          com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single result = new com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single(this);
           if (bitField0_ != 0) { buildPartial0(result); }
           onBuilt();
           return result;
         }
 
-        private void buildPartial0(Chat.ChatMessage.Single result) {
+        private void buildPartial0(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single result) {
           int from_bitField0_ = bitField0_;
           if (((from_bitField0_ & 0x00000001) != 0)) {
             result.toAccount_ = toAccount_;
@@ -1533,16 +1641,16 @@ public final class Chat {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof Chat.ChatMessage.Single) {
-            return mergeFrom((Chat.ChatMessage.Single)other);
+          if (other instanceof com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single) {
+            return mergeFrom((com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(Chat.ChatMessage.Single other) {
-          if (other == Chat.ChatMessage.Single.getDefaultInstance()) return this;
+        public Builder mergeFrom(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single other) {
+          if (other == com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single.getDefaultInstance()) return this;
           if (other.getToAccount() != 0F) {
             setToAccount(other.getToAccount());
           }
@@ -1638,16 +1746,16 @@ public final class Chat {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:com.github.connect.model.proto.ChatMessage.Single)
+        // @@protoc_insertion_point(builder_scope:com.github.meeting.common.connect.model.proto.ChatMessage.Single)
       }
 
-      // @@protoc_insertion_point(class_scope:com.github.connect.model.proto.ChatMessage.Single)
-      private static final Chat.ChatMessage.Single DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:com.github.meeting.common.connect.model.proto.ChatMessage.Single)
+      private static final com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new Chat.ChatMessage.Single();
+        DEFAULT_INSTANCE = new com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single();
       }
 
-      public static Chat.ChatMessage.Single getDefaultInstance() {
+      public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1683,7 +1791,7 @@ public final class Chat {
       }
 
       @java.lang.Override
-      public Chat.ChatMessage.Single getDefaultInstanceForType() {
+      public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Single getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1751,9 +1859,9 @@ public final class Chat {
     }
 
     public static final int FROMACCOUNTINFO_FIELD_NUMBER = 2;
-    private Account.AccountInfo fromAccountInfo_;
+    private com.github.meeting.common.connect.model.proto.Account.AccountInfo fromAccountInfo_;
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
      * @return Whether the fromAccountInfo field is set.
      */
     @java.lang.Override
@@ -1761,25 +1869,25 @@ public final class Chat {
       return fromAccountInfo_ != null;
     }
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
      * @return The fromAccountInfo.
      */
     @java.lang.Override
-    public Account.AccountInfo getFromAccountInfo() {
-      return fromAccountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
+    public com.github.meeting.common.connect.model.proto.Account.AccountInfo getFromAccountInfo() {
+      return fromAccountInfo_ == null ? com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
     }
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
      */
     @java.lang.Override
-    public Account.AccountInfoOrBuilder getFromAccountInfoOrBuilder() {
-      return fromAccountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
+    public com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getFromAccountInfoOrBuilder() {
+      return fromAccountInfo_ == null ? com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
     }
 
     public static final int TOACCOUNTINFO_FIELD_NUMBER = 8;
-    private Account.AccountInfo toAccountInfo_;
+    private com.github.meeting.common.connect.model.proto.Account.AccountInfo toAccountInfo_;
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
      * @return Whether the toAccountInfo field is set.
      */
     @java.lang.Override
@@ -1787,37 +1895,37 @@ public final class Chat {
       return toAccountInfo_ != null;
     }
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
      * @return The toAccountInfo.
      */
     @java.lang.Override
-    public Account.AccountInfo getToAccountInfo() {
-      return toAccountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
+    public com.github.meeting.common.connect.model.proto.Account.AccountInfo getToAccountInfo() {
+      return toAccountInfo_ == null ? com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
     }
     /**
-     * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
      */
     @java.lang.Override
-    public Account.AccountInfoOrBuilder getToAccountInfoOrBuilder() {
-      return toAccountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
+    public com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getToAccountInfoOrBuilder() {
+      return toAccountInfo_ == null ? com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
     }
 
     public static final int TYPE_FIELD_NUMBER = 6;
     private int type_ = 0;
     /**
-     * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
      * @return The enum numeric value on the wire for type.
      */
     @java.lang.Override public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
      * @return The type.
      */
-    @java.lang.Override public Chat.MessageType getType() {
-      Chat.MessageType result = Chat.MessageType.forNumber(type_);
-      return result == null ? Chat.MessageType.UNRECOGNIZED : result;
+    @java.lang.Override public com.github.meeting.common.connect.model.proto.Chat.MessageType getType() {
+      com.github.meeting.common.connect.model.proto.Chat.MessageType result = com.github.meeting.common.connect.model.proto.Chat.MessageType.forNumber(type_);
+      return result == null ? com.github.meeting.common.connect.model.proto.Chat.MessageType.UNRECOGNIZED : result;
     }
 
     public static final int CHAT_FIELD_NUMBER = 10;
@@ -1849,19 +1957,19 @@ public final class Chat {
     public static final int MESSAGESSTATUS_FIELD_NUMBER = 11;
     private int messagesStatus_ = 0;
     /**
-     * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
      * @return The enum numeric value on the wire for messagesStatus.
      */
     @java.lang.Override public int getMessagesStatusValue() {
       return messagesStatus_;
     }
     /**
-     * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+     * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
      * @return The messagesStatus.
      */
-    @java.lang.Override public Chat.ChatMessage.MessagesStatus getMessagesStatus() {
-      Chat.ChatMessage.MessagesStatus result = Chat.ChatMessage.MessagesStatus.forNumber(messagesStatus_);
-      return result == null ? Chat.ChatMessage.MessagesStatus.UNRECOGNIZED : result;
+    @java.lang.Override public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus getMessagesStatus() {
+      com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus result = com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus.forNumber(messagesStatus_);
+      return result == null ? com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1890,7 +1998,7 @@ public final class Chat {
       if (sessionId_ != 0L) {
         output.writeInt64(5, sessionId_);
       }
-      if (type_ != Chat.MessageType.TEXT.getNumber()) {
+      if (type_ != com.github.meeting.common.connect.model.proto.Chat.MessageType.TEXT.getNumber()) {
         output.writeEnum(6, type_);
       }
       if (toAccountInfo_ != null) {
@@ -1899,7 +2007,7 @@ public final class Chat {
       if (chat_ != null) {
         output.writeMessage(10, getChat());
       }
-      if (messagesStatus_ != Chat.ChatMessage.MessagesStatus.REJECT.getNumber()) {
+      if (messagesStatus_ != com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus.REJECT.getNumber()) {
         output.writeEnum(11, messagesStatus_);
       }
       getUnknownFields().writeTo(output);
@@ -1926,7 +2034,7 @@ public final class Chat {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(5, sessionId_);
       }
-      if (type_ != Chat.MessageType.TEXT.getNumber()) {
+      if (type_ != com.github.meeting.common.connect.model.proto.Chat.MessageType.TEXT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(6, type_);
       }
@@ -1938,7 +2046,7 @@ public final class Chat {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, getChat());
       }
-      if (messagesStatus_ != Chat.ChatMessage.MessagesStatus.REJECT.getNumber()) {
+      if (messagesStatus_ != com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus.REJECT.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(11, messagesStatus_);
       }
@@ -1952,10 +2060,10 @@ public final class Chat {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Chat.ChatMessage)) {
+      if (!(obj instanceof com.github.meeting.common.connect.model.proto.Chat.ChatMessage)) {
         return super.equals(obj);
       }
-      Chat.ChatMessage other = (Chat.ChatMessage) obj;
+      com.github.meeting.common.connect.model.proto.Chat.ChatMessage other = (com.github.meeting.common.connect.model.proto.Chat.ChatMessage) obj;
 
       if (getMsgId()
           != other.getMsgId()) return false;
@@ -2020,69 +2128,69 @@ public final class Chat {
       return hash;
     }
 
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Chat.ChatMessage parseFrom(byte[] data)
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Chat.ChatMessage parseFrom(java.io.InputStream input)
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Chat.ChatMessage parseDelimitedFrom(java.io.InputStream input)
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Chat.ChatMessage parseDelimitedFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Chat.ChatMessage parseFrom(
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2095,7 +2203,7 @@ public final class Chat {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Chat.ChatMessage prototype) {
+    public static Builder newBuilder(com.github.meeting.common.connect.model.proto.Chat.ChatMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2111,26 +2219,26 @@ public final class Chat {
       return builder;
     }
     /**
-     * Protobuf type {@code com.github.connect.model.proto.ChatMessage}
+     * Protobuf type {@code com.github.meeting.common.connect.model.proto.ChatMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.connect.model.proto.ChatMessage)
-        Chat.ChatMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.github.meeting.common.connect.model.proto.ChatMessage)
+        com.github.meeting.common.connect.model.proto.Chat.ChatMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Chat.internal_static_com_github_connect_model_proto_ChatMessage_descriptor;
+        return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Chat.internal_static_com_github_connect_model_proto_ChatMessage_fieldAccessorTable
+        return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Chat.ChatMessage.class, Chat.ChatMessage.Builder.class);
+                com.github.meeting.common.connect.model.proto.Chat.ChatMessage.class, com.github.meeting.common.connect.model.proto.Chat.ChatMessage.Builder.class);
       }
 
-      // Construct using com.github.peng.connect.model.proto.Chat.ChatMessage.newBuilder()
+      // Construct using com.github.meeting.common.connect.model.proto.Chat.ChatMessage.newBuilder()
       private Builder() {
 
       }
@@ -2170,17 +2278,17 @@ public final class Chat {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Chat.internal_static_com_github_connect_model_proto_ChatMessage_descriptor;
+        return com.github.meeting.common.connect.model.proto.Chat.internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor;
       }
 
       @java.lang.Override
-      public Chat.ChatMessage getDefaultInstanceForType() {
-        return Chat.ChatMessage.getDefaultInstance();
+      public com.github.meeting.common.connect.model.proto.Chat.ChatMessage getDefaultInstanceForType() {
+        return com.github.meeting.common.connect.model.proto.Chat.ChatMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Chat.ChatMessage build() {
-        Chat.ChatMessage result = buildPartial();
+      public com.github.meeting.common.connect.model.proto.Chat.ChatMessage build() {
+        com.github.meeting.common.connect.model.proto.Chat.ChatMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2188,14 +2296,14 @@ public final class Chat {
       }
 
       @java.lang.Override
-      public Chat.ChatMessage buildPartial() {
-        Chat.ChatMessage result = new Chat.ChatMessage(this);
+      public com.github.meeting.common.connect.model.proto.Chat.ChatMessage buildPartial() {
+        com.github.meeting.common.connect.model.proto.Chat.ChatMessage result = new com.github.meeting.common.connect.model.proto.Chat.ChatMessage(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(Chat.ChatMessage result) {
+      private void buildPartial0(com.github.meeting.common.connect.model.proto.Chat.ChatMessage result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.msgId_ = msgId_;
@@ -2263,16 +2371,16 @@ public final class Chat {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Chat.ChatMessage) {
-          return mergeFrom((Chat.ChatMessage)other);
+        if (other instanceof com.github.meeting.common.connect.model.proto.Chat.ChatMessage) {
+          return mergeFrom((com.github.meeting.common.connect.model.proto.Chat.ChatMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Chat.ChatMessage other) {
-        if (other == Chat.ChatMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.github.meeting.common.connect.model.proto.Chat.ChatMessage other) {
+        if (other == com.github.meeting.common.connect.model.proto.Chat.ChatMessage.getDefaultInstance()) return this;
         if (other.getMsgId() != 0L) {
           setMsgId(other.getMsgId());
         }
@@ -2524,31 +2632,31 @@ public final class Chat {
         return this;
       }
 
-      private Account.AccountInfo fromAccountInfo_;
+      private com.github.meeting.common.connect.model.proto.Account.AccountInfo fromAccountInfo_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder> fromAccountInfoBuilder_;
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> fromAccountInfoBuilder_;
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        * @return Whether the fromAccountInfo field is set.
        */
       public boolean hasFromAccountInfo() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        * @return The fromAccountInfo.
        */
-      public Account.AccountInfo getFromAccountInfo() {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo getFromAccountInfo() {
         if (fromAccountInfoBuilder_ == null) {
-          return fromAccountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
+          return fromAccountInfo_ == null ? com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
         } else {
           return fromAccountInfoBuilder_.getMessage();
         }
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        */
-      public Builder setFromAccountInfo(Account.AccountInfo value) {
+      public Builder setFromAccountInfo(com.github.meeting.common.connect.model.proto.Account.AccountInfo value) {
         if (fromAccountInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2562,10 +2670,10 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        */
       public Builder setFromAccountInfo(
-          Account.AccountInfo.Builder builderForValue) {
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder builderForValue) {
         if (fromAccountInfoBuilder_ == null) {
           fromAccountInfo_ = builderForValue.build();
         } else {
@@ -2576,13 +2684,13 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        */
-      public Builder mergeFromAccountInfo(Account.AccountInfo value) {
+      public Builder mergeFromAccountInfo(com.github.meeting.common.connect.model.proto.Account.AccountInfo value) {
         if (fromAccountInfoBuilder_ == null) {
           if (((bitField0_ & 0x00000008) != 0) &&
             fromAccountInfo_ != null &&
-            fromAccountInfo_ != Account.AccountInfo.getDefaultInstance()) {
+            fromAccountInfo_ != com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance()) {
             getFromAccountInfoBuilder().mergeFrom(value);
           } else {
             fromAccountInfo_ = value;
@@ -2595,7 +2703,7 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        */
       public Builder clearFromAccountInfo() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -2608,33 +2716,33 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        */
-      public Account.AccountInfo.Builder getFromAccountInfoBuilder() {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder getFromAccountInfoBuilder() {
         bitField0_ |= 0x00000008;
         onChanged();
         return getFromAccountInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        */
-      public Account.AccountInfoOrBuilder getFromAccountInfoOrBuilder() {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getFromAccountInfoOrBuilder() {
         if (fromAccountInfoBuilder_ != null) {
           return fromAccountInfoBuilder_.getMessageOrBuilder();
         } else {
           return fromAccountInfo_ == null ?
-              Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
+              com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : fromAccountInfo_;
         }
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo fromAccountInfo = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> 
           getFromAccountInfoFieldBuilder() {
         if (fromAccountInfoBuilder_ == null) {
           fromAccountInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>(
+              com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder>(
                   getFromAccountInfo(),
                   getParentForChildren(),
                   isClean());
@@ -2643,31 +2751,31 @@ public final class Chat {
         return fromAccountInfoBuilder_;
       }
 
-      private Account.AccountInfo toAccountInfo_;
+      private com.github.meeting.common.connect.model.proto.Account.AccountInfo toAccountInfo_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder> toAccountInfoBuilder_;
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> toAccountInfoBuilder_;
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        * @return Whether the toAccountInfo field is set.
        */
       public boolean hasToAccountInfo() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        * @return The toAccountInfo.
        */
-      public Account.AccountInfo getToAccountInfo() {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo getToAccountInfo() {
         if (toAccountInfoBuilder_ == null) {
-          return toAccountInfo_ == null ? Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
+          return toAccountInfo_ == null ? com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
         } else {
           return toAccountInfoBuilder_.getMessage();
         }
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        */
-      public Builder setToAccountInfo(Account.AccountInfo value) {
+      public Builder setToAccountInfo(com.github.meeting.common.connect.model.proto.Account.AccountInfo value) {
         if (toAccountInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2681,10 +2789,10 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        */
       public Builder setToAccountInfo(
-          Account.AccountInfo.Builder builderForValue) {
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder builderForValue) {
         if (toAccountInfoBuilder_ == null) {
           toAccountInfo_ = builderForValue.build();
         } else {
@@ -2695,13 +2803,13 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        */
-      public Builder mergeToAccountInfo(Account.AccountInfo value) {
+      public Builder mergeToAccountInfo(com.github.meeting.common.connect.model.proto.Account.AccountInfo value) {
         if (toAccountInfoBuilder_ == null) {
           if (((bitField0_ & 0x00000010) != 0) &&
             toAccountInfo_ != null &&
-            toAccountInfo_ != Account.AccountInfo.getDefaultInstance()) {
+            toAccountInfo_ != com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance()) {
             getToAccountInfoBuilder().mergeFrom(value);
           } else {
             toAccountInfo_ = value;
@@ -2714,7 +2822,7 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        */
       public Builder clearToAccountInfo() {
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -2727,33 +2835,33 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        */
-      public Account.AccountInfo.Builder getToAccountInfoBuilder() {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder getToAccountInfoBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getToAccountInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        */
-      public Account.AccountInfoOrBuilder getToAccountInfoOrBuilder() {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getToAccountInfoOrBuilder() {
         if (toAccountInfoBuilder_ != null) {
           return toAccountInfoBuilder_.getMessageOrBuilder();
         } else {
           return toAccountInfo_ == null ?
-              Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
+              com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance() : toAccountInfo_;
         }
       }
       /**
-       * <code>.com.github.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.AccountInfo toAccountInfo = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> 
           getToAccountInfoFieldBuilder() {
         if (toAccountInfoBuilder_ == null) {
           toAccountInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>(
+              com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder>(
                   getToAccountInfo(),
                   getParentForChildren(),
                   isClean());
@@ -2764,14 +2872,14 @@ public final class Chat {
 
       private int type_ = 0;
       /**
-       * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
        * @return The enum numeric value on the wire for type.
        */
       @java.lang.Override public int getTypeValue() {
         return type_;
       }
       /**
-       * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
        * @param value The enum numeric value on the wire for type to set.
        * @return This builder for chaining.
        */
@@ -2782,20 +2890,20 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
        * @return The type.
        */
       @java.lang.Override
-      public Chat.MessageType getType() {
-        Chat.MessageType result = Chat.MessageType.forNumber(type_);
-        return result == null ? Chat.MessageType.UNRECOGNIZED : result;
+      public com.github.meeting.common.connect.model.proto.Chat.MessageType getType() {
+        com.github.meeting.common.connect.model.proto.Chat.MessageType result = com.github.meeting.common.connect.model.proto.Chat.MessageType.forNumber(type_);
+        return result == null ? com.github.meeting.common.connect.model.proto.Chat.MessageType.UNRECOGNIZED : result;
       }
       /**
-       * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
        * @param value The type to set.
        * @return This builder for chaining.
        */
-      public Builder setType(Chat.MessageType value) {
+      public Builder setType(com.github.meeting.common.connect.model.proto.Chat.MessageType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2805,7 +2913,7 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.MessageType type = 6;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.MessageType type = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearType() {
@@ -2936,14 +3044,14 @@ public final class Chat {
 
       private int messagesStatus_ = 0;
       /**
-       * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
        * @return The enum numeric value on the wire for messagesStatus.
        */
       @java.lang.Override public int getMessagesStatusValue() {
         return messagesStatus_;
       }
       /**
-       * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
        * @param value The enum numeric value on the wire for messagesStatus to set.
        * @return This builder for chaining.
        */
@@ -2954,20 +3062,20 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
        * @return The messagesStatus.
        */
       @java.lang.Override
-      public Chat.ChatMessage.MessagesStatus getMessagesStatus() {
-        Chat.ChatMessage.MessagesStatus result = Chat.ChatMessage.MessagesStatus.forNumber(messagesStatus_);
-        return result == null ? Chat.ChatMessage.MessagesStatus.UNRECOGNIZED : result;
+      public com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus getMessagesStatus() {
+        com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus result = com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus.forNumber(messagesStatus_);
+        return result == null ? com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus.UNRECOGNIZED : result;
       }
       /**
-       * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
        * @param value The messagesStatus to set.
        * @return This builder for chaining.
        */
-      public Builder setMessagesStatus(Chat.ChatMessage.MessagesStatus value) {
+      public Builder setMessagesStatus(com.github.meeting.common.connect.model.proto.Chat.ChatMessage.MessagesStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2977,7 +3085,7 @@ public final class Chat {
         return this;
       }
       /**
-       * <code>.com.github.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
+       * <code>.com.github.meeting.common.connect.model.proto.ChatMessage.MessagesStatus messagesStatus = 11;</code>
        * @return This builder for chaining.
        */
       public Builder clearMessagesStatus() {
@@ -2999,16 +3107,16 @@ public final class Chat {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.github.connect.model.proto.ChatMessage)
+      // @@protoc_insertion_point(builder_scope:com.github.meeting.common.connect.model.proto.ChatMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:com.github.connect.model.proto.ChatMessage)
-    private static final Chat.ChatMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.github.meeting.common.connect.model.proto.ChatMessage)
+    private static final com.github.meeting.common.connect.model.proto.Chat.ChatMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Chat.ChatMessage();
+      DEFAULT_INSTANCE = new com.github.meeting.common.connect.model.proto.Chat.ChatMessage();
     }
 
-    public static Chat.ChatMessage getDefaultInstance() {
+    public static com.github.meeting.common.connect.model.proto.Chat.ChatMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3044,27 +3152,27 @@ public final class Chat {
     }
 
     @java.lang.Override
-    public Chat.ChatMessage getDefaultInstanceForType() {
+    public com.github.meeting.common.connect.model.proto.Chat.ChatMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_connect_model_proto_ChatMessage_descriptor;
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_github_connect_model_proto_ChatMessage_fieldAccessorTable;
+      internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_connect_model_proto_ChatMessage_Group_descriptor;
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_github_connect_model_proto_ChatMessage_Group_fieldAccessorTable;
+      internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_connect_model_proto_ChatMessage_Single_descriptor;
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_github_connect_model_proto_ChatMessage_Single_fieldAccessorTable;
+      internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3074,53 +3182,57 @@ public final class Chat {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rMessage.proto\022\036com.github.connect.mode" +
-      "l.proto\032\031google/protobuf/any.proto\032\nAuth" +
-      ".proto\"\274\004\n\013ChatMessage\022\r\n\005msgId\030\001 \001(\003\022\021\n" +
-      "\tsessionId\030\005 \001(\003\022\017\n\007content\030\003 \001(\t\022D\n\017fro" +
-      "mAccountInfo\030\002 \001(\0132+.com.github.connect." +
-      "model.proto.AccountInfo\022B\n\rtoAccountInfo" +
-      "\030\010 \001(\0132+.com.github.connect.model.proto." +
-      "AccountInfo\0229\n\004type\030\006 \001(\0162+.com.github.c" +
-      "onnect.model.proto.MessageType\022\"\n\004chat\030\n" +
-      " \001(\0132\024.google.protobuf.Any\022R\n\016messagesSt" +
-      "atus\030\013 \001(\0162:.com.github.connect.model.pr" +
-      "oto.ChatMessage.MessagesStatus\032.\n\005Group\022" +
-      "\021\n\tsessionId\030\001 \001(\002\022\022\n\ntoAccounts\030\010 \003(\t\032\033" +
-      "\n\006Single\022\021\n\ttoAccount\030\001 \001(\002\"p\n\016MessagesS" +
-      "tatus\022\n\n\006REJECT\020\000\022\013\n\007OFFLINE\020\001\022\014\n\010SENTFA" +
-      "IL\020\007\022\013\n\007HISTORY\020\n\022\010\n\004READ\020\003\022\n\n\006UNREAD\020\002\022" +
-      "\010\n\004SENT\020\005\022\n\n\006UNSENT\020\013*F\n\013MessageType\022\010\n\004" +
-      "TEXT\020\000\022\014\n\010MARKDOWN\020\005\022\010\n\004FILE\020\001\022\n\n\006STREAM" +
-      "\020\002\022\t\n\005VIDEO\020\003B+\n#com.github.peng.connect" +
-      ".model.protoB\004Chatb\006proto3"
+      "\n\rMessage.proto\022-com.github.meeting.comm" +
+      "on.connect.model.proto\032\031google/protobuf/" +
+      "any.proto\032\rAccount.proto\"\370\004\n\013ChatMessage" +
+      "\022\r\n\005msgId\030\001 \001(\003\022\021\n\tsessionId\030\005 \001(\003\022\017\n\007co" +
+      "ntent\030\003 \001(\t\022S\n\017fromAccountInfo\030\002 \001(\0132:.c" +
+      "om.github.meeting.common.connect.model.p" +
+      "roto.AccountInfo\022Q\n\rtoAccountInfo\030\010 \001(\0132" +
+      ":.com.github.meeting.common.connect.mode" +
+      "l.proto.AccountInfo\022H\n\004type\030\006 \001(\0162:.com." +
+      "github.meeting.common.connect.model.prot" +
+      "o.MessageType\022\"\n\004chat\030\n \001(\0132\024.google.pro" +
+      "tobuf.Any\022a\n\016messagesStatus\030\013 \001(\0162I.com." +
+      "github.meeting.common.connect.model.prot" +
+      "o.ChatMessage.MessagesStatus\032.\n\005Group\022\021\n" +
+      "\tsessionId\030\001 \001(\002\022\022\n\ntoAccounts\030\010 \003(\t\032\033\n\006" +
+      "Single\022\021\n\ttoAccount\030\001 \001(\002\"p\n\016MessagesSta" +
+      "tus\022\n\n\006REJECT\020\000\022\013\n\007OFFLINE\020\001\022\014\n\010SENTFAIL" +
+      "\020\007\022\013\n\007HISTORY\020\n\022\010\n\004READ\020\003\022\n\n\006UNREAD\020\002\022\010\n" +
+      "\004SENT\020\005\022\n\n\006UNSENT\020\013*-\n\024MessageOperationT" +
+      "ype\022\010\n\004SEND\020\000\022\013\n\007RECEIVE\020\001*F\n\013MessageTyp" +
+      "e\022\010\n\004TEXT\020\000\022\014\n\010MARKDOWN\020\005\022\010\n\004FILE\020\001\022\n\n\006S" +
+      "TREAM\020\002\022\t\n\005VIDEO\020\003B5\n-com.github.meeting" +
+      ".common.connect.model.protoB\004Chatb\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.AnyProto.getDescriptor(),
-          Account.getDescriptor(),
+          com.github.meeting.common.connect.model.proto.Account.getDescriptor(),
         });
-    internal_static_com_github_connect_model_proto_ChatMessage_descriptor =
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_github_connect_model_proto_ChatMessage_fieldAccessorTable = new
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_github_connect_model_proto_ChatMessage_descriptor,
+        internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor,
         new java.lang.String[] { "MsgId", "SessionId", "Content", "FromAccountInfo", "ToAccountInfo", "Type", "Chat", "MessagesStatus", });
-    internal_static_com_github_connect_model_proto_ChatMessage_Group_descriptor =
-      internal_static_com_github_connect_model_proto_ChatMessage_descriptor.getNestedTypes().get(0);
-    internal_static_com_github_connect_model_proto_ChatMessage_Group_fieldAccessorTable = new
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_descriptor =
+      internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor.getNestedTypes().get(0);
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_github_connect_model_proto_ChatMessage_Group_descriptor,
+        internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Group_descriptor,
         new java.lang.String[] { "SessionId", "ToAccounts", });
-    internal_static_com_github_connect_model_proto_ChatMessage_Single_descriptor =
-      internal_static_com_github_connect_model_proto_ChatMessage_descriptor.getNestedTypes().get(1);
-    internal_static_com_github_connect_model_proto_ChatMessage_Single_fieldAccessorTable = new
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_descriptor =
+      internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_descriptor.getNestedTypes().get(1);
+    internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_github_connect_model_proto_ChatMessage_Single_descriptor,
+        internal_static_com_github_meeting_common_connect_model_proto_ChatMessage_Single_descriptor,
         new java.lang.String[] { "ToAccount", });
     com.google.protobuf.AnyProto.getDescriptor();
-    Account.getDescriptor();
+    com.github.meeting.common.connect.model.proto.Account.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -15,7 +15,7 @@ public final class ProtocolType {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * Protobuf enum {@code com.github.connect.model.proto.ProtocolMessageEnum}
+   * Protobuf enum {@code com.github.meeting.common.connect.model.proto.ProtocolMessageEnum}
    */
   public enum ProtocolMessageEnum
       implements com.google.protobuf.ProtocolMessageEnum {
@@ -123,7 +123,7 @@ public final class ProtocolType {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return ProtocolType.getDescriptor().getEnumTypes().get(0);
+      return com.github.meeting.common.connect.model.proto.ProtocolType.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final ProtocolMessageEnum[] VALUES = values();
@@ -146,7 +146,7 @@ public final class ProtocolType {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:com.github.connect.model.proto.ProtocolMessageEnum)
+    // @@protoc_insertion_point(enum_scope:com.github.meeting.common.connect.model.proto.ProtocolMessageEnum)
   }
 
 
@@ -158,11 +158,12 @@ public final class ProtocolType {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021MessageEnum.proto\022\036com.github.connect." +
-      "model.proto*T\n\023ProtocolMessageEnum\022\007\n\003TM" +
-      "P\020\000\022\t\n\004AUTH\020\351\007\022\020\n\013ACCOUNTINFO\020\354\007\022\t\n\004CHAT" +
-      "\020\352\007\022\014\n\007REQUEST\020\353\007B3\n#com.github.peng.con" +
-      "nect.model.protoB\014ProtocolTypeb\006proto3"
+      "\n\021MessageEnum.proto\022-com.github.meeting." +
+      "common.connect.model.proto*T\n\023ProtocolMe" +
+      "ssageEnum\022\007\n\003TMP\020\000\022\t\n\004AUTH\020\351\007\022\020\n\013ACCOUNT" +
+      "INFO\020\354\007\022\t\n\004CHAT\020\352\007\022\014\n\007REQUEST\020\353\007B=\n-com." +
+      "github.meeting.common.connect.model.prot" +
+      "oB\014ProtocolTypeb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

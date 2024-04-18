@@ -15,39 +15,39 @@ public final class OnLineUser {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface UserSearchOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.github.connect.model.proto.UserSearch)
+      // @@protoc_insertion_point(interface_extends:com.github.meeting.common.connect.model.proto.UserSearch)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
-    java.util.List<Account.AccountInfo>
+    java.util.List<com.github.meeting.common.connect.model.proto.Account.AccountInfo> 
         getAccountsList();
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
-    Account.AccountInfo getAccounts(int index);
+    com.github.meeting.common.connect.model.proto.Account.AccountInfo getAccounts(int index);
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
     int getAccountsCount();
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
-    java.util.List<? extends Account.AccountInfoOrBuilder>
+    java.util.List<? extends com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> 
         getAccountsOrBuilderList();
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
-    Account.AccountInfoOrBuilder getAccountsOrBuilder(
+    com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getAccountsOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code com.github.connect.model.proto.UserSearch}
+   * Protobuf type {@code com.github.meeting.common.connect.model.proto.UserSearch}
    */
   public static final class UserSearch extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.github.connect.model.proto.UserSearch)
+      // @@protoc_insertion_point(message_implements:com.github.meeting.common.connect.model.proto.UserSearch)
       UserSearchOrBuilder {
   private static final long serialVersionUID = 0L;
     // Use UserSearch.newBuilder() to construct.
@@ -72,54 +72,54 @@ public final class OnLineUser {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return OnLineUser.internal_static_com_github_connect_model_proto_UserSearch_descriptor;
+      return com.github.meeting.common.connect.model.proto.OnLineUser.internal_static_com_github_meeting_common_connect_model_proto_UserSearch_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return OnLineUser.internal_static_com_github_connect_model_proto_UserSearch_fieldAccessorTable
+      return com.github.meeting.common.connect.model.proto.OnLineUser.internal_static_com_github_meeting_common_connect_model_proto_UserSearch_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              OnLineUser.UserSearch.class, OnLineUser.UserSearch.Builder.class);
+              com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch.class, com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch.Builder.class);
     }
 
     public static final int ACCOUNTS_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private java.util.List<Account.AccountInfo> accounts_;
+    private java.util.List<com.github.meeting.common.connect.model.proto.Account.AccountInfo> accounts_;
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<Account.AccountInfo> getAccountsList() {
+    public java.util.List<com.github.meeting.common.connect.model.proto.Account.AccountInfo> getAccountsList() {
       return accounts_;
     }
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends Account.AccountInfoOrBuilder>
+    public java.util.List<? extends com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> 
         getAccountsOrBuilderList() {
       return accounts_;
     }
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
     @java.lang.Override
     public int getAccountsCount() {
       return accounts_.size();
     }
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
     @java.lang.Override
-    public Account.AccountInfo getAccounts(int index) {
+    public com.github.meeting.common.connect.model.proto.Account.AccountInfo getAccounts(int index) {
       return accounts_.get(index);
     }
     /**
-     * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+     * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
      */
     @java.lang.Override
-    public Account.AccountInfoOrBuilder getAccountsOrBuilder(
+    public com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getAccountsOrBuilder(
         int index) {
       return accounts_.get(index);
     }
@@ -164,10 +164,10 @@ public final class OnLineUser {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof OnLineUser.UserSearch)) {
+      if (!(obj instanceof com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch)) {
         return super.equals(obj);
       }
-      OnLineUser.UserSearch other = (OnLineUser.UserSearch) obj;
+      com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch other = (com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch) obj;
 
       if (!getAccountsList()
           .equals(other.getAccountsList())) return false;
@@ -191,69 +191,69 @@ public final class OnLineUser {
       return hash;
     }
 
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static OnLineUser.UserSearch parseFrom(byte[] data)
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static OnLineUser.UserSearch parseFrom(java.io.InputStream input)
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static OnLineUser.UserSearch parseDelimitedFrom(java.io.InputStream input)
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static OnLineUser.UserSearch parseDelimitedFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static OnLineUser.UserSearch parseFrom(
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -266,7 +266,7 @@ public final class OnLineUser {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(OnLineUser.UserSearch prototype) {
+    public static Builder newBuilder(com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -282,26 +282,26 @@ public final class OnLineUser {
       return builder;
     }
     /**
-     * Protobuf type {@code com.github.connect.model.proto.UserSearch}
+     * Protobuf type {@code com.github.meeting.common.connect.model.proto.UserSearch}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.github.connect.model.proto.UserSearch)
-        OnLineUser.UserSearchOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.github.meeting.common.connect.model.proto.UserSearch)
+        com.github.meeting.common.connect.model.proto.OnLineUser.UserSearchOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return OnLineUser.internal_static_com_github_connect_model_proto_UserSearch_descriptor;
+        return com.github.meeting.common.connect.model.proto.OnLineUser.internal_static_com_github_meeting_common_connect_model_proto_UserSearch_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return OnLineUser.internal_static_com_github_connect_model_proto_UserSearch_fieldAccessorTable
+        return com.github.meeting.common.connect.model.proto.OnLineUser.internal_static_com_github_meeting_common_connect_model_proto_UserSearch_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                OnLineUser.UserSearch.class, OnLineUser.UserSearch.Builder.class);
+                com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch.class, com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch.Builder.class);
       }
 
-      // Construct using com.github.peng.connect.model.proto.OnLineUser.UserSearch.newBuilder()
+      // Construct using com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch.newBuilder()
       private Builder() {
 
       }
@@ -328,17 +328,17 @@ public final class OnLineUser {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return OnLineUser.internal_static_com_github_connect_model_proto_UserSearch_descriptor;
+        return com.github.meeting.common.connect.model.proto.OnLineUser.internal_static_com_github_meeting_common_connect_model_proto_UserSearch_descriptor;
       }
 
       @java.lang.Override
-      public OnLineUser.UserSearch getDefaultInstanceForType() {
-        return OnLineUser.UserSearch.getDefaultInstance();
+      public com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch getDefaultInstanceForType() {
+        return com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch.getDefaultInstance();
       }
 
       @java.lang.Override
-      public OnLineUser.UserSearch build() {
-        OnLineUser.UserSearch result = buildPartial();
+      public com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch build() {
+        com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -346,15 +346,15 @@ public final class OnLineUser {
       }
 
       @java.lang.Override
-      public OnLineUser.UserSearch buildPartial() {
-        OnLineUser.UserSearch result = new OnLineUser.UserSearch(this);
+      public com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch buildPartial() {
+        com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch result = new com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch(this);
         buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartialRepeatedFields(OnLineUser.UserSearch result) {
+      private void buildPartialRepeatedFields(com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch result) {
         if (accountsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
             accounts_ = java.util.Collections.unmodifiableList(accounts_);
@@ -366,7 +366,7 @@ public final class OnLineUser {
         }
       }
 
-      private void buildPartial0(OnLineUser.UserSearch result) {
+      private void buildPartial0(com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch result) {
         int from_bitField0_ = bitField0_;
       }
 
@@ -404,16 +404,16 @@ public final class OnLineUser {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof OnLineUser.UserSearch) {
-          return mergeFrom((OnLineUser.UserSearch)other);
+        if (other instanceof com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch) {
+          return mergeFrom((com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(OnLineUser.UserSearch other) {
-        if (other == OnLineUser.UserSearch.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch other) {
+        if (other == com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch.getDefaultInstance()) return this;
         if (accountsBuilder_ == null) {
           if (!other.accounts_.isEmpty()) {
             if (accounts_.isEmpty()) {
@@ -467,9 +467,9 @@ public final class OnLineUser {
                 done = true;
                 break;
               case 10: {
-                Account.AccountInfo m =
+                com.github.meeting.common.connect.model.proto.Account.AccountInfo m =
                     input.readMessage(
-                        Account.AccountInfo.parser(),
+                        com.github.meeting.common.connect.model.proto.Account.AccountInfo.parser(),
                         extensionRegistry);
                 if (accountsBuilder_ == null) {
                   ensureAccountsIsMutable();
@@ -496,22 +496,22 @@ public final class OnLineUser {
       }
       private int bitField0_;
 
-      private java.util.List<Account.AccountInfo> accounts_ =
+      private java.util.List<com.github.meeting.common.connect.model.proto.Account.AccountInfo> accounts_ =
         java.util.Collections.emptyList();
       private void ensureAccountsIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          accounts_ = new java.util.ArrayList<Account.AccountInfo>(accounts_);
+          accounts_ = new java.util.ArrayList<com.github.meeting.common.connect.model.proto.Account.AccountInfo>(accounts_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-              Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder> accountsBuilder_;
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> accountsBuilder_;
 
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public java.util.List<Account.AccountInfo> getAccountsList() {
+      public java.util.List<com.github.meeting.common.connect.model.proto.Account.AccountInfo> getAccountsList() {
         if (accountsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(accounts_);
         } else {
@@ -519,7 +519,7 @@ public final class OnLineUser {
         }
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public int getAccountsCount() {
         if (accountsBuilder_ == null) {
@@ -529,9 +529,9 @@ public final class OnLineUser {
         }
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public Account.AccountInfo getAccounts(int index) {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo getAccounts(int index) {
         if (accountsBuilder_ == null) {
           return accounts_.get(index);
         } else {
@@ -539,10 +539,10 @@ public final class OnLineUser {
         }
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder setAccounts(
-          int index, Account.AccountInfo value) {
+          int index, com.github.meeting.common.connect.model.proto.Account.AccountInfo value) {
         if (accountsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -556,10 +556,10 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder setAccounts(
-          int index, Account.AccountInfo.Builder builderForValue) {
+          int index, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder builderForValue) {
         if (accountsBuilder_ == null) {
           ensureAccountsIsMutable();
           accounts_.set(index, builderForValue.build());
@@ -570,9 +570,9 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public Builder addAccounts(Account.AccountInfo value) {
+      public Builder addAccounts(com.github.meeting.common.connect.model.proto.Account.AccountInfo value) {
         if (accountsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -586,10 +586,10 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder addAccounts(
-          int index, Account.AccountInfo value) {
+          int index, com.github.meeting.common.connect.model.proto.Account.AccountInfo value) {
         if (accountsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -603,10 +603,10 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder addAccounts(
-          Account.AccountInfo.Builder builderForValue) {
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder builderForValue) {
         if (accountsBuilder_ == null) {
           ensureAccountsIsMutable();
           accounts_.add(builderForValue.build());
@@ -617,10 +617,10 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder addAccounts(
-          int index, Account.AccountInfo.Builder builderForValue) {
+          int index, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder builderForValue) {
         if (accountsBuilder_ == null) {
           ensureAccountsIsMutable();
           accounts_.add(index, builderForValue.build());
@@ -631,10 +631,10 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder addAllAccounts(
-          java.lang.Iterable<? extends Account.AccountInfo> values) {
+          java.lang.Iterable<? extends com.github.meeting.common.connect.model.proto.Account.AccountInfo> values) {
         if (accountsBuilder_ == null) {
           ensureAccountsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -646,7 +646,7 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder clearAccounts() {
         if (accountsBuilder_ == null) {
@@ -659,7 +659,7 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
       public Builder removeAccounts(int index) {
         if (accountsBuilder_ == null) {
@@ -672,16 +672,16 @@ public final class OnLineUser {
         return this;
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public Account.AccountInfo.Builder getAccountsBuilder(
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder getAccountsBuilder(
           int index) {
         return getAccountsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public Account.AccountInfoOrBuilder getAccountsOrBuilder(
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder getAccountsOrBuilder(
           int index) {
         if (accountsBuilder_ == null) {
           return accounts_.get(index);  } else {
@@ -689,9 +689,9 @@ public final class OnLineUser {
         }
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public java.util.List<? extends Account.AccountInfoOrBuilder>
+      public java.util.List<? extends com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> 
            getAccountsOrBuilderList() {
         if (accountsBuilder_ != null) {
           return accountsBuilder_.getMessageOrBuilderList();
@@ -700,33 +700,33 @@ public final class OnLineUser {
         }
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public Account.AccountInfo.Builder addAccountsBuilder() {
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder addAccountsBuilder() {
         return getAccountsFieldBuilder().addBuilder(
-            Account.AccountInfo.getDefaultInstance());
+            com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public Account.AccountInfo.Builder addAccountsBuilder(
+      public com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder addAccountsBuilder(
           int index) {
         return getAccountsFieldBuilder().addBuilder(
-            index, Account.AccountInfo.getDefaultInstance());
+            index, com.github.meeting.common.connect.model.proto.Account.AccountInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.github.connect.model.proto.AccountInfo accounts = 1;</code>
+       * <code>repeated .com.github.meeting.common.connect.model.proto.AccountInfo accounts = 1;</code>
        */
-      public java.util.List<Account.AccountInfo.Builder>
+      public java.util.List<com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder> 
            getAccountsBuilderList() {
         return getAccountsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-              Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>
+          com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder> 
           getAccountsFieldBuilder() {
         if (accountsBuilder_ == null) {
           accountsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                  Account.AccountInfo, Account.AccountInfo.Builder, Account.AccountInfoOrBuilder>(
+              com.github.meeting.common.connect.model.proto.Account.AccountInfo, com.github.meeting.common.connect.model.proto.Account.AccountInfo.Builder, com.github.meeting.common.connect.model.proto.Account.AccountInfoOrBuilder>(
                   accounts_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -748,16 +748,16 @@ public final class OnLineUser {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.github.connect.model.proto.UserSearch)
+      // @@protoc_insertion_point(builder_scope:com.github.meeting.common.connect.model.proto.UserSearch)
     }
 
-    // @@protoc_insertion_point(class_scope:com.github.connect.model.proto.UserSearch)
-    private static final OnLineUser.UserSearch DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.github.meeting.common.connect.model.proto.UserSearch)
+    private static final com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new OnLineUser.UserSearch();
+      DEFAULT_INSTANCE = new com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch();
     }
 
-    public static OnLineUser.UserSearch getDefaultInstance() {
+    public static com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -793,17 +793,17 @@ public final class OnLineUser {
     }
 
     @java.lang.Override
-    public OnLineUser.UserSearch getDefaultInstanceForType() {
+    public com.github.meeting.common.connect.model.proto.OnLineUser.UserSearch getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_github_connect_model_proto_UserSearch_descriptor;
+    internal_static_com_github_meeting_common_connect_model_proto_UserSearch_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_github_connect_model_proto_UserSearch_fieldAccessorTable;
+      internal_static_com_github_meeting_common_connect_model_proto_UserSearch_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -813,24 +813,26 @@ public final class OnLineUser {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020OnlineUser.proto\022\036com.github.connect.m" +
-      "odel.proto\032\nAccount.proto\"K\n\nUserSearch\022=\n\010" +
-      "accounts\030\001 \003(\0132+.com.github.connect.mode" +
-      "l.proto.AccountInfoB1\n#com.github.peng.c" +
-      "onnect.model.protoB\nOnLineUserb\006proto3"
+      "\n\020OnlineUser.proto\022-com.github.meeting.c" +
+      "ommon.connect.model.proto\032\rAccount.proto" +
+      "\"Z\n\nUserSearch\022L\n\010accounts\030\001 \003(\0132:.com.g" +
+      "ithub.meeting.common.connect.model.proto" +
+      ".AccountInfoB;\n-com.github.meeting.commo" +
+      "n.connect.model.protoB\nOnLineUserb\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          Account.getDescriptor(),
+          com.github.meeting.common.connect.model.proto.Account.getDescriptor(),
         });
-    internal_static_com_github_connect_model_proto_UserSearch_descriptor =
+    internal_static_com_github_meeting_common_connect_model_proto_UserSearch_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_github_connect_model_proto_UserSearch_fieldAccessorTable = new
+    internal_static_com_github_meeting_common_connect_model_proto_UserSearch_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_github_connect_model_proto_UserSearch_descriptor,
+        internal_static_com_github_meeting_common_connect_model_proto_UserSearch_descriptor,
         new java.lang.String[] { "Accounts", });
-    Account.getDescriptor();
+    com.github.meeting.common.connect.model.proto.Account.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
