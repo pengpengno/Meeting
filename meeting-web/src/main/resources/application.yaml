@@ -4,6 +4,26 @@ logback:
   level: info
 
 spring:
+  r2dbc:
+    url: ${DATASOURCE_URL:r2dbc:postgresql://localhost:5432/meeting?ssl=false&serverZoneId=Asia/Shanghai}
+    username: ${DATASOURCE_USERNAME :postgres}
+    password: ${DATASOURCE_PASSWORD :postgres}
+#    driver-class-name: ${DATASOURCE_DRIVER:org.postgresql.Driver}
+    pool:
+      initial-size: 10
+      max-size: 20
+      max-idle-time: 10m
+      validation-query: SELECT 1
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/meeting}
+    username: ${DATASOURCE_USERNAME :postgres }
+    password: ${DATASOURCE_PASSWORD :postgres }
+    driver-class-name: ${DATASOURCE_DRIVER:org.postgresql.Driver}
+    hikari:
+      connection-timeout: 10000
+      idle-timeout: 60000
+      max-lifetime: 1800000
+      minimum-idle: 5
   devtools:
     restart:
       enabled: true

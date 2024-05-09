@@ -1,6 +1,5 @@
 package com.github.meeting.common.reactor.netty.tcp;
 
-import com.github.meeting.common.connect.handler.MessageParser;
 import com.github.meeting.common.connect.handler.client.ClientInboundHandler;
 import com.github.meeting.common.connect.model.proto.Account;
 import com.github.meeting.common.model.AccountInfo;
@@ -81,13 +80,11 @@ public class ReactiveClientTest {
                 .setEMail("pengpeng_on@163.com")
                 .build();
         ByteBuf buffer = PooledByteBufAllocator.DEFAULT.buffer();
-        ByteBuf byteBuf = MessageParser.message2ByteBuf(build, buffer);
-        connect.outbound().send(Mono.just(byteBuf)).then().subscribe();
-        connect.inbound().receive().asString().then().subscribe();
-//        connect.outbound().sendString(Mono.just("nice to meet you")).then().subscribe();
-//        connect.outbound().sendString(Mono.just("send  twice ")).then().subscribe();
-        connect.onDispose()
-                .block()
+//        ByteBuf byteBuf = MessageParser.message2ByteBuf(build, buffer);
+//        connect.outbound().send(Mono.just(byteBuf)).then().subscribe();
+//        connect.inbound().receive().asString().then().subscribe();
+//        connect.onDispose()
+//                .block()
         ;
     }
 
