@@ -29,14 +29,16 @@ public class AccountService {
 
     @GetMapping("/{userId}")
     public Mono<SecurityProperties.User> getUser(@PathVariable Long userId) {
-        return this.userRepository.findById(userId);
+//        return this.userRepository.findById(userId);
+        return null;
     }
 
 
 
     @DeleteMapping("/{userId}")
     public Mono<Void> deleteUser(@PathVariable Long userId) {
-        return this.userRepository.deleteById(userId);
+//        return this.userRepository.deleteById(userId);
+        return null;
     }
 
 }

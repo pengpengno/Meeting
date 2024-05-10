@@ -1,6 +1,8 @@
 package com.github.meeting.web.controller;
 
 
+import me.zhyd.oauth.config.AuthConfig;
+import me.zhyd.oauth.request.AuthGithubRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +12,13 @@ import java.util.Map;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/meetings")
-public class MeetingController {
+@RequestMapping("/login")
+public class AccountController {
 
     private Map<String, String> meetingParticipants = new HashMap<>();
+
+//    puub
+
 
     @PostMapping
     public ResponseEntity<Map<String, String>> createMeeting(@RequestBody Map<String, String> requestBody) {

@@ -24,6 +24,7 @@ import reactor.core.publisher.Mono;
  * @since 2024/5/9
  */
 @Component
+
 public class WebExceptionHandler  extends AbstractErrorWebExceptionHandler {
 
 

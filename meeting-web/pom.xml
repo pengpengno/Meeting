@@ -20,10 +20,7 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-r2dbc -->
         <dependency>
@@ -34,35 +31,41 @@
             <groupId>org.postgresql</groupId>
             <artifactId>r2dbc-postgresql</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.32.1</version>
+        </dependency>
 
 
-<!--        <dependency>-->
-<!--            <groupId></groupId>-->
-<!--            <artifactId>jakarta.fi</artifactId>-->
-<!--        </dependency>-->
-<!--        -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <artifactId>spring-security-web</artifactId>-->
-<!--                    <groupId>org.springframework.security</groupId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>me.zhyd.oauth</groupId>
+            <artifactId>JustAuth</artifactId>
+            <version>1.16.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
@@ -79,10 +82,10 @@
             <artifactId>spring-boot-starter-integration</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.bytedeco</groupId>-->
-<!--            <artifactId>javacv-platform</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.github.meeting</groupId>

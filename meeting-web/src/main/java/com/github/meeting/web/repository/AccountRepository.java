@@ -1,7 +1,8 @@
 package com.github.meeting.web.repository;
 
-//import org.springframework.security.core.userdetails.User;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import com.github.meeting.web.model.Account;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import reactor.core.publisher.Mono;
 
 /**
@@ -13,11 +14,11 @@ import reactor.core.publisher.Mono;
  * @version 1.0
  * @since 2024/5/9
  */
-public interface AccountRepository {
+public interface AccountRepository extends R2dbcRepository<Account, Long> {
 
 
-    public Mono<SecurityProperties.User> findById(Long userId) ;
+
+    public Mono<UserDetails> findByUsername(String username);
 
 
-    Mono<Void> deleteById(Long userId);
 }
