@@ -51,11 +51,11 @@
 
 
 
-    <server>
-        <id>${server}</id>
-        <username>sAbzz5OY</username>
-        <password>jKhbQ3pFvN9JA/JT74wGjDStRpa8AH6vITqgg6YYxJ5P</password>
-    </server>
+<!--    <server>-->
+<!--        <id>${server}</id>-->
+<!--        <username>sAbzz5OY</username>-->
+<!--        <password>jKhbQ3pFvN9JA/JT74wGjDStRpa8AH6vITqgg6YYxJ5P</password>-->
+<!--    </server>-->
 
     <licenses>
         <license>
