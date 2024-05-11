@@ -12,6 +12,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  attestations: write
 on:
   schedule:
     - cron: "0 2 * * 1"
@@ -31,13 +32,18 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '21'
-        distribution: 'temurin'
+        distribution: 'build'
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
     - name: Build the Docker image
       run: docker-compose -f "docker-compose.yml" up -d --build
+
+
+    - uses: actions/attest-build-provenance@v1
+      with:
+        subject-path: '${{ github.workspace }}/meeting-common/target/meeting-common-1.0.jar'
 
       # run: docker compose build
 
