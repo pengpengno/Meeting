@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Meeting System</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <link href="" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        #createMeeting, #joinMeeting {
+            margin-bottom: 20px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Online Meeting System</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div id="createMeeting" class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Create Meeting</h2>
+                    <div class="mb-3">
+                        <label for="topic" class="form-label">Meeting Topic:</label>
+                        <label for="topic" class="form-label">Meeting Topic:</label>
+                        <label for="topic" class="form-label">Meeting Topic:</label>
+                        <input type="text" class="form-control" id="topic" placeholder="Enter meeting topic">
+                    </div>
+                    <button class="btn btn-primary" onclick="createMeeting()">Create Meeting</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="joinMeeting" class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Join Meeting</h2>
+                    <div class="mb-3">
+                        <label for="meetingId" class="form-label">Meeting ID:</label>
+                        <input type="text" class="form-control" id="meetingId" placeholder="Enter meeting ID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="participantId" class="form-label">Your ID:</label>
+                        <input type="text" class="form-control" id="participantId" placeholder="Enter your ID">
+                    </div>
+                    <button class="btn btn-primary" onclick="joinMeeting()">Join Meeting</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="meetingRoom" class="mt-5" style="display: none;">
+        <h2 class="text-center">Meeting Room</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <video id="localVideo" class="mb-3" autoplay muted></video>
+            </div>
+            <div class="col-md-6">
+                <video id="remoteVideo" class="mb-3" autoplay></video>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button class="btn btn-primary" id="startButton" onclick="createPeerConnection()">Start</button>
+        <button class="btn btn-primary" id="callButton">Call</button>
+        <button class="btn btn-primary" id="hangupButton" onclick="stopLocalPreview()">Hang Up</button>
+    </div>
+</div>
+<script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+<script th:src="@{/js/meeting/webRTCVideo.js}"></script>
+<script th:src="@{/js/adapter-latest.js}"></script>
+
+    <script>
+        // 停止本地预览
+
+        let localStream;
+        let remoteStream;
+
+        var currentDomain = window.location.host;
+        const ws = new WebSocket('ws://'+currentDomain+'/path');
+         const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+
+<!--        startLocalPreview(ws);-->
+
+        function stopLocalPreview() {
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+                localStream = null;
+                localVideo.srcObject = null;
+            }
+                localVideo.srcObject = null;
+        }
+
+        async function createMeeting() {
+            const topic = $('#topic').val();
+            const response = await fetch('/meetings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ topic })
+            });
+            const data = await response.json();
+            startMeeting(data.id);
+        }
+
+
+
+
+     // 创建peerConnection
+         function createPeerConnection() {
+         if(localStream != null){
+            return;
+         }
+
+            // 获取本地视频流
+                navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                    .then(stream => {
+                    // 将本地视频流绑定到video元素上
+                        localVideo.srcObject = stream;
+                        localStream = stream;
+
+                        // 创建RTCPeerConnection对象
+                        peerConnection = new RTCPeerConnection();
+
+                        // 添加本地视频流到RTCPeerConnection
+                        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+                        // 监听远程流
+                        peerConnection.ontrack = event => {
+                            remoteVideo.srcObject = event.streams[0];
+                        };
+
+                        // 发送offer
+                        peerConnection.createOffer()
+                            .then(offer => {
+                                peerConnection.setLocalDescription(offer);
+                                // 发送offer到远程
+                                ws.send(JSON.stringify(offer));
+                            })
+                            .catch(error => {
+                                console.error('创建offer失败:', error);
+                            });
+                    })
+                    .catch(error => {
+                        console.error('获取本地视频流失败:', error);
+                    });
+        }
+
+        function joinMeeting () {
+             $('#createMeeting, #joinMeeting').hide();
+             $('#meetingRoom').show();
+            // 处理WebSocket连接打开事件
+            createPeerConnection();
+
+            // 处理WebSocket消息
+            ws.onmessage = event => {
+                const message = JSON.parse(event.data);
+                 if (message.type === 'offer') {
+                     try {
+                        // 设置远程描述
+                         peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+
+                        // 创建answer
+                        const answer =  peerConnection.createAnswer();
+
+                        // 设置本地描述
+                         peerConnection.setLocalDescription(answer);
+
+                        // 发送answer到远程
+                        ws.send(JSON.stringify(answer));
+                    } catch (error) {
+                        console.error('处理offer时出错:', error);
+                    }
+                }
+                else if (message.type === 'answer') {
+                // 收到answer，设置远程描述
+                     peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+                } else if (message.type === 'candidate') {
+                        // 添加远程的ICE候选者
+                    peerConnection.addIceCandidate(new RTCIceCandidate(message.candidate));
+                }
+            };
+        }
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时视频会议</title>
+</head>
+<body>
+<h1>实时视频会议</h1>
+<video id="localVideo" autoplay></video>
+<div id="remoteVideos"></div>
+
+<script>
+    let localStream;
+    const localVideo = document.getElementById('localVideo');
+    const remoteVideosContainer = document.getElementById('remoteVideos');
+
+    // 获取本地视频流
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then(stream => {
+            localStream = stream;
+            localVideo.srcObject = stream;
+        })
+        .catch(error => {
+            console.error('获取本地视频流失败:', error);
+        });
+
+    // 建立WebSocket连接到信令服务器
+    const socket = new WebSocket('ws://localhost:3000');
+
+    socket.onopen = () => {
+        console.log('WebSocket连接已打开');
+    };
+
+    socket.onmessage = event => {
+        const message = JSON.parse(event.data);
+        if (message.type === 'offer') {
+            // 处理来自其他参与者的offer
+            handleOffer(message);
+        } else if (message.type === 'answer') {
+            // 处理来自其他参与者的answer
+            handleAnswer(message);
+        } else if (message.type === 'candidate') {
+            // 处理ICE candidate
+            handleCandidate(message);
+        }
+    };
+
+    function handleOffer(message) {
+        // 处理来自其他参与者的offer
+    }
+
+    function handleAnswer(message) {
+        // 处理来自其他参与者的answer
+    }
+
+    function handleCandidate(message) {
+        // 处理ICE candidate
+    }
+
+    // 其他参与者加入时，发送自己的offer
+    function sendOffer() {
+        // 创建offer并发送到信令服务器
+    }
+</script>
+</body>
+</html>
