@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.github.meeting</groupId>
-    <artifactId>demo-procject</artifactId>
+    <artifactId>demo</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

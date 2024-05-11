@@ -12,7 +12,7 @@
         <module>meeting-server</module>
         <module>meeting-common</module>
         <module>meeting-web</module>
-        <module>demo</module>
+<!--        <module>demo</module>-->
     </modules>
     <packaging>pom</packaging>
 
