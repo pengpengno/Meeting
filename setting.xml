@@ -12,61 +12,49 @@
   <localRepository>${user.home}/.m2/repository</localRepository>
 
   <mirrors>
-	  <!-- <mirror>
-  <id>mavenCentral</id>
-  <mirrorOf>*</mirrorOf>
-  <name>maven中央公共仓库</name>
-  <url>https://repo1.maven.org/maven2/</url>
-  </mirror>
-  <mirror>
-  <id>mavenCentral</id>
-  <mirrorOf>*</mirrorOf>
-  <name>maven中央公共仓库sonatype</name>
-  <url>http://www.sonatype.org/nexus/</url>
+    <!-- <mirror>
+<id>mavenCentral</id>
+<mirrorOf>*</mirrorOf>
+<name>maven中央公共仓库</name>
+<url>https://repo1.maven.org/maven2/</url>
 </mirror>
-		  -->
+<mirror>
+<id>mavenCentral</id>
+<mirrorOf>*</mirrorOf>
+<name>maven中央公共仓库sonatype</name>
+<url>http://www.sonatype.org/nexus/</url>
+</mirror>
+        -->
 
     <mirror>
-  <id>aliyunmaven</id>
-  <mirrorOf>*</mirrorOf>
-  <name>阿里云公共仓库</name>
-  <url>https://maven.aliyun.com/repository/public</url>
-</mirror>
+      <id>aliyunmaven</id>
+      <mirrorOf>*</mirrorOf>
+      <name>阿里云公共仓库</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </mirror>
+    <mirror>
+      <id>gluon-mirror</id>
+      <mirrorOf>gluon-releases</mirrorOf>
+      <name>Gluon Releases Repository</name>
+      <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+    </mirror>
   </mirrors>
+  <servers>
 
-  <profiles>
-    <profile>
-      <id>dev</id>
-      <repositories>
-        <repository>
-          <id>aliyun-spring</id>
-          <url>https://repo1.maven.org/maven2/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-          </snapshots>
-        </repository>
-      </repositories>
-      <activation>
-        <!-- 默认激活当前配置 -->
-        <activeByDefault>true</activeByDefault>
-        <jdk>21</jdk>
-      </activation>
-      <properties>
-<!--        <maven.compiler.source>19</maven.compiler.source>-->
-<!--        <maven.compiler.target>19</maven.compiler.target>-->
-<!--        <maven.compiler.compilerVersion>19</maven.compiler.compilerVersion>-->
-      </properties>
-    </profile>
-  </profiles>
+    <server>
+      <id>central</id>
+      <username>TuBKCazv</username>
+      <password>+RBMNm/JoitrInXYA9CieSajCZIpzpk8JFUILsfj4n1t</password>
+    </server>
 
-  <activeProfiles>
-    <!-- 指定激活配置 -->
-    <activeProfile>dev</activeProfile>
-  </activeProfiles>
+
+    <server>
+      <id>ossrh</id>
+      <username>TuBKCazv</username>
+      <password>+RBMNm/JoitrInXYA9CieSajCZIpzpk8JFUILsfj4n1t</password>
+    </server>
+  </servers>
+
 
 </settings>
 

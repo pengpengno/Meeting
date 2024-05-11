@@ -34,25 +34,21 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-        server-id: ossrh
         server-username: MAVEN_USERNAME # env variable for username in deploy
         server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
-        gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
-        gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
-#    - name: Build with Maven
-#      run: mvn -B package --file pom.xml -DskipTests
+#    - uses: actions/upload-artifact@v4
+#      with:
+#        name: Package
+#        path: staging
+#
+#    - run: mkdir staging && cp target/*.jar staging
 
-#    - name: Build the Docker image
-#      run: docker-compose -f "docker-compose.yml" up -d --build
-
-
-
-    - name: Publish to Apache Maven Central
-      run: mvn -B deploy --file pom.xml -DskipTests
+    - name: Publish to the Maven Central Repository
+      run: mvn -B deploy --file pom.xml -DskipTests -s settings.xml
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
-        MAVEN_GPG_PASSPHRASE: wal@!123
+#        MAVEN_GPG_PASSPHRASE: wal@!123
 #        MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 #    - name: Publish package
 #      run: mvn --batch-mode deploy -DskipTests
