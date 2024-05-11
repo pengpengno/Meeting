@@ -40,11 +40,11 @@ jobs:
     - name: Build the Docker image
       run: docker-compose -f "docker-compose.yml" up -d --build
 
-
-    - name: Publish package
-      run: mvn --batch-mode deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#
+#    - name: Publish package
+#      run: mvn --batch-mode deploy
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Gluon's GraalVM
       uses: gluonhq/setup-graalvm@master
