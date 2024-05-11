@@ -20,7 +20,7 @@ please read the following link :
 
 ### deploy 
 ```shell
-mvn clean package -DskipTests -s setting.xml -f pom.xml 
+mvn clean package -DskipTests -s settings.xml -f pom.xml 
 ```
 
 
