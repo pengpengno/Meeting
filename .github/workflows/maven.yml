@@ -35,19 +35,30 @@ jobs:
         distribution: 'temurin'
         cache: maven
         server-id: ossrh
-        server-username: MAVEN_USERNAME
-        server-password: MAVEN_PASSWORD
+        server-username: MAVEN_USERNAME # env variable for username in deploy
+        server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
+        gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
+        gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
     - name: Build with Maven
       run: mvn -B package --file pom.xml -DskipTests
 
 #    - name: Build the Docker image
 #      run: docker-compose -f "docker-compose.yml" up -d --build
 
-    - name: Publish package
-      run: mvn --batch-mode deploy -DskipTests
+
+
+    - name: Publish to Apache Maven Central
+      run: mvn deploy
       env:
         MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+        MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
+        MAVEN_GPG_PASSPHRASE: wal@!123
+#        MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+#    - name: Publish package
+#      run: mvn --batch-mode deploy -DskipTests
+#      env:
+#        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+#        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 
 
     - name: Setup Gluon's GraalVM
