@@ -283,6 +283,7 @@
       <properties>
         <package.type>pkg</package.type>
         <mac.app.store>false</mac.app.store>
+        <!--suppress UnresolvedMavenProperty -->
         <bundle.version>${env.GITHUB_RUN_NUMBER}</bundle.version>
         <bundle.short.version>1.0</bundle.short.version>
       </properties>
@@ -292,6 +293,7 @@
       <properties>
         <package.type>pkg</package.type>
         <mac.app.store>true</mac.app.store>
+        <!--suppress UnresolvedMavenProperty -->
         <bundle.version>1.${env.GITHUB_RUN_NUMBER}</bundle.version>
         <bundle.short.version>1.6</bundle.short.version>
       </properties>
