@@ -18,10 +18,12 @@ data/
 *.nar
 *.ear
 *.zip
+target/**
 *.tar.gz
 *.rar
 logs
 meeting-common/target
+meeting-web/target
 Meeting-web/target
 meeting-server/target
 meeting-gui/target
