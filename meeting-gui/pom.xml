@@ -15,6 +15,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.9.2</junit.version>
+    <attach.version>4.0.20</attach.version>
+    <charm.version>6.2.3</charm.version>
     <javafx.version>21</javafx.version>
     <javacv.version>1.5.9</javacv.version>
     <gluonfx.maven.plugin.version>1.0.22</gluonfx.maven.plugin.version>
@@ -116,6 +118,38 @@
       <groupId>com.jfoenix</groupId>
       <artifactId>jfoenix</artifactId>
       <version>9.0.10</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>com.gluonhq</groupId>
+      <artifactId>charm-glisten</artifactId>
+      <version>${charm.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.gluonhq.attach</groupId>
+      <artifactId>display</artifactId>
+      <version>${attach.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.gluonhq.attach</groupId>
+      <artifactId>lifecycle</artifactId>
+      <version>${attach.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.gluonhq.attach</groupId>
+      <artifactId>statusbar</artifactId>
+      <version>${attach.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.gluonhq.attach</groupId>
+      <artifactId>storage</artifactId>
+      <version>${attach.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.gluonhq.attach</groupId>
+      <artifactId>util</artifactId>
+      <version>${attach.version}</version>
     </dependency>
 
       <dependency>
@@ -256,6 +290,10 @@
   <repositories>
 
 
+    <repository>
+      <id>gluon-releases</id>
+      <url>https://nexus.gluonhq.com/nexus/content/repositories/releases</url>
+    </repository>
 
     <repository>
       <id>Gluon</id>
