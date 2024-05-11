@@ -47,6 +47,26 @@
         <mapstruct-binding.version>0.2.0</mapstruct-binding.version>
         <javacv.platform.version>1.5.10</javacv.platform.version>
     </properties>
+
+
+
+
+<!--    <server>-->
+<!--        <id>${server}</id>-->
+<!--        <username>sAbzz5OY</username>-->
+<!--        <password>jKhbQ3pFvN9JA/JT74wGjDStRpa8AH6vITqgg6YYxJ5P</password>-->
+<!--    </server>-->
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+
+
     <dependencies>
 
         <dependency>
@@ -375,17 +395,17 @@
 
     <distributionManagement>
 
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/octocat/hello-world</url>
-        </repository>
-
 <!--        <repository>-->
-<!--            <id>ossrh</id>-->
-<!--            <name>Central Repository OSSRH</name>-->
-<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--            <id>github</id>-->
+<!--            <name>GitHub Packages</name>-->
+<!--            <url>https://maven.pkg.github.com/octocat/hello-world</url>-->
 <!--        </repository>-->
+
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
     </distributionManagement>
 </project>
 
