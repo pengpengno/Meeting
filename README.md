@@ -13,7 +13,7 @@ mvn protobuf:compile protobuf:compile-custom
 ```
 
 
-git github proxy
+ [git github proxy](https://gist.github.com/laispace/666dd7b27e9116faece6)
 ```
 #使用socks5代理（推荐）
 git config --global http.https://github.com.proxy socks5://127.0.0.1:51837
