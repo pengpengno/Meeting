@@ -43,15 +43,15 @@
 
     <server>
       <id>central</id>
-      <username>TuBKCazv</username>
-      <password>+RBMNm/JoitrInXYA9CieSajCZIpzpk8JFUILsfj4n1t</password>
+      <username>zNOXrjT5</username>
+      <password>Gn2sT6MD+Mr6GMJSNG50V5949z7g2n4ZWW2JBa7okaTj</password>
     </server>
 
 
     <server>
       <id>ossrh</id>
-      <username>TuBKCazv</username>
-      <password>+RBMNm/JoitrInXYA9CieSajCZIpzpk8JFUILsfj4n1t</password>
+      <username>zNOXrjT5</username>
+      <password>Gn2sT6MD+Mr6GMJSNG50V5949z7g2n4ZWW2JBa7okaTj</password>
     </server>
   </servers>
 

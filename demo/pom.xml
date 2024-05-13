@@ -4,13 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.github.meeting</groupId>
+        <groupId>io.github.pengpengno</groupId>
         <artifactId>meeting</artifactId>
         <version>1.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.github.meeting</groupId>
     <artifactId>demo</artifactId>
+    <version>${project.parent.version}</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

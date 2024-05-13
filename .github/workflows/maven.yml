@@ -43,11 +43,11 @@ jobs:
 #
 #    - run: mkdir staging && cp target/*.jar staging
 
-    - name: Publish to the Maven Central Repository
-      run: mvn -B deploy --file pom.xml -DskipTests -s settings.xml
-      env:
-        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
+#    - name: Publish to the Maven Central Repository
+#      run: mvn -B deploy --file pom.xml -DskipTests -s settings.xml
+#      env:
+#        MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+#        MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_TOKEN }}
 #        MAVEN_GPG_PASSPHRASE: wal@!123
 #        MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
 #    - name: Publish package
@@ -70,8 +70,8 @@ jobs:
     - name: Gluon Build
       run: |
         export ANDROID_SDK=$ANDROID_HOME
-        cd ${{github.workplace}}/meeting-gui
-        mvn -Pandroid gluonfx:build gluonfx:package -pl meeting-gui
+#        cd ${{github.workplace}}/meeting-gui
+        mvn -Pandroid gluonfx:build gluonfx:package -pl meeting-gui -pl meeting-gui -am
       env:
         GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
         GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}

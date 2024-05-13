@@ -4,22 +4,46 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!--    <groupId>com.github.meeting</groupId>-->
     <groupId>io.github.pengpengno</groupId>
     <artifactId>meeting</artifactId>
     <version>1.0</version>
+
     <modules>
         <module>meeting-gui</module>
         <module>meeting-server</module>
         <module>meeting-common</module>
         <module>meeting-web</module>
-<!--        <module>demo</module>-->
+        <module>demo</module>
     </modules>
     <packaging>pom</packaging>
 
-    <name>Meeting Application</name>
+    <name>Meeting</name>
+
     <description>A application used as an example on how to set up pushing
         its components to the Central Repository.</description>
+
+    <developers>
+        <developer>
+            <name>peng.wang</name>
+            <email>pengpeng_on@163.com</email>
+        </developer>
+    </developers>
+
+
+    <scm>
+        <connection>scm:git:https://github.com/pengpengno/meeting.git</connection>
+        <developerConnection>scm:git:ssh://github.com/pengpengno/meeting.git</developerConnection>
+        <url>https://github.com/pengpengno/meeting</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -51,31 +75,25 @@
         <jjwt.version>0.11.2</jjwt.version>
         <mapstruct-binding.version>0.2.0</mapstruct-binding.version>
         <javacv.platform.version>1.5.10</javacv.platform.version>
+        <gluonfx.maven.plugin.version>1.0.22</gluonfx.maven.plugin.version>
+
+
+
+        <main.class>com.github.meeting.gui.Application</main.class>
+        <app.description>The HelloGluon app</app.description>
+        <app.identifier>${main.class}</app.identifier>
+        <package.type/>
+        <mac.app.store/>
+        <mac.signing.user.name/>
+        <bundle.version/>
+        <bundle.short.version/>
+        <version.code/>
+        <provided.keystore.path/>
+        <provided.keystore.password/>
+        <provided.key.alias/>
+        <provided.key.alias.password/>
+
     </properties>
-
-    <!--  开发者信息   -->
-    <developers>
-        <developer>
-            <name>peng.wang</name>
-            <email>pengpeng_on@163.com</email>
-        </developer>
-    </developers>
-
-
-<!--    <server>-->
-<!--        <id>${server}</id>-->
-<!--        <username>sAbzz5OY</username>-->
-<!--        <password>jKhbQ3pFvN9JA/JT74wGjDStRpa8AH6vITqgg6YYxJ5P</password>-->
-<!--    </server>-->
-
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
 
 
     <dependencies>
@@ -110,13 +128,16 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
+            <version>1.4.12</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
+            <version>5.8.25</version>
         </dependency>
     </dependencies>
+
     <dependencyManagement>
 
         <dependencies>
@@ -365,9 +386,9 @@
                 </configuration>
             </plugin>
         </plugins>
+
         <pluginManagement>
             <plugins>
-
                 <!-- Javadoc plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -386,8 +407,6 @@
                     </executions>
                 </plugin>
 
-
-
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -399,8 +418,10 @@
                     <artifactId>protobuf-maven-plugin</artifactId>
                     <version>0.6.1</version>
                     <configuration>
+                        <!--suppress UnresolvedMavenProperty -->
                         <protocArtifact>com.google.protobuf:protoc:3.11.0:exe:${os.detected.classifier}</protocArtifact>
                         <pluginId>grpc-java</pluginId>
+                        <!--suppress UnresolvedMavenProperty -->
                         <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.29.0:exe:${os.detected.classifier}</pluginArtifact>
                         <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
                         <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
@@ -414,7 +435,6 @@
                         </execution>
                     </executions>
                 </plugin>
-
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -431,18 +451,13 @@
                     </executions>
                 </plugin>
 
-<!--                <plugin>-->
-<!--                    <groupId>org.sonatype.plugins</groupId>-->
-<!--                    <artifactId>nexus-staging-maven-plugin</artifactId>-->
-<!--                    <version>1.6.7</version>-->
-<!--                    <extensions>true</extensions>-->
-<!--                    <configuration>-->
-<!--                        <serverId>ossrh</serverId>-->
-<!--                        <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
-<!--                        <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
 
+                <plugin>
+                    <groupId>com.gluonhq</groupId>
+                    <artifactId>gluonfx-maven-plugin</artifactId>
+                    <version>${gluonfx.maven.plugin.version}</version>
+
+                </plugin>
                 <plugin>
                     <groupId>org.sonatype.central</groupId>
                     <artifactId>central-publishing-maven-plugin</artifactId>
@@ -453,48 +468,86 @@
                         <tokenAuth>true</tokenAuth>
                     </configuration>
                 </plugin>
-
-                <!--        Query Dsl plugin -->
-<!--                <plugin>-->
-<!--                    <groupId>com.mysema.maven</groupId>-->
-<!--                    <artifactId>apt-maven-plugin</artifactId>-->
-<!--                    <version>1.1.3</version>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <goals>-->
-<!--                                <goal>process</goal>-->
-<!--                            </goals>-->
-<!--                            <configuration>-->
-<!--                                <outputDirectory>target/generated-sources/java</outputDirectory>-->
-<!--                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>-->
-<!--                            </configuration>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
             </plugins>
         </pluginManagement>
 
-
-
     </build>
+
+    <profiles>
+        <profile>
+            <id>android</id>
+            <modules>
+                <module>meeting-gui</module>
+            </modules>
+            <activation>
+                <property>
+                    <value>android</value>
+                    <name>android</name>
+                </property>
+            </activation>
+            <properties>
+                <main.class>com.github.meeting.gui.Application</main.class>
+                <app.description>The HelloGluon app</app.description>
+                <app.identifier>${main.class}</app.identifier>
+                <package.type/>
+                <mac.app.store/>
+                <mac.signing.user.name/>
+                <bundle.version/>
+                <bundle.short.version/>
+                <version.code/>
+                <provided.keystore.path/>
+                <provided.keystore.password/>
+                <provided.key.alias/>
+                <provided.key.alias.password/>
+                <gluonfx.target>android</gluonfx.target>
+            </properties>
+                <build>
+
+                    <plugins>
+
+                        <plugin>
+                            <groupId>com.gluonhq</groupId>
+                            <artifactId>gluonfx-maven-plugin</artifactId>
+                            <version>${gluonfx.maven.plugin.version}</version>
+                            <configuration>
+                                <verbose>true</verbose>
+                                <target>${gluonfx.target}</target>
+                                <attachList>
+                                    <list>display</list>
+                                    <list>lifecycle</list>
+                                    <list>statusbar</list>
+                                    <list>storage</list>
+                                </attachList>
+                                <mainClass>${main.class}</mainClass>
+                                <appIdentifier>${app.identifier}</appIdentifier>
+                                <releaseConfiguration>
+                                    <vendor>Gluon</vendor>
+                                    <description>${app.description}</description>
+                                    <packageType>${package.type}</packageType>
+                                    <!-- for macOS/iOS -->
+                                    <macAppStore>${mac.app.store}</macAppStore>
+                                    <bundleShortVersion>${bundle.short.version}</bundleShortVersion>
+                                    <bundleVersion>${bundle.version}</bundleVersion>
+                                    <!-- for Android -->
+                                    <versionCode>${version.code}</versionCode>
+                                    <providedKeyStorePath>${provided.keystore.path}</providedKeyStorePath>
+                                    <providedKeyStorePassword>${provided.keystore.password}</providedKeyStorePassword>
+                                    <providedKeyAlias>${provided.key.alias}</providedKeyAlias>
+                                    <providedKeyAliasPassword>${provided.key.alias.password}</providedKeyAliasPassword>
+                                </releaseConfiguration>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+
+                </build>
+
+
+        </profile>
+
+    </profiles>
 
     <distributionManagement>
 
-<!--        <repository>-->
-<!--            <id>github</id>-->
-<!--            <name>GitHub Packages</name>-->
-<!--            <url>https://maven.pkg.github.com/octocat/hello-world</url>-->
-<!--        </repository>-->
-
-        <!-- Central Repository -->
-<!--        <snapshotRepository>-->
-<!--            <id>ossrh</id>-->
-<!--            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>-->
-<!--        </snapshotRepository>-->
-<!--        <repository>-->
-<!--            <id>ossrh</id>-->
-<!--            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-<!--        </repository>-->
     </distributionManagement>
 </project>
 

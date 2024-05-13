@@ -12,6 +12,7 @@
   </parent>
 
   <artifactId>meeting-gui</artifactId>
+  <version>${project.parent.version}</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +21,6 @@
     <charm.version>6.2.3</charm.version>
     <javafx.version>21</javafx.version>
     <javacv.version>1.5.9</javacv.version>
-    <gluonfx.maven.plugin.version>1.0.22</gluonfx.maven.plugin.version>
     <main.class>com.github.meeting.gui.Application</main.class>
     <app.description>The HelloGluon app</app.description>
     <app.identifier>${main.class}</app.identifier>
@@ -176,12 +176,12 @@
 
     </resources>
 
-<!--    <extensions>-->
-<!--      <extension>-->
-<!--        <groupId>kr.motd.maven</groupId>-->
-<!--        <artifactId>os-maven-plugin</artifactId>-->
-<!--      </extension>-->
-<!--    </extensions>-->
+    <extensions>
+      <extension>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+      </extension>
+    </extensions>
 
     <plugins>
       <plugin>
@@ -265,14 +265,14 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>com.github.peng.Application</mainClass>
+          <mainClass>${main.class}</mainClass>
         </configuration>
         <executions>
           <execution>
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.github.meeting.Application</mainClass>
+              <mainClass>${main.class}</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
@@ -364,7 +364,7 @@
       </properties>
     </profile>
     <profile>
-      <id>pi</id>
+      <id>linux</id>
       <properties>
         <gluonfx.target>linux-aarch64</gluonfx.target>
       </properties>

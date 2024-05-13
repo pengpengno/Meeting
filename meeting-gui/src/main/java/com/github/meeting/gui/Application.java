@@ -43,7 +43,9 @@ public class Application extends javafx.application.Application {
 
 
     private void postInit(Scene scene) {
+
         Swatch.LIGHT_GREEN.assignTo(scene);
+
         scene.getStylesheets().add(Application.class.getResource("styles.css").toExternalForm());
 
         if (Platform.isDesktop()) {
@@ -85,6 +87,12 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void init() throws Exception {
+//
+//        appManager.addViewFactory("login", () -> {
+//            View view = new View(new LoginController());
+//        });
+
+
         appManager.addViewFactory(HOME_VIEW, () -> {
             FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.SEARCH.text,
                     e -> System.out.println("Search"));
