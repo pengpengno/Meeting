@@ -1,4 +1,4 @@
-module com.github.peng.meeting.common {
+xmodule com.github.peng.meeting.common {
     exports com.github.peng.model.account;
     exports com.github.peng.util;
     exports com.github.peng.model;

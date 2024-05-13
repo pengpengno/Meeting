@@ -36,11 +36,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.google.api-client</groupId>
-            <artifactId>google-api-client</artifactId>
-            <version>1.32.1</version>
-        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.google.api-client</groupId>-->
+<!--            <artifactId>google-api-client</artifactId>-->
+<!--            <version>1.32.1</version>-->
+<!--        </dependency>-->
 
 
         <dependency>
@@ -59,18 +60,6 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
-
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,18 +67,12 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-integration</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.bytedeco</groupId>-->
+<!--            <artifactId>javacv-platform</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv-platform</artifactId>
-        </dependency>
-
-        <dependency>
-<!--            <groupId>com.github.meeting</groupId>-->
             <groupId>io.github.pengpengno</groupId>
             <artifactId>meeting-common</artifactId>
             <version>1.0</version>
@@ -154,4 +137,6 @@
             </plugin>
         </plugins>
     </build>
+
+
 </project>

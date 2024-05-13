@@ -21,6 +21,7 @@
     <charm.version>6.2.3</charm.version>
     <javafx.version>21</javafx.version>
     <javacv.version>1.5.9</javacv.version>
+    <gluonfx.maven.plugin.version>1.0.22</gluonfx.maven.plugin.version>
     <main.class>com.github.meeting.gui.Application</main.class>
     <app.description>The HelloGluon app</app.description>
     <app.identifier>${main.class}</app.identifier>
@@ -166,7 +167,6 @@
     <finalName>${project.artifactId}-${project.version}</finalName>
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/main/test</testSourceDirectory>
-    <outputDirectory>./target</outputDirectory>
     <resources>
       <resource>
         <directory>src/main/resources</directory>
@@ -177,12 +177,12 @@
 
     </resources>
 
-    <extensions>
-      <extension>
-        <groupId>kr.motd.maven</groupId>
-        <artifactId>os-maven-plugin</artifactId>
-      </extension>
-    </extensions>
+<!--    <extensions>-->
+<!--      <extension>-->
+<!--        <groupId>kr.motd.maven</groupId>-->
+<!--        <artifactId>os-maven-plugin</artifactId>-->
+<!--      </extension>-->
+<!--    </extensions>-->
 
     <plugins>
       <plugin>
@@ -381,7 +381,7 @@
       </properties>
     </profile>
     <profile>
-      <id>linux</id>
+      <id>pi</id>
       <properties>
         <gluonfx.target>linux-aarch64</gluonfx.target>
       </properties>

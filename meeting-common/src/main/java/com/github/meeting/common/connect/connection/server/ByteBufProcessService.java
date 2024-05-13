@@ -1,8 +1,8 @@
 package com.github.meeting.common.connect.connection.server;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
+//import com.github.benmanes.caffeine.cache.Cache;
+//import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.meeting.common.connect.connection.ConnectionConstants;
 import com.github.meeting.common.connect.connection.server.context.IConnectContextAction;
 import com.google.protobuf.Message;
@@ -44,8 +44,6 @@ public class ByteBufProcessService implements ApplicationContextAware ,ByteBufPr
     }
 
 
-    private final Cache<String, Connection> connectionCache = Caffeine.newBuilder()
-            .build();
 
     @Override
     public void process(Connection con, ByteBuf byteBuf)  {

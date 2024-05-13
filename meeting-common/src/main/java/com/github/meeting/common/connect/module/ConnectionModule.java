@@ -5,12 +5,13 @@ import com.github.meeting.common.connect.connection.server.context.IConnectConte
 import com.github.meeting.common.connect.connection.server.context.IConnectContextAction;
 import com.github.meeting.common.connect.connection.server.context.IConnection;
 import com.github.meeting.common.connect.connection.server.context.ReactorConnection;
-import com.github.meeting.common.cv.ScreenGrabber;
+//import com.github.meeting.common.cv.ScreenGrabber;
 import com.github.meeting.common.connect.connection.ConnectionConsumer;
 import com.github.meeting.common.connect.connection.server.ReactiveConnectionConsumer;
 import com.github.meeting.common.connect.connection.server.tcp.ReactorTcpServer;
 import com.github.meeting.common.connect.model.proto.Account;
 import com.github.meeting.common.connect.model.proto.Chat;
+//import com.github.meeting.common.cv.ScreenGrabber;
 import com.google.inject.*;
 import com.google.inject.name.Names;
 import com.google.protobuf.MessageLite;
@@ -53,7 +54,7 @@ public class ConnectionModule extends AbstractModule {
 
         bind(IConnection.class).to(ReactorConnection.class);
 
-        bind(ScreenGrabber.class).in(Singleton.class);
+//        bind(ScreenGrabber.class).in(Singleton.class);
 
 //        bind(ScreenGrabber.class).in(Singleton.class);
 

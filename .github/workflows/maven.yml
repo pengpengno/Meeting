@@ -13,13 +13,13 @@ permissions:
   pages: write
   id-token: write
   attestations: write
-#on:
-#  schedule:
-#    - cron: "0 2 * * 1"
-#  push:
-#    branches: [ "main" ]
-#  pull_request:
-#    branches: [ "main" ]
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -27,15 +27,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
-        server-username: MAVEN_USERNAME # env variable for username in deploy
-        server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+#        server-username: MAVEN_USERNAME # env variable for username in deploy
+#        server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
+      - name: Publish package
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #    - name: Compile and package the project using Maven
 #      run: mvn -B package --file pom.xml -DskipTests -s settings.xml
 #    - uses: actions/upload-artifact@v4
@@ -58,36 +62,36 @@ jobs:
 #        MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 
 
-    - name: Setup Gluon's GraalVM
-      uses: gluonhq/setup-graalvm@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Setup Gluon's GraalVM
+#        uses: gluonhq/setup-graalvm@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Install libraries
-      run: |
-        sudo apt-get update
-        sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+#      - name: Install libraries
+#        run: |
+#          sudo apt-get update
+#          sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
 
-    - name: Gluon Build
-      run: |
-        export ANDROID_SDK=$ANDROID_HOME
-        mvn -Pandroid gluonfx:build gluonfx:package -pl meeting-gui -pl meeting-gui -am
-      env:
-        GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
-        GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
-        GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
-        GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
+#      - name: Gluon Build
+#        run: |
+#          export ANDROID_SDK=$ANDROID_HOME
+#          mvn -Pandroid gluonfx:build gluonfx:package -pl meeting-gui -pl meeting-gui -am
+#        env:
+#          GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
+#          GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
+#          GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
+#          GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
 
-    - name: Make staging directory
-      run: mkdir staging
+      - name: Make staging directory
+        run: mkdir staging
 
-    - name: Copy packages to staging
-      run: cp -r ${{github.workplace}}/meeting-gui/target/gluonfx/aarch64-android/gvm/HelloGluon.* staging
+      - name: Copy packages to staging
+        run: cp -r ${{github.workplace}}/meeting-gui/target/gluonfx/aarch64-android/gvm/HelloGluon.* staging
 
 
-    - uses: actions/attest-build-provenance@v1
-      with:
-        subject-path: '${{ github.workspace }}/meeting-common/target/meeting-common-1.0.jar'
+      - uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: '${{ github.workspace }}/meeting-common/target/meeting-common-1.0.jar'
 
 #  deploy:
 #    # Add a dependency to the build job

@@ -26,7 +26,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -36,8 +35,10 @@ import static com.gluonhq.charm.glisten.application.AppManager.HOME_VIEW;
 /***
  * {@link Launcher use this start up application}
  */
+
 @Slf4j
 public class Application extends javafx.application.Application {
+
 
     private final AppManager appManager = AppManager.initialize(this::postInit);
 

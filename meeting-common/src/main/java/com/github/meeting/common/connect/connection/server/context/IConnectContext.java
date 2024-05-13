@@ -1,11 +1,12 @@
 package com.github.meeting.common.connect.connection.server.context;
 
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
+//import com.github.benmanes.caffeine.cache.Cache;
+//import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.meeting.common.util.ValidatorUtil;
 import io.netty.buffer.ByteBuf;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -19,17 +20,22 @@ import java.util.function.Supplier;
 public class IConnectContext implements IConnectContextAction {
 
 
-    private final Cache<String, IConnection> connectionCache = Caffeine.newBuilder()
-            .maximumSize(1000)
-            .build();
+    private final ConcurrentHashMap<String, IConnection> connectionCache =  new ConcurrentHashMap<String,IConnection>();
+//
+//            Caffeine.newBuilder()
+//            .maximumSize(1000)
+//            .build();
 
 
     /***
      * connection group used to route info to group
      */
-    private final Cache<String, ConnectionGroupRoom> connectionGroup = Caffeine.newBuilder()
-            .maximumSize(1000)
-            .build();
+    private final ConcurrentHashMap<String, ConnectionGroupRoom> connectionGroup =
+            new ConcurrentHashMap<String,ConnectionGroupRoom>();
+
+//            Caffeine.newBuilder()
+//            .maximumSize(1000)
+//            .build();
 
 
 
@@ -51,13 +57,13 @@ public class IConnectContext implements IConnectContextAction {
 
     @Override
     public IConnection applyConnection(String account) {
-        return connectionCache.getIfPresent(account);
+        return connectionCache.get(account);
 
     }
 
     @Override
     public ConnectionGroupRoom applyConnectionGroup(String roomKey) {
-        return connectionGroup.getIfPresent(roomKey);
+        return connectionGroup.get(roomKey);
     }
 
     @Override
@@ -79,7 +85,7 @@ public class IConnectContext implements IConnectContextAction {
 
     @Override
     public ConnectionGroupRoom getOrSupplier(String roomKey, Function<String, Supplier<ConnectionGroupRoom>> connectionFactor) {
-        return connectionGroup.get(roomKey, (key) -> connectionFactor.apply(key).get());
+        return connectionGroup.computeIfAbsent(roomKey, (key) -> connectionFactor.apply(key).get());
     }
 
     private byte[] getData (ByteBuf byteBuf){

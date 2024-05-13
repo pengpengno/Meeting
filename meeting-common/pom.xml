@@ -3,14 +3,40 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.pengpengno</groupId>
-<!--        <groupId>com.github.meeting</groupId>-->
         <artifactId>meeting</artifactId>
         <version>1.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <name>meeting-common</name>
+    <description>meeting-common</description>
     <artifactId>meeting-common</artifactId>
+    <version>${parent.version}</version>
     <packaging>jar</packaging>
+
+
+    <scm>
+        <url>https://github.com/pengpengno/meeting.git</url>
+        <developerConnection>scm:git:https://github.com/pengpengno/meeting.git</developerConnection>
+        <connection>scm:git:https://github.com/pengpengno/meeting.git</connection>
+    </scm>
+
+    <!--  开发者信息   -->
+    <developers>
+        <developer>
+            <name>peng.wang</name>
+            <email>pengpeng_on@163.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
 
 
     <!-- FIXME change it to the project's website -->
@@ -69,21 +95,45 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>ffmpeg-platform</artifactId>
-            <version>6.0-1.5.9</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.bytedeco</groupId>-->
+<!--            <artifactId>ffmpeg-platform</artifactId>-->
+<!--            <version>6.0-1.5.9</version>-->
+<!--            <classifier>${os.detected.classifier}</classifier>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.bytedeco</groupId>-->
+<!--            <artifactId>javacv</artifactId>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv-platform</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.bytedeco</groupId>-->
+<!--            <artifactId>javacv-platform</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>opencv-platform</artifactId>-->
+<!--                    <groupId>org.bytedeco</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>librealsense2</artifactId>-->
+<!--                    <groupId>org.bytedeco</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>leptonica</artifactId>-->
+<!--                    <groupId>org.bytedeco</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>tesseract</artifactId>-->
+<!--                    <groupId>org.bytedeco</groupId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>ffmpeg</artifactId>-->
+<!--                    <groupId>org.bytedeco</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--            &lt;!&ndash;            <classifier>${os.detected.classifier}</classifier>&ndash;&gt;-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -146,4 +196,13 @@
 
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/octocat/hello-world</url>
+        </repository>
+    </distributionManagement>
+
 </project>
