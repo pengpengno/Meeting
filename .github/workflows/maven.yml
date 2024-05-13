@@ -37,6 +37,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - name: output mvn version
+        run: echo "mvn -v" | sh
+        
       - name: Publish package
         run: mvn --batch-mode deploy -DskipTests -Dmaven.resolver.transport=wagon
         env:
