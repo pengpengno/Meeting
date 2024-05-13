@@ -565,6 +565,7 @@
                     </configuration>
                 </plugin>
 
+
                 <!--        Query Dsl plugin -->
 <!--                <plugin>-->
 <!--                    <groupId>com.mysema.maven</groupId>-->
@@ -660,7 +661,6 @@
 
 
         </profile>
-
     </profiles>
 
     <distributionManagement>
