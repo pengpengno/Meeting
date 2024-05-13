@@ -4,8 +4,12 @@
 name: Maven Package
 
 on:
-  release:
-    types: [created]
+  schedule:
+    - cron: "0 2 * * 1"
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
