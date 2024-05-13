@@ -510,6 +510,7 @@
                             <artifactId>gluonfx-maven-plugin</artifactId>
                             <version>${gluonfx.maven.plugin.version}</version>
                             <configuration>
+                                <basedir>meeting-gui</basedir>
                                 <verbose>true</verbose>
                                 <target>${gluonfx.target}</target>
                                 <attachList>
