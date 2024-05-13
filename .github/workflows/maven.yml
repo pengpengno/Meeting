@@ -37,10 +37,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-#        server-username: MAVEN_USERNAME # env variable for username in deploy
-#        server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
       - name: Publish package
-        run: mvn --batch-mode deploy -DskipTests
+        run: mvn --batch-mode deploy -DskipTests -Dmaven.resolver.transport=wagon
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #    - name: Compile and package the project using Maven
