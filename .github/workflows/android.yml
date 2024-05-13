@@ -1,17 +1,17 @@
 name: Android
 
-#permissions:
-#  contents: read
-#  pages: write
-#  id-token: write
-#  attestations: write
-#on:
-#  schedule:
-#    - cron: "0 2 * * 1"
-#  push:
-#    branches: [ "main" ]
-#  pull_request:
-#    branches: [ "main" ]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  attestations: write
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
         run: |
           export ANDROID_SDK=$ANDROID_HOME
           cd ${{github.workplace}}/meeting-gui
-          ./mvnw -Pandroid gluonfx:build gluonfx:package
+          ./mvnw -Pandroid gluonfx:build gluonfx:package -pl meeting-gui -pl meeting-gui -am
         env:
           GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
           GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
@@ -46,11 +46,11 @@ jobs:
       - name: Copy packages to staging
         run: cp -r target/gluonfx/aarch64-android/gvm/HelloGluon.* staging
 
-#      - name: Upload
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: Package
-#          path: staging
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Package
+          path: staging
 
 
 #      - name: Upload to Google Play

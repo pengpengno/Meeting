@@ -13,13 +13,13 @@ permissions:
   pages: write
   id-token: write
   attestations: write
-on:
-  schedule:
-    - cron: "0 2 * * 1"
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+#on:
+#  schedule:
+#    - cron: "0 2 * * 1"
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
 
 jobs:
   build:
