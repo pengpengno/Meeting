@@ -8,11 +8,11 @@
 
 name: Java CI with Maven
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read/read
-  pages: read/write
-  id-token: read/write
-  attestations: read/write
+#permissions:
+#  contents: read/read
+#  pages: read/write
+#  id-token: read/write
+#  attestations: read/write
 on:
   schedule:
     - cron: "0 2 * * 1"
