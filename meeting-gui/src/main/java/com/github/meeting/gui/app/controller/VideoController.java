@@ -2,7 +2,7 @@
 //
 //
 //import com.github.meeting.common.connect.module.GuiceModuleInjector;
-//import com.github.meeting.common.cv.ScreenGrabber;
+////import com.github.meeting.common.cv.ScreenGrabber;
 //import com.sun.javafx.fxml.builder.JavaFXImageBuilder;
 //import javafx.fxml.FXML;
 //import javafx.fxml.Initializable;
@@ -15,11 +15,11 @@
 //import javafx.scene.media.MediaView;
 //import lombok.SneakyThrows;
 //import lombok.extern.slf4j.Slf4j;
-//import org.bytedeco.javacv.Frame;
-//import org.bytedeco.javacv.FrameGrabber;
-//import org.bytedeco.javacv.Java2DFrameUtils;
-//import org.bytedeco.javacv.OpenCVFrameConverter;
-//import org.opencv.android.Utils;
+////import org.bytedeco.javacv.Frame;
+////import org.bytedeco.javacv.FrameGrabber;
+////import org.bytedeco.javacv.Java2DFrameUtils;
+////import org.bytedeco.javacv.OpenCVFrameConverter;
+////import org.opencv.android.Utils;
 //
 //import javax.imageio.ImageIO;
 //import javax.swing.*;
@@ -60,11 +60,11 @@
 //    private Button screen;
 //
 //
-//    private final ScreenGrabber screenGrabber = GuiceModuleInjector.getInstance(ScreenGrabber.class);
+////    private final ScreenGrabber screenGrabber = GuiceModuleInjector.getInstance(ScreenGrabber.class);
 //
-//
-//    private FrameGrabber desktopGrabber;
-//    private FrameGrabber cameraGrabber;
+////
+////    private FrameGrabber desktopGrabber;
+////    private FrameGrabber cameraGrabber;
 //
 //    @Override
 //    public void initialize(URL location, ResourceBundle resources) {

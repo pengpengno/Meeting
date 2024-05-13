@@ -1,14 +1,9 @@
 package com.github.meeting.gui;
 
 import com.github.meeting.common.connect.connection.client.ClientLifeStyle;
-import com.github.meeting.common.connect.connection.client.ClientToolkit;
 import com.github.meeting.common.connect.connection.client.tcp.ReactorTcpClient;
-import com.github.meeting.common.connect.model.proto.Account;
-import com.github.meeting.gui.app.controller.HelloController;
-import com.github.meeting.gui.app.controller.LoginController;
-import com.github.meeting.gui.app.controller.MainController;
-import com.github.meeting.gui.app.controller.VideoController;
-import com.github.meeting.gui.util.FxmlLoader;
+//import com.github.meeting.gui.app.controller.VideoController;
+//import com.github.meeting.gui.util.FxmlLoader;
 import com.gluonhq.attach.display.DisplayService;
 import com.gluonhq.attach.util.Platform;
 import com.gluonhq.charm.glisten.application.AppManager;
@@ -17,7 +12,6 @@ import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.gluonhq.charm.glisten.visual.Swatch;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -62,7 +57,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
+//        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
 
         log.debug("connect status  "  );
 
@@ -80,7 +75,7 @@ public class Application extends javafx.application.Application {
 //        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
 
 
-        stage.setScene(scene);
+//        stage.setScene(scene);
 
         stage.show();
     }
