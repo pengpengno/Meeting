@@ -166,6 +166,7 @@
     <finalName>${project.artifactId}-${project.version}</finalName>
     <sourceDirectory>src/main/java</sourceDirectory>
     <testSourceDirectory>src/main/test</testSourceDirectory>
+    <outputDirectory>./target</outputDirectory>
     <resources>
       <resource>
         <directory>src/main/resources</directory>
