@@ -32,7 +32,6 @@ jobs:
       - name: Gluon Build
         run: |
           export ANDROID_SDK=$ANDROID_HOME
-          cd ${{github.workplace}}/meeting-gui
           ./mvnw -Pandroid gluonfx:build gluonfx:package -pl meeting-gui -pl meeting-gui -am
         env:
           GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
