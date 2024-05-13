@@ -36,14 +36,13 @@ jobs:
         cache: maven
         server-username: MAVEN_USERNAME # env variable for username in deploy
         server-password: MAVEN_CENTRAL_TOKEN # env variable for token in deploy
-    - name: Publish to the Maven Central Repository
-      run: mvn -B package --file pom.xml -DskipTests -s settings.xml
-    - uses: actions/upload-artifact@v4
-      with:
-        name: Package
-        path: staging
-#
-    - run: mkdir staging && cp target/*.jar staging
+#    - name: Compile and package the project using Maven
+#      run: mvn -B package --file pom.xml -DskipTests -s settings.xml
+#    - uses: actions/upload-artifact@v4
+#      with:
+#        name: Package
+#        path: staging
+#    - run: mkdir staging && cp target/*.jar staging
 
 #    - name: Publish to the Maven Central Repository
 #      run: mvn -B deploy --file pom.xml -DskipTests -s settings.xml
