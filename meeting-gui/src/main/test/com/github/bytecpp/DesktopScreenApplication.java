@@ -16,7 +16,7 @@
 //
 //import java.awt.*;
 //
-//@Slf4j
+////@Slf4j
 //public class DesktopScreenApplication extends Application {
 //
 //
@@ -31,7 +31,7 @@
 //        var screenDevices = ge.getScreenDevices();
 //
 //        for (var screenDevice : screenDevices) {
-//            log.info("{}",screenDevice);
+//            //log.info("{}",screenDevice);
 //        }
 //        VBox box = new VBox();
 //
@@ -51,7 +51,7 @@
 //
 //        var refreshRate = screenDevice.getDisplayMode().getRefreshRate();
 //
-//        log.info("refreshRate : {}",refreshRate);
+//        //log.info("refreshRate : {}",refreshRate);
 //
 //        refreshRate = 60 ;
 //
@@ -110,7 +110,7 @@
 //                    desktop.release();
 //                }
 //                catch (Exception ex){
-//                    log.error("{}",ex);
+//                    //log.error("{}",ex);
 //                }
 //
 //            }).start();
@@ -118,7 +118,7 @@
 //
 //        }catch (Exception exception){
 //
-//            log.error("{}",exception);
+//            //log.error("{}",exception);
 //
 //        }
 //    }

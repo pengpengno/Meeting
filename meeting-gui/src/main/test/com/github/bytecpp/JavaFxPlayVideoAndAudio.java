@@ -198,7 +198,7 @@
 //                Platform.exit();
 //            } catch (Exception exception) {
 //
-//                LOG.log(Level.SEVERE, null, exception);
+//                //log.log(Level.SEVERE, null, exception);
 //                System.exit(1);
 //            }
 //        });

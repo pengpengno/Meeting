@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  * @description
  * @date 2023/7/8
  */
-@Slf4j
+//@Slf4j
 public class MainView extends Pane implements Initializable {
 
     @Autowired
@@ -40,7 +40,7 @@ public class MainView extends Pane implements Initializable {
             switchPane(pane);
 
         }else {
-            log.warn(" Illegal main no result");
+            //log.warn(" Illegal main no result");
         }
 
     }
@@ -95,7 +95,7 @@ public class MainView extends Pane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        log.info("init MainView Pane");
+        //log.info("init MainView Pane");
 
         initPane();
     }

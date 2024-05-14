@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
  * @date 2023/7/8
  */
 @Component
-@Slf4j
+//@Slf4j
 public class SessionView extends Pane implements ViewAction {
 
     @Autowired
@@ -48,7 +48,7 @@ public class SessionView extends Pane implements ViewAction {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        log.info("init SessionMainView");
+        //log.info("init SessionMainView");
 
         this.setBackground(new Background(new BackgroundFill(Color.rgb(98,109,160),null,null)));
 
@@ -90,12 +90,12 @@ public class SessionView extends Pane implements ViewAction {
     }
 
     private void initChatHandler (){
-        if (log.isDebugEnabled()){
-            log.debug("init chat handler");
-        }
+//        if (log.isDebugEnabled()){
+            //log.debug("init chat handler");
+//        }
 
         this.addEventHandler(ChatEvent.RECEIVE_CHAT , (chat)-> {
-            log.info("client receive message");
+            //log.info("client receive message");
             Chat.ChatMessage chatMessage = chat.getChatMessage();
             ChatMsgVo chatMsgVo = AccProtoBufMapper.INSTANCE.tran2ProtoChat(chatMessage);
             Mono.justOrEmpty(Optional.ofNullable(chatMainPane.currentSessionInfo()))
@@ -103,9 +103,9 @@ public class SessionView extends Pane implements ViewAction {
                     .hasElement()
                     .flatMap(isCurrentSessionMessage -> {
                         if (isCurrentSessionMessage) {
-                            if (log.isDebugEnabled()){
-                                log.debug("receive chat message {} add it to  messagePane {}",chatMsgVo.getContent(),chatMainPane.getMessagePane().block().sessionInfoVo().getSessionId());
-                            }
+//                            if (log.isDebugEnabled()){
+                                //log.debug("receive chat message {} add it to  messagePane {}",chatMsgVo.getContent(),chatMainPane.getMessagePane().block().sessionInfoVo().getSessionId());
+//                            }
                             return chatMainPane.getMessagePane()
                                     .doOnNext(e -> e.addChatBubblePane(chatMsgVo));
                         }

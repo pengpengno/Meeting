@@ -13,7 +13,7 @@
 //
 //import java.awt.*;
 //
-//@Slf4j
+////@Slf4j
 //public class Tests {
 //
 //
@@ -90,14 +90,14 @@
 //        var screenDevices = ge.getScreenDevices();
 //
 //        for (var screenDevice : screenDevices) {
-//            log.info("{}",screenDevice);
+//            //log.info("{}",screenDevice);
 //        }
 //        Integer screen = 0;
 //
 //        var screenDevice = screenDevices[screen];
 //        var refreshRate = screenDevice.getDisplayMode().getRefreshRate();
 //
-//        log.info("refreshRate : {}",refreshRate);
+//        //log.info("refreshRate : {}",refreshRate);
 //
 //        refreshRate = 10 ;
 //
@@ -143,7 +143,7 @@
 //
 ////                recorder.record(frame);
 //
-//                    log.info("{}",frame);
+//                    //log.info("{}",frame);
 //                    // Exit the application when the user closes the window
 ////                if (canvasFrame.getCanvas().isShowing()) {
 ////                    canvasFrame.setDefaultCloseOperation(CanvasFrame.DO_NOTHING_ON_CLOSE);
@@ -160,7 +160,7 @@
 ////                    desktop.release();
 //                }
 //                catch (Exception ex){
-//                    log.error("{}",ex);
+//                    //log.error("{}",ex);
 //                }
 //
 //            }).start();
@@ -168,7 +168,7 @@
 //
 //        }catch (Exception exception){
 //
-//            log.error("{}",exception);
+//            //log.error("{}",exception);
 //
 //        }
 //

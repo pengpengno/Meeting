@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
-@Slf4j
+//@Slf4j
 public class MessagePane extends FlowPane implements Initializable {
 
     private static final Integer MAX_LINE_CHAR = 20 ;
@@ -119,6 +119,6 @@ public class MessagePane extends FlowPane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        log.info("init message ");
+        //log.info("init message ");
     }
 }

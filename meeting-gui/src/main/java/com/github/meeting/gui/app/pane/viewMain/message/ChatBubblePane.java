@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  * 气泡控件
  *
  */
-@Slf4j
+//@Slf4j
 public class ChatBubblePane extends FlowPane implements Initializable {
 
 

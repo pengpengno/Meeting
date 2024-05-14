@@ -25,7 +25,7 @@ import java.nio.charset.Charset;
  * @author pengpeng
  * @date 2023/1/6
  */
-@Slf4j
+//@Slf4j
 public class ReactorNettyTest {
 
 
@@ -40,17 +40,17 @@ public class ReactorNettyTest {
                     .wiretap("SLF4J",LogLevel.INFO)
                     .handle((inbound, outbound) ->{
                         inbound.receive().subscribe(k-> {
-                            log.info("接受到了数据 {}",k.toString(Charset.defaultCharset()));
+                            System.out.println("接受到了数据 "+k.toString(Charset.defaultCharset()));
                         });
                         return outbound.sendString(Mono.just("hello"));
                             })
-                    .doOnUnbound(disposableServer -> log.info("端口 {}",disposableServer.address()))
+                    .doOnUnbound(disposableServer -> System.out.println("端口 "+disposableServer.address()))
                     .bindNow()
                     ;
 //        server.dispose();
         server.onDispose()
                 .block();
-        log.info("sss");
+        System.out.println("sss");
     }
 
     @Test

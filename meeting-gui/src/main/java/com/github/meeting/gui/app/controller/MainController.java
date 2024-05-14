@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@Slf4j
+//@Slf4j
 public class MainController implements Initializable {
 
     @FXML
@@ -48,7 +48,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        log.info("Main Controller is init");
+        //log.info("Main Controller is init");
 //        mainView = new MainView()
         mainView = MainView.getInstance();
         mainView.initialize(null,null);
@@ -78,7 +78,7 @@ public class MainController implements Initializable {
 
         String text = searchField.getText();
 
-        log.info("当前文本为 {} ",text);
+        //log.info("当前文本为 {} ",text);
 
         AccountSearchVo build =
                 AccountSearchVo.builder()
@@ -89,7 +89,7 @@ public class MainController implements Initializable {
 
     public static void show(){
         Stage stage = FxmlLoader.applySingleStage(MainController.class);
-        log.info("prepare to show  main");
+        //log.info("prepare to show  main");
         Image icon = new Image(FileUtil.getInputStream("icon/title/conversation.png"));
         stage.getIcons().add(icon);
         stage.initStyle(StageStyle.UNDECORATED);

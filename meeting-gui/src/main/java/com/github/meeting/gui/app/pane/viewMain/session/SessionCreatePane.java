@@ -19,7 +19,7 @@ import java.util.Set;
 /**
  * 任务创建
  */
-@Slf4j
+//@Slf4j
 public class SessionCreatePane extends Pane implements Initializable {
 
 
@@ -39,14 +39,14 @@ public class SessionCreatePane extends Pane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        log.info(" creating session ! ");
+        //log.info(" creating session ! ");
         sessionTitle =  new JFXTextArea();
         sessionDetail =  new JFXTextArea();
         accounts = CollectionUtil.newHashSet();
         label = new Label("新建会话");
         createButton = new JFXButton(SessionConst.CREATE);
         createButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (mouse) -> {
-            log.debug("开始新建会话");
+            //log.debug("开始新建会话");
             sessionAccountVo.setAddUseIdSet(useIdSet);
         });
     }

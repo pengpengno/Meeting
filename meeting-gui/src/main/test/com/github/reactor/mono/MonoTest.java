@@ -17,15 +17,15 @@ import java.util.Optional;
  * @description
  * @date 2023/1/11
  */
-@Slf4j
+//@Slf4j
 public class MonoTest {
 
     @Test
     public void test(){
         Assertions.assertThrows(NullPointerException.class, () -> Mono.just(null)
                 .doOnNext(a -> Assert.notNull(a, "sd"))
-                .doOnError(throwable -> log.info("出现异常"))
-                .subscribe(s -> log.info(s.toString()))
+//                .doOnError(throwable -> System.out.println("出现异常"))
+//                .subscribe(s -> System.out.println(s.toString()))
         );
     }
 
@@ -40,12 +40,11 @@ public class MonoTest {
                 .switchIfEmpty(Flux.just(9,2,8,1,9,1))
                 ;
 
-        wangpeng.subscribe(s -> log.info("output {}",s));
+        wangpeng.subscribe(s -> System.out.println("output "+s));
             StepVerifier.create(wangpeng)
                     .expectNext(9,2,8,1,9,1)
                     .verifyComplete()
                     ;
-//                    .verifyComplete();
 
     }
     @Test
@@ -58,7 +57,7 @@ public class MonoTest {
                 .switchIfEmpty(Flux.just(9,2,8,1,9,1))
                 .map(e->e+1)
                 ;
-        wangpeng.subscribe(k->log.info(k.toString()));
+        wangpeng.subscribe(k->System.out.println(k.toString()));
     }
     @Test
     public void switchIfEmMut(){
@@ -69,16 +68,16 @@ public class MonoTest {
                 .doOnNext(item -> integer2.remove(item))
                 .switchIfEmpty(Flux.just(9,2,8,1,9,1))
 //                .flatMap(e->Mono.empty())
-                .doOnNext(s->log.info(s.toString()))
+                .doOnNext(s->System.out.println(s.toString()))
                 .switchIfEmpty(Flux.just(567,2))
-                .subscribe(k->log.info(k.toString()));
+                .subscribe(k->System.out.println(k.toString()));
     }
 
     @Test
     public void empty(){
         String[] thy = new String[]{"222","4444"};
         Mono.justOrEmpty(Optional.ofNullable(null))
-                .doOnNext(e->log.info(e.toString())).subscribe();
+                .doOnNext(e->System.out.println(e.toString())).subscribe();
     }
 
     @Test

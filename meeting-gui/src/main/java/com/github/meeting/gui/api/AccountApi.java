@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
  * @date 2023/3/3
  */
 @Component
-@Slf4j
+//@Slf4j
 public class AccountApi {
 
 
@@ -40,7 +40,7 @@ public class AccountApi {
 //                                    new RuntimeException(problemDetail.getDetail()))))
 //                .bodyToMono(AccountAuthenticateVo.class)
 //                .doOnError((throwable)-> {
-//                    log.error( throwable.getMessage());
+//                    //log.error( throwable.getMessage());
 //                });
     }
 
@@ -67,7 +67,7 @@ public class AccountApi {
 //                        new RuntimeException(problemDetail.getDetail()))))
 //                .bodyToMono(AccountInfo.class)
 //                .doOnError((throwable)-> {
-//                    log.error( throwable.getMessage());
+//                    //log.error( throwable.getMessage());
 //                });
     }
 

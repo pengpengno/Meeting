@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
-@Slf4j
+//@Slf4j
 public class ChatApi {
 
 
@@ -32,7 +32,7 @@ public class ChatApi {
 //                            new RuntimeException(problemDetail.getDetail()))))
 //                .bodyToMono(Void.class)
 //                .doOnError((throwable)-> {
-//                    log.error(ExceptionUtil.stacktraceToString(throwable) );
+//                    //log.error(ExceptionUtil.stacktraceToString(throwable) );
 //                });
     }
 
@@ -53,7 +53,7 @@ public class ChatApi {
 //                                        Mono.error(()->
 //                                            new RuntimeException(problemDetail.getDetail()))))
 //                .bodyToFlux(ChatMsgVo.class)
-//                .doOnError((throwable)-> log.error(ExceptionUtil.stacktraceToString(throwable) ));
+//                .doOnError((throwable)-> //log.error(ExceptionUtil.stacktraceToString(throwable) ));
     }
 
 }

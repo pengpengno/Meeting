@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * @description
  * @date 2023/6/29
  */
-@Slf4j
+//@Slf4j
 public class DashBoardPane extends FlowPane implements Initializable {
 
 
@@ -41,7 +41,7 @@ public class DashBoardPane extends FlowPane implements Initializable {
 
         this.setBackground(new Background(new BackgroundFill(Color.rgb(1,180,100),null,null)));
 
-        log.info (this.getClass().getName() + "has been build ");
+        //log.info (this.getClass().getName() + "has been build ");
 
         initPane();
 
@@ -65,7 +65,7 @@ public class DashBoardPane extends FlowPane implements Initializable {
         this.setVgap(dashBoardMiniApps.size());
         this.getChildren().add( accountName);
         if (CollectionUtil.isNotEmpty(dashBoardMiniApps)){
-            log.info("  app size is {}",dashBoardMiniApps.size());
+            //log.info("  app size is {}",dashBoardMiniApps.size());
             dashBoardMiniApps.stream().filter(Objects::nonNull).forEach(e-> {
 
                 if (e instanceof Initializable initializable){

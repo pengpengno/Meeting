@@ -18,7 +18,7 @@ import static reactor.core.publisher.Sinks.EmitFailureHandler.FAIL_FAST;
  * @description
  * @date 2023/1/13
  */
-@Slf4j
+//@Slf4j
 public class FluxTest {
 
     @org.junit.jupiter.api.Test
@@ -54,8 +54,8 @@ public class FluxTest {
 
         ConnectableFlux<Integer> co = source.publish();
 
-        co.subscribe(e->log.info(e.toString()), e -> {}, () -> {});
-        co.subscribe(e->log.info(e.toString()), e -> {}, () -> {});
+        co.subscribe(e->System.out.println(e.toString()), e -> {}, () -> {});
+        co.subscribe(e->System.out.println(e.toString()), e -> {}, () -> {});
 
         System.out.println("done subscribing");
         Thread.sleep(500);
@@ -71,9 +71,9 @@ public class FluxTest {
         Flux<Integer> autoCo = source.publish().autoConnect(2);
 
         autoCo.subscribe(System.out::println, e -> {}, () -> {});
-        log.info("subscribed first");
+        System.out.println("subscribed first");
         Thread.sleep(500);
-        log.info("subscribing second");
+        System.out.println("subscribing second");
         autoCo.subscribe(System.out::println, e -> {}, () -> {});
 
     }

@@ -12,7 +12,7 @@
 //import lombok.extern.slf4j.Slf4j;
 //import org.bytedeco.javacv.*;
 //
-//@Slf4j
+////@Slf4j
 //public class DesktopScreenApplicationRtspClient extends Application {
 //
 //
@@ -73,7 +73,7 @@
 ////                    screenShare.release();
 //                }
 //                catch (Exception ex){
-//                    log.error("{}",ex);
+//                    //log.error("{}",ex);
 //                }
 //
 //            }).start();
@@ -81,7 +81,7 @@
 //
 //        }catch (Exception exception){
 //
-//            log.error("exception \n{}", ExceptionUtil.stacktraceToString(exception));
+//            //log.error("exception \n{}", ExceptionUtil.stacktraceToString(exception));
 //
 //        }
 //    }

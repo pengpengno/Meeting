@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 @Component
-@Slf4j
+//@Slf4j
 @RequiredArgsConstructor
 public class SessionListPane extends FlowPane implements Initializable {
 
@@ -90,7 +90,7 @@ public class SessionListPane extends FlowPane implements Initializable {
 
         if (minPane != null){
             minPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                log.info("click min pane");
+                //log.info("click min pane");
                 if (minPane.getSessionInfoVo() != null){
                     SessionEvent sessionEvent = new SessionEvent(SessionEvent.SESSION_SWITCH, minPane.getSessionInfoVo());
                     switchSessionPaneHandlers.stream().forEach(e-> e.switchSessionEvent(sessionEvent));

@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//@Slf4j
 public class SessionMessageMinPane extends Pane {
 
     private Label sessionNameLabel;
@@ -47,7 +47,7 @@ public class SessionMessageMinPane extends Pane {
 
 //        this.addEventHandler(MouseEvent.MOUSE_CLICKED,event -> {
 //
-//            log.info("click min pane");
+//            //log.info("click min pane");
 //
 //            SessionEvent sessionEvent = new SessionEvent(SessionEvent.SESSION_SWITCH, sessionInfoVo);
 //

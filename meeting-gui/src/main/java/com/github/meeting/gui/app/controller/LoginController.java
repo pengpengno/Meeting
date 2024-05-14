@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-@Slf4j
+//@Slf4j
 public class LoginController  implements Initializable {
 
     @FXML
@@ -63,7 +63,7 @@ public class LoginController  implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         passwordField.setText("wangpeng");
         accountField.setText("wangpeng");
-        log.debug ("initialing login controller ");
+        //log.debug ("initialing login controller ");
     }
 
     @FXML
@@ -76,7 +76,7 @@ public class LoginController  implements Initializable {
 //        accountApi.login(accountVo)
 //                .doOnNext(acc -> {
 //                    Platform.runLater(()->  {
-//                        log.debug("save accountInfo ");
+//                        //log.debug("save accountInfo ");
 //                        AccountContext.setCurAccount(acc);
 //                    });
 //                } )
@@ -88,10 +88,10 @@ public class LoginController  implements Initializable {
 //                        .build();
 //            })
 //            .subscribe(auth-> {
-//                log.info("res {}", auth.toString());
+//                //log.info("res {}", auth.toString());
 //                Platform.runLater(()->  {
 //                    reactiveClientAction.sendMessage(auth).subscribe();
-//                    log.debug("start main frame");
+//                    //log.debug("start main frame");
 //                    hide();
 //                    MainController.show();
 //                });
@@ -104,7 +104,7 @@ public class LoginController  implements Initializable {
 
     @FXML
     void cancelLogin(MouseEvent event) {
-        log.info("正在关闭客户端程序-----");
+        //log.info("正在关闭客户端程序-----");
         Platform.exit();
         System.exit(0);
     }
@@ -117,14 +117,14 @@ public class LoginController  implements Initializable {
 
     public static void show(){
         Stage stage = FxmlLoader.applySingleStage(LoginController.class);
-        log.debug("prepare to show  register");
+        //log.debug("prepare to show  register");
         stage.show();
         stage.setTitle("注册");
     }
 
     public static  void hide(){
         Stage stage = FxmlLoader.applySingleStage(LoginController.class);
-        log.debug("Hide LoginFrame ");
+        //log.debug("Hide LoginFrame ");
         stage.hide();
     }
 

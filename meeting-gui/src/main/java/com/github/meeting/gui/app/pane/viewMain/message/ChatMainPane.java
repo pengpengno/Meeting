@@ -38,7 +38,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 
-@Slf4j
+//@Slf4j
 public class ChatMainPane extends FlowPane implements SwitchSessionPaneHandler, ReceiveChatMessageEventHandler, Initializable {
 
     private MessagePane currentMessagePane ;
@@ -84,7 +84,7 @@ public class ChatMainPane extends FlowPane implements SwitchSessionPaneHandler, 
      */
     private  void switchPaneHandler (){
        this.addEventHandler(SessionEvent.SESSION_SWITCH, event-> {
-           log.info("session switch event");
+           //log.info("session switch event");
            event.getSessionInfoVo()
                    .flatMap(e -> Mono.justOrEmpty(Optional.ofNullable(messagePanes.get(e.getSessionId())))
                            .switchIfEmpty(
@@ -96,7 +96,7 @@ public class ChatMainPane extends FlowPane implements SwitchSessionPaneHandler, 
                                            })))
                                .doOnNext(messagePane -> {
                                    FxApplicationThreadUtil.invoke(()-> {
-                                       log.info("set e {}  as currentMessagePane ", JSON.toJSONString(messagePane.sessionInfoVo()));
+                                       //log.info("set e {}  as currentMessagePane ", JSON.toJSONString(messagePane.sessionInfoVo()));
                                        addMessagePane(messagePane);
                                        switchPane(messagePane);
                                    });
@@ -132,7 +132,7 @@ public class ChatMainPane extends FlowPane implements SwitchSessionPaneHandler, 
 
 
     void sendMessageEvent() {
-        log.info("send button");
+        //log.info("send button");
         sendButton.setOnMouseClicked(event -> {
             String content = messageArea.getText();
             if (StrUtil.isNotBlank(content)){
@@ -161,17 +161,17 @@ public class ChatMainPane extends FlowPane implements SwitchSessionPaneHandler, 
         SessionInfoVo sessionInfoVo = messagePane.sessionInfoVo();
 
         if (sessionInfoVo == null){
-            log.warn("SessionInfoVo is invalid!");
+            //log.warn("SessionInfoVo is invalid!");
             return;
         }
         Long sessionId = sessionInfoVo.getSessionId();
 
         if (messagePanes.containsKey(sessionId)){
-            log.info("MessagePane {}  has exists , extra operation is unnecessary!",sessionId);
+            //log.info("MessagePane {}  has exists , extra operation is unnecessary!",sessionId);
             return;
         }
         messagePanes.putIfAbsent(sessionId,messagePane);
-        log.info("MessagePane {} add into context",sessionId);
+        //log.info("MessagePane {} add into context",sessionId);
 
     }
 

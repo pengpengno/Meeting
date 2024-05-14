@@ -41,7 +41,7 @@
 // * @since 2024/4/17
 // */
 //
-//@Slf4j
+////@Slf4j
 //public class VideoController implements Initializable {
 //
 //    @FXML
@@ -103,7 +103,7 @@
 //            ByteArrayInputStream is = new ByteArrayInputStream(imageData);
 //            return new Image(is);
 //        } catch (IOException e) {
-//            log.error("error",e);
+//            //log.error("error",e);
 //            return null;
 //        }
 //    }
@@ -113,7 +113,7 @@
 //        new Thread(() -> {
 //            try {
 ////                if (!grabber.isTriggerMode()){
-////                    log.error("local desktop screen could not open!");
+////                    //log.error("local desktop screen could not open!");
 ////                    return;
 ////                }
 //
@@ -126,7 +126,7 @@
 //                    }
 //                }
 //            } catch (Exception e) {
-//                log.error("errror",e);
+//                //log.error("errror",e);
 //            }
 //        }).start();
 //        return grabber;
@@ -154,7 +154,7 @@
 //                }
 //            }
 //              catch (FrameGrabber.Exception exception){
-//                        log.error("camera exception ",exception);
+//                        //log.error("camera exception ",exception);
 //              }
 //        }).start();
 //        return camera1;
@@ -164,7 +164,7 @@
 //    @SneakyThrows
 //    private void shareCamera() {
 //        // Add logic to share camera
-//        log.info("click camera");
+//        //log.info("click camera");
 //
 //        if (cameraGrabber!=null){
 //            cameraGrabber.close();
@@ -179,7 +179,7 @@
 //    @SneakyThrows
 //    private void shareScreen() {
 //        // Add logic to share screen
-//        log.info("click screen");
+//        //log.info("click screen");
 //        if (desktopGrabber!=null){
 //            desktopGrabber.close();
 //            desktopGrabber = null;

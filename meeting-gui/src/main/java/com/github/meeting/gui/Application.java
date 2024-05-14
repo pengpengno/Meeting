@@ -31,7 +31,7 @@ import static com.gluonhq.charm.glisten.application.AppManager.HOME_VIEW;
  * {@link Launcher use this start up application}
  */
 
-@Slf4j
+//@Slf4j
 public class Application extends javafx.application.Application {
 
 
@@ -59,16 +59,16 @@ public class Application extends javafx.application.Application {
 
 //        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
 
-        log.debug("connect status  "  );
+        //log.debug("connect status  "  );
 
         try{
 //            ClientLifeStyle connect =
 //                    ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
 //                            .connect();
-//            log.debug("connect status {}", connect.isAlive());
+//            //log.debug("connect status {}", connect.isAlive());
 
         }catch (Exception ex){
-            log.error("1");
+            //log.error("1");
         }
 
 

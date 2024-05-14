@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /***
  * 搜索框
  */
-@Slf4j
+//@Slf4j
 public class SearchPane extends FlowPane {
 
 
@@ -49,7 +49,7 @@ public class SearchPane extends FlowPane {
         this.setVgap(5);
         this.setPadding(new Insets(15,15,15,15));
         accountInfoList.stream().forEach(e->{
-            log.debug("search pane is loading ");
+            //log.debug("search pane is loading ");
             AccountMiniPane accountMiniPane = new AccountMiniPane(e);
             getAccountMap().computeIfAbsent(e.getAccount(),(key)-> accountMiniPane);
         });
@@ -106,7 +106,7 @@ public class SearchPane extends FlowPane {
         @SuppressWarnings(value = "all")
         public void initialize(URL location, ResourceBundle resources) {
 //            init();
-            log.info("load {}  account {}" ,this.getClass().getName(),accountInfo);
+            //log.info("load {}  account {}" ,this.getClass().getName(),accountInfo);
 
         }
 
@@ -121,9 +121,9 @@ public class SearchPane extends FlowPane {
             name.setLayoutY(10d);
             this.getChildren().add(name);
             this.addEventHandler(MouseEvent.MOUSE_CLICKED,(mouse)->{
-                log.debug("click button the account is {}", JSON.toJSONString(accountInfo));
+                //log.debug("click button the account is {}", JSON.toJSONString(accountInfo));
             });
-            log.info("load {}  account {}" ,this.getClass().getName(),accountInfo);
+            //log.info("load {}  account {}" ,this.getClass().getName(),accountInfo);
 
         }
 

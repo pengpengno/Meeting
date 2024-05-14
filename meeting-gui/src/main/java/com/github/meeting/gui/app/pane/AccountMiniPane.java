@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-@Slf4j
+//@Slf4j
 /**
  * 查询面板
  */

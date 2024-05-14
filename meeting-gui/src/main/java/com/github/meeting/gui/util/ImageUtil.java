@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  *图像资源处理工具类
  */
-@Slf4j
+//@Slf4j
 public class ImageUtil {
 
     /***
@@ -40,7 +40,7 @@ public class ImageUtil {
      * @return
      */
     private static BufferedImage roundImage(BufferedImage image, int targetSize, int cornerRadius) {
-        log.info("正在处理图片");
+        //log.info("正在处理图片");
         BufferedImage outputImage = new BufferedImage(targetSize, targetSize, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = outputImage.createGraphics();
         g2.setComposite(AlphaComposite.Src);

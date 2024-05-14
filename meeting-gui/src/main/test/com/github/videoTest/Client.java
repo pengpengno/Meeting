@@ -37,7 +37,7 @@
 // * @description
 // * @date 2023/1/10
 // */
-//@Slf4j
+////@Slf4j
 //public class Client extends Task<ClientUI> implements Serializable {
 //    private static final long serialVersionUID = 1L;
 //    private static final Rectangle dimension = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
@@ -206,7 +206,7 @@
 //    }
 //
 //    private void exetype(ChannelHandlerContext ctx, Datas data) {
-//        log.info("客户端收到数据............");
+//        //log.info("客户端收到数据............");
 //        Alert alert = messages.getAlertss();
 //        Stage audio_stage = messages.getAudio_stage();
 //        Stage video_stage = messages.getVideo_stage();

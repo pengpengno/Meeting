@@ -19,7 +19,7 @@ import java.util.concurrent.LinkedBlockingDeque;
  * @date 2023/7/26
  */
 
-@Slf4j
+//@Slf4j
 public class ChatBubbleShowPane extends FlowPane implements Initializable {
 
     private LinkedBlockingDeque<ChatBubblePane> linkedBlockingBubblePane ;

@@ -3,7 +3,7 @@ package com.github.meeting.gui.app.pane.sys;
 import javafx.scene.layout.Pane;
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//@Slf4j
 public class ServerSettingPane extends Pane {
 
     private String hostName;

@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 
 @Component
-@Slf4j
+//@Slf4j
 public class SessionApi {
 
 
@@ -36,7 +36,7 @@ public class SessionApi {
 //                                    new RuntimeException(problemDetail.getDetail()))))
 //                .bodyToFlux(SessionInfoVo.class)
 //                .doOnError((throwable)-> {
-//                    log.error(ExceptionUtil.stacktraceToString(throwable) );
+//                    //log.error(ExceptionUtil.stacktraceToString(throwable) );
 //                });
     }
 
@@ -59,7 +59,7 @@ public class SessionApi {
 //                                    new RuntimeException(problemDetail.getDetail()))))
 //                .bodyToMono(SessionInfoVo.class)
 //                .doOnError((throwable)-> {
-//                    log.error(ExceptionUtil.stacktraceToString(throwable) );
+//                    //log.error(ExceptionUtil.stacktraceToString(throwable) );
 //                });
     }
 

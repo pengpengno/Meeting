@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 /***
  * 注册界面
  */
-@Slf4j
+//@Slf4j
 public class RegisterController  {
 
     @FXML
@@ -64,7 +64,7 @@ public class RegisterController  {
 
         Stage stage = FxmlLoader.applySingleStage(RegisterController.class);
 
-        log.info("prepare to show  register");
+        //log.info("prepare to show  register");
 
         stage.show();
 

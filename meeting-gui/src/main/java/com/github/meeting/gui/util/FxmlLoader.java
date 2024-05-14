@@ -13,7 +13,7 @@ import org.springframework.util.Assert;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Slf4j
+//@Slf4j
 @Component
 /***
  *  所有 fxml 设计为 与controller 同名 且 同路径
@@ -53,7 +53,7 @@ public class FxmlLoader {
         }
         catch (Exception e){
 
-            log.error("create stage fail {}", ExceptionUtil.stacktraceToString(e));
+            //log.error("create stage fail {}", ExceptionUtil.stacktraceToString(e));
 
             return null;
 
@@ -88,7 +88,7 @@ public class FxmlLoader {
 //        if windows is do close request  handler will close
         resStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST,(evt)-> {
 
-            log.debug("{} frame  is doing {} event",evt.getSource(),evt.getEventType());
+            //log.debug("{} frame  is doing {} event",evt.getSource(),evt.getEventType());
 
             stageMap.remove(clazz);
 
@@ -114,7 +114,7 @@ public class FxmlLoader {
 //        if windows is do close request  handler will close
         resStage.addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST,(evt)-> {
 
-            log.debug("{} frame  is doing {} event",evt.getSource(),evt.getEventType());
+            //log.debug("{} frame  is doing {} event",evt.getSource(),evt.getEventType());
 
             stageMap.remove(clazz);
 

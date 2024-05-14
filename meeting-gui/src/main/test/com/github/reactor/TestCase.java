@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author pengpeng
  * @date 2023/1/5
  */
-@Slf4j
+//@Slf4j
 public class TestCase {
 
     @Test
@@ -43,14 +43,14 @@ public class TestCase {
     }
     @Test
     public  void flux3() {
-        log.info("start");
+        System.out.println("start");
         Flux<Integer> ints = Flux.range(1, 4);
         Disposable done = ints.subscribeOn(Schedulers.single())
-                .subscribe(i -> log.info(String.valueOf(i))
+                .subscribe(i -> System.out.println(String.valueOf(i))
             ,
-                error -> log.info("Error " + error),
-                () -> log.info("Done"));
-        System.out.println(done.isDisposed());
+                error -> System.out.println("Error " + error),
+                () -> System.out.println("Done"));
+//        System.out.println(done.isDisposed());
     }
 
     /**
@@ -65,19 +65,19 @@ public class TestCase {
 //                    if (state == 10) sink.complete();
 //                    return state + 1;
 //                });
-//        flux.subscribe(s->log.info(s.toString()));
+//        flux.subscribe(s->System.out.println(s.toString()));
 
         Flux<String> flux = Flux.generate(
                 AtomicLong::new,
                 (state, sink) -> {
                     long i = state.getAndIncrement();
                     String next = "3 x " + i + " = " + 3*i;
-                    log.info("发送 case {}" ,next);
+                    System.out.println("发送 case " + next);
                     sink.next(next);
                     if (i == 10) sink.complete();
                     return state;
                 }, (state) -> System.out.println("state: " + state));
-        flux.subscribe(log::info);
+//        flux.subscribe(log::info);
     }
     @Test
     public void star (){

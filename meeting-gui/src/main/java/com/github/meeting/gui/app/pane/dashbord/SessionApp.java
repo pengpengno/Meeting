@@ -34,7 +34,7 @@ import java.util.ResourceBundle;
  */
 
 @Component
-@Slf4j
+//@Slf4j
 public class SessionApp extends Pane implements MiniApplication, Initializable {
 
 
@@ -75,9 +75,9 @@ public class SessionApp extends Pane implements MiniApplication, Initializable {
 
     public Mono<Void> initSessionInfoEvent(){
 
-        log.info("init SessionInfo");
+        //log.info("init SessionInfo");
         applicationButton.setOnMouseClicked(mouse-> {
-            log.info("click sessionInfoEvent");
+            //log.info("click sessionInfoEvent");
             mainView.switchPane(appName());
         });
 
