@@ -14,6 +14,7 @@
         <module>meeting-common</module>
         <module>meeting-web</module>
         <module>demo</module>
+        <module>android</module>
     </modules>
     <packaging>pom</packaging>
 
