@@ -80,7 +80,7 @@
 
     <repositories>
         <repository>
-            <id>Gluon</id>
+            <id>gluon-releases</id>
             <url>https://nexus.gluonhq.com/nexus/content/repositories/releases</url>
         </repository>
         <repository>
@@ -163,6 +163,7 @@
             <properties>
                 <package.type>pkg</package.type>
                 <mac.app.store>false</mac.app.store>
+                <!--suppress UnresolvedMavenProperty -->
                 <bundle.version>${env.GITHUB_RUN_NUMBER}</bundle.version>
                 <bundle.short.version>1.0</bundle.short.version>
             </properties>
@@ -172,6 +173,7 @@
             <properties>
                 <package.type>pkg</package.type>
                 <mac.app.store>true</mac.app.store>
+                <!--suppress UnresolvedMavenProperty -->
                 <bundle.version>1.${env.GITHUB_RUN_NUMBER}</bundle.version>
                 <bundle.short.version>1.6</bundle.short.version>
             </properties>
@@ -180,6 +182,7 @@
             <id>ios</id>
             <properties>
                 <gluonfx.target>ios</gluonfx.target>
+                <!--suppress UnresolvedMavenProperty -->
                 <bundle.version>${env.GITHUB_RUN_NUMBER}</bundle.version>
                 <bundle.short.version>1.0</bundle.short.version>
             </properties>
@@ -189,6 +192,8 @@
             <properties>
                 <gluonfx.target>android</gluonfx.target>
                 <app.identifier>com.gluonhq.samples.hellogluon</app.identifier>
+
+                <!--suppress UnresolvedMavenProperty -->
                 <version.code>${env.GITHUB_RUN_NUMBER}</version.code>
 <!--                <provided.keystore.path>${env.GLUON_ANDROID_KEYSTOREPATH}</provided.keystore.path>-->
 <!--                <provided.keystore.password>${env.GLUON_ANDROID_KEYSTORE_PASSWORD}</provided.keystore.password>-->

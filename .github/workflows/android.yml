@@ -40,7 +40,7 @@ jobs:
       - name: Gluon Build
         run: |
           export ANDROID_SDK=$ANDROID_HOME
-          mvn -Pandroid gluonfx:build gluonfx:package -f android/pom.xml -s settings.xml
+          mvn -Pandroid gluonfx:build gluonfx:package -f meeting-gui/pom.xml -s settings.xml
         env:
           GLUON_ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
           GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
@@ -51,7 +51,7 @@ jobs:
         run: mkdir staging
 
       - name: Copy packages to staging
-        run: cp -r android/target/gluonfx/aarch64-android/gvm/*.apk staging
+        run: cp -r meeting-gui/target/gluonfx/aarch64-android/gvm/*.apk staging
 
       - name: Upload
         uses: actions/upload-artifact@v2
