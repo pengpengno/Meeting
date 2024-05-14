@@ -21,7 +21,7 @@
     <charm.version>6.2.3</charm.version>
     <javafx.version>21</javafx.version>
     <javacv.version>1.5.9</javacv.version>
-    <gluonfx.maven.plugin.version>1.0.22</gluonfx.maven.plugin.version>
+    <gluonfx.maven.plugin.version>1.0.23-SNAPSHOT</gluonfx.maven.plugin.version>
     <main.class>com.github.meeting.gui.HelloGluonApp</main.class>
     <app.description>The HelloGluon app</app.description>
     <app.identifier>${main.class}</app.identifier>
