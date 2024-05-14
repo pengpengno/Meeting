@@ -13,13 +13,13 @@ name: Java CI with Maven
 #  pages: read/write
 #  id-token: read/write
 #  attestations: read/write
-on:
-  schedule:
-    - cron: "0 2 * * 1"
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+#on:
+#  schedule:
+#    - cron: "0 2 * * 1"
+#  push:
+#    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
 
 jobs:
   build:
