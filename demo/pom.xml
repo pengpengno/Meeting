@@ -7,7 +7,6 @@
         <groupId>io.github.pengpengno</groupId>
         <artifactId>meeting</artifactId>
         <version>1.0</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>demo</artifactId>

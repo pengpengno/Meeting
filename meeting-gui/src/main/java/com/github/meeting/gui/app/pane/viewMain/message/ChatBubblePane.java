@@ -60,7 +60,7 @@ public class ChatBubblePane extends FlowPane implements Initializable {
             throw new IllegalArgumentException("Chat message is illegal!");
         }
 
-        ValidatorUtil.validateThrows(chatMsgVo, ChatMsgVo.ChatPush.class);
+//        ValidatorUtil.validateThrows(chatMsgVo, ChatMsgVo.ChatPush.class);
 
         AccountInfo fromAccount = chatMsgVo.getFromAccount();
 

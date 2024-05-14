@@ -1,0 +1,3 @@
+[submodule "meeting-gui/Meeting-gui"]
+	path = meeting-gui/Meeting-gui
+	url = git@github.com:pengpengno/Meeting-gui.git

@@ -95,7 +95,15 @@
 
     </properties>
 
-
+     <ciManagement>
+         <url>https://github.com/pengpengno/meeting</url>
+         <notifiers>
+             <notifier>
+                 <type>mail</type>
+                 <address>pengpeng_on@163.com</address>
+             </notifier>
+         </notifiers>
+     </ciManagement>
 
 
     <dependencies>
@@ -413,22 +421,22 @@
 <!--            </plugin>-->
 
             <!-- Javadoc plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <doclint>none</doclint>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                <version>3.2.0</version>-->
+<!--                <configuration>-->
+<!--                    <doclint>none</doclint>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>attach-javadocs</id>-->
+<!--                        <goals>-->
+<!--                            <goal>jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
 
 
             <plugin>
@@ -521,20 +529,20 @@
                 </plugin>
 
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.5</version>
-                    <executions>
-                        <execution>
-                            <id>sign-artifacts</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>sign</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+<!--                <plugin>-->
+<!--                    <groupId>org.apache.maven.plugins</groupId>-->
+<!--                    <artifactId>maven-gpg-plugin</artifactId>-->
+<!--                    <version>1.5</version>-->
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <id>sign-artifacts</id>-->
+<!--                            <phase>verify</phase>-->
+<!--                            <goals>-->
+<!--                                <goal>sign</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
+<!--                </plugin>-->
 
 <!--                <plugin>-->
 <!--                    <groupId>org.sonatype.plugins</groupId>-->
@@ -548,41 +556,23 @@
 <!--                    </configuration>-->
 <!--                </plugin>-->
 
-                <plugin>
-                    <groupId>com.gluonhq</groupId>
-                    <artifactId>gluonfx-maven-plugin</artifactId>
-                    <version>${gluonfx.maven.plugin.version}</version>
-
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.central</groupId>
-                    <artifactId>central-publishing-maven-plugin</artifactId>
-                    <version>0.4.0</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <publishingServerId>central</publishingServerId>
-                        <tokenAuth>true</tokenAuth>
-                    </configuration>
-                </plugin>
-
-
-                <!--        Query Dsl plugin -->
 <!--                <plugin>-->
-<!--                    <groupId>com.mysema.maven</groupId>-->
-<!--                    <artifactId>apt-maven-plugin</artifactId>-->
-<!--                    <version>1.1.3</version>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <goals>-->
-<!--                                <goal>process</goal>-->
-<!--                            </goals>-->
-<!--                            <configuration>-->
-<!--                                <outputDirectory>target/generated-sources/java</outputDirectory>-->
-<!--                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>-->
-<!--                            </configuration>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
+<!--                    <groupId>com.gluonhq</groupId>-->
+<!--                    <artifactId>gluonfx-maven-plugin</artifactId>-->
+<!--                    <version>${gluonfx.maven.plugin.version}</version>-->
 <!--                </plugin>-->
+
+<!--                <plugin>-->
+<!--                    <groupId>org.sonatype.central</groupId>-->
+<!--                    <artifactId>central-publishing-maven-plugin</artifactId>-->
+<!--                    <version>0.4.0</version>-->
+<!--                    <extensions>true</extensions>-->
+<!--                    <configuration>-->
+<!--                        <publishingServerId>central</publishingServerId>-->
+<!--                        <tokenAuth>true</tokenAuth>-->
+<!--                    </configuration>-->
+<!--                </plugin>-->
+
             </plugins>
         </pluginManagement>
 
@@ -594,7 +584,8 @@
         <profile>
             <id>android</id>
             <modules>
-                <module>meeting-gui</module>
+                <module>meeting-gui
+                </module>
             </modules>
             <activation>
                 <property>
@@ -618,46 +609,56 @@
                 <provided.key.alias.password/>
                 <gluonfx.target>android</gluonfx.target>
             </properties>
-                <build>
 
+            <build>
+                <pluginManagement>
                     <plugins>
-
                         <plugin>
                             <groupId>com.gluonhq</groupId>
                             <artifactId>gluonfx-maven-plugin</artifactId>
                             <version>${gluonfx.maven.plugin.version}</version>
-                            <configuration>
-                                <basedir>meeting-gui</basedir>
-                                <verbose>true</verbose>
-                                <target>${gluonfx.target}</target>
-                                <attachList>
-                                    <list>display</list>
-                                    <list>lifecycle</list>
-                                    <list>statusbar</list>
-                                    <list>storage</list>
-                                </attachList>
-                                <mainClass>${main.class}</mainClass>
-                                <appIdentifier>${app.identifier}</appIdentifier>
-                                <releaseConfiguration>
-                                    <vendor>Gluon</vendor>
-                                    <description>${app.description}</description>
-                                    <packageType>${package.type}</packageType>
-                                    <!-- for macOS/iOS -->
-                                    <macAppStore>${mac.app.store}</macAppStore>
-                                    <bundleShortVersion>${bundle.short.version}</bundleShortVersion>
-                                    <bundleVersion>${bundle.version}</bundleVersion>
-                                    <!-- for Android -->
-                                    <versionCode>${version.code}</versionCode>
-                                    <providedKeyStorePath>${provided.keystore.path}</providedKeyStorePath>
-                                    <providedKeyStorePassword>${provided.keystore.password}</providedKeyStorePassword>
-                                    <providedKeyAlias>${provided.key.alias}</providedKeyAlias>
-                                    <providedKeyAliasPassword>${provided.key.alias.password}</providedKeyAliasPassword>
-                                </releaseConfiguration>
-                            </configuration>
                         </plugin>
                     </plugins>
+                </pluginManagement>
+            </build>
+<!--                <build>-->
+<!--                    <plugins>-->
+<!--                        <plugin>-->
+<!--                            <groupId>com.gluonhq</groupId>-->
+<!--                            <artifactId>gluonfx-maven-plugin</artifactId>-->
+<!--                            <version>${gluonfx.maven.plugin.version}</version>-->
+<!--                            <configuration>-->
+<!--                                <basedir>meeting-gui</basedir>-->
+<!--                                <verbose>true</verbose>-->
+<!--                                <target>${gluonfx.target}</target>-->
+<!--                                <attachList>-->
+<!--                                    <list>display</list>-->
+<!--                                    <list>lifecycle</list>-->
+<!--                                    <list>statusbar</list>-->
+<!--                                    <list>storage</list>-->
+<!--                                </attachList>-->
+<!--                                <mainClass>${main.class}</mainClass>-->
+<!--                                <appIdentifier>${app.identifier}</appIdentifier>-->
+<!--                                <releaseConfiguration>-->
+<!--                                    <vendor>Gluon</vendor>-->
+<!--                                    <description>${app.description}</description>-->
+<!--                                    <packageType>${package.type}</packageType>-->
+<!--                                    &lt;!&ndash; for macOS/iOS &ndash;&gt;-->
+<!--                                    <macAppStore>${mac.app.store}</macAppStore>-->
+<!--                                    <bundleShortVersion>${bundle.short.version}</bundleShortVersion>-->
+<!--                                    <bundleVersion>${bundle.version}</bundleVersion>-->
+<!--                                    &lt;!&ndash; for Android &ndash;&gt;-->
+<!--                                    <versionCode>${version.code}</versionCode>-->
+<!--                                    <providedKeyStorePath>${provided.keystore.path}</providedKeyStorePath>-->
+<!--                                    <providedKeyStorePassword>${provided.keystore.password}</providedKeyStorePassword>-->
+<!--                                    <providedKeyAlias>${provided.key.alias}</providedKeyAlias>-->
+<!--                                    <providedKeyAliasPassword>${provided.key.alias.password}</providedKeyAliasPassword>-->
+<!--                                </releaseConfiguration>-->
+<!--                            </configuration>-->
+<!--                        </plugin>-->
+<!--                    </plugins>-->
 
-                </build>
+<!--                </build>-->
 
 
         </profile>

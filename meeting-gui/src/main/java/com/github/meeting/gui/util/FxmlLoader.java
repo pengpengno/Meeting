@@ -1,9 +1,6 @@
 package com.github.meeting.gui.util;
 
 import cn.hutool.core.exceptions.ExceptionUtil;
-import cn.hutool.extra.spring.SpringUtil;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

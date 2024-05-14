@@ -4,15 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-<!--    <groupId>com.github.meeting</groupId>-->
     <groupId>io.github.pengpengno</groupId>
     <artifactId>meeting</artifactId>
     <version>1.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+
   <artifactId>meeting-gui</artifactId>
-  <version>${project.parent.version}</version>
+<!--  <version>${project.parent.version}</version>-->
+  <version>1.0</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -153,13 +154,71 @@
       <artifactId>util</artifactId>
       <version>${attach.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
 
+    <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+    </dependency>
       <dependency>
         <groupId>io.github.pengpengno</groupId>
           <artifactId>meeting-common</artifactId>
           <version>1.0</version>
-          <scope>compile</scope>
+          <systemPath>${project.basedir}/lib/meeting-common-1.0.jar</systemPath>
+<!--          <systemPath>${project.basedir}/meeting-common/target/meeting-common-1.0.jar</systemPath>-->
+          <scope>system</scope>
       </dependency>
+
+
+    <dependency>
+      <groupId>io.projectreactor.rabbitmq</groupId>
+      <artifactId>reactor-rabbitmq</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.projectreactor.netty</groupId>
+      <artifactId>reactor-netty</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-logging</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <artifactId>caffeine</artifactId>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-test</artifactId>
+      <scope>test</scope>
+    </dependency>
 
   </dependencies>
 
@@ -176,12 +235,12 @@
       </resource>
     </resources>
 
-<!--    <extensions>-->
-<!--      <extension>-->
-<!--        <groupId>kr.motd.maven</groupId>-->
-<!--        <artifactId>os-maven-plugin</artifactId>-->
-<!--      </extension>-->
-<!--    </extensions>-->
+    <extensions>
+      <extension>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+      </extension>
+    </extensions>
 
     <plugins>
       <plugin>
@@ -211,55 +270,40 @@
           </annotationProcessorPaths>
         </configuration>
       </plugin>
-<!--      <plugin>-->
-<!--        <artifactId>maven-resources-plugin</artifactId>-->
-<!--        <version>2.7</version>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <phase>package</phase>-->
-<!--            <goals>-->
-<!--              <goal>copy-resources</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              <outputDirectory>../</outputDirectory>-->
-<!--            </configuration>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
 
 
-<!--      <plugin>-->
-<!--        <groupId>com.gluonhq</groupId>-->
-<!--        <artifactId>gluonfx-maven-plugin</artifactId>-->
-<!--        <version>${gluonfx.maven.plugin.version}</version>-->
-<!--        <configuration>-->
-<!--          <verbose>true</verbose>-->
-<!--          <target>${gluonfx.target}</target>-->
-<!--          <attachList>-->
-<!--            <list>display</list>-->
-<!--            <list>lifecycle</list>-->
-<!--            <list>statusbar</list>-->
-<!--            <list>storage</list>-->
-<!--          </attachList>-->
-<!--          <mainClass>${main.class}</mainClass>-->
-<!--          <appIdentifier>${app.identifier}</appIdentifier>-->
-<!--          <releaseConfiguration>-->
-<!--            <vendor>Gluon</vendor>-->
-<!--            <description>${app.description}</description>-->
-<!--            <packageType>${package.type}</packageType>-->
-<!--            &lt;!&ndash; for macOS/iOS &ndash;&gt;-->
-<!--            <macAppStore>${mac.app.store}</macAppStore>-->
-<!--            <bundleShortVersion>${bundle.short.version}</bundleShortVersion>-->
-<!--            <bundleVersion>${bundle.version}</bundleVersion>-->
-<!--            &lt;!&ndash; for Android &ndash;&gt;-->
-<!--            <versionCode>${version.code}</versionCode>-->
-<!--            <providedKeyStorePath>${provided.keystore.path}</providedKeyStorePath>-->
-<!--            <providedKeyStorePassword>${provided.keystore.password}</providedKeyStorePassword>-->
-<!--            <providedKeyAlias>${provided.key.alias}</providedKeyAlias>-->
-<!--            <providedKeyAliasPassword>${provided.key.alias.password}</providedKeyAliasPassword>-->
-<!--          </releaseConfiguration>-->
-<!--        </configuration>-->
-<!--      </plugin>-->
+      <plugin>
+        <groupId>com.gluonhq</groupId>
+        <artifactId>gluonfx-maven-plugin</artifactId>
+        <version>${gluonfx.maven.plugin.version}</version>
+        <configuration>
+          <verbose>true</verbose>
+          <target>${gluonfx.target}</target>
+          <attachList>
+            <list>display</list>
+            <list>lifecycle</list>
+            <list>statusbar</list>
+            <list>storage</list>
+          </attachList>
+          <mainClass>${main.class}</mainClass>
+          <appIdentifier>${app.identifier}</appIdentifier>
+          <releaseConfiguration>
+            <vendor>Gluon</vendor>
+            <description>${app.description}</description>
+            <packageType>${package.type}</packageType>
+            <!-- for macOS/iOS -->
+            <macAppStore>${mac.app.store}</macAppStore>
+            <bundleShortVersion>${bundle.short.version}</bundleShortVersion>
+            <bundleVersion>${bundle.version}</bundleVersion>
+            <!-- for Android -->
+            <versionCode>${version.code}</versionCode>
+            <providedKeyStorePath>${provided.keystore.path}</providedKeyStorePath>
+            <providedKeyStorePassword>${provided.keystore.password}</providedKeyStorePassword>
+            <providedKeyAlias>${provided.key.alias}</providedKeyAlias>
+            <providedKeyAliasPassword>${provided.key.alias.password}</providedKeyAliasPassword>
+          </releaseConfiguration>
+        </configuration>
+      </plugin>
 
 
       <plugin>

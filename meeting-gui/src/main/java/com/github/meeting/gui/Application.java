@@ -62,10 +62,10 @@ public class Application extends javafx.application.Application {
         log.debug("connect status  "  );
 
         try{
-            ClientLifeStyle connect =
-                    ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
-                            .connect();
-            log.debug("connect status {}", connect.isAlive());
+//            ClientLifeStyle connect =
+//                    ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
+//                            .connect();
+//            log.debug("connect status {}", connect.isAlive());
 
         }catch (Exception ex){
             log.error("1");
@@ -83,11 +83,6 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void init() throws Exception {
-//
-//        appManager.addViewFactory("login", () -> {
-//            View view = new View(new LoginController());
-//        });
-
 
         appManager.addViewFactory(HOME_VIEW, () -> {
             FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.SEARCH.text,
