@@ -318,11 +318,11 @@
 
 
     <repositories>
-        <repository>
-            <id>ali-nexus</id>
-            <name>ali-nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
+<!--        <repository>-->
+<!--            <id>ali-nexus</id>-->
+<!--            <name>ali-nexus</name>-->
+<!--            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+<!--        </repository>-->
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
