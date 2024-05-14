@@ -12,7 +12,6 @@
 
 
   <artifactId>meeting-gui</artifactId>
-<!--  <version>${project.parent.version}</version>-->
   <version>1.0</version>
 
   <properties>
@@ -23,7 +22,7 @@
     <javafx.version>21</javafx.version>
     <javacv.version>1.5.9</javacv.version>
     <gluonfx.maven.plugin.version>1.0.22</gluonfx.maven.plugin.version>
-    <main.class>com.github.meeting.gui.Application</main.class>
+    <main.class>com.github.meeting.gui.HelloGluonApp</main.class>
     <app.description>The HelloGluon app</app.description>
     <app.identifier>${main.class}</app.identifier>
     <package.type/>
@@ -167,10 +166,6 @@
         <groupId>io.github.pengpengno</groupId>
           <artifactId>meeting-common</artifactId>
           <version>1.0</version>
-          <systemPath>${project.basedir}/lib/meeting-common-1.0.jar</systemPath>
-<!--          <systemPath>${project.parent.basedir}/commonjar/meeting-common-1.0.jar</systemPath>-->
-<!--          <systemPath>/meeting-common/target/meeting-common-1.0.jar</systemPath>-->
-          <scope>system</scope>
       </dependency>
 
 

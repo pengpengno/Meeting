@@ -29,13 +29,13 @@ jobs:
           sudo apt-get update
           sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
 
-      - name: Build meeting-common
+      - name: Build meeting-common protobuf
         run: |
-          mvn protobuf:compile protobuf:compile-custom -f meeting-common/pom.xml
+          mvn clean protobuf:compile protobuf:compile-custom -f meeting-common/pom.xml
 
       - name: Build meeting-common
         run: |
-          mvn clean package -am -f meeting-common/pom.xml
+          mvn install -am -f meeting-common/pom.xml
 
       - name: Gluon Build
         run: |
