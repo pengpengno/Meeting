@@ -31,6 +31,10 @@ jobs:
 
       - name: Build meeting-common
         run: |
+          mvn protobuf:compile protobuf:compile-custom -f meeting-common/pom.xml
+
+      - name: Build meeting-common
+        run: |
           mvn clean package -am -f meeting-gui/pom.xml
 
       - name: Gluon Build

@@ -168,7 +168,8 @@
           <artifactId>meeting-common</artifactId>
           <version>1.0</version>
           <systemPath>${project.basedir}/lib/meeting-common-1.0.jar</systemPath>
-<!--          <systemPath>${project.basedir}/meeting-common/target/meeting-common-1.0.jar</systemPath>-->
+<!--          <systemPath>${project.parent.basedir}/commonjar/meeting-common-1.0.jar</systemPath>-->
+<!--          <systemPath>/meeting-common/target/meeting-common-1.0.jar</systemPath>-->
           <scope>system</scope>
       </dependency>
 
