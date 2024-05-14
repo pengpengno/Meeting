@@ -7,6 +7,7 @@ import com.github.meeting.common.model.account.AccountVo;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.service.annotation.GetExchange;
 import reactor.core.publisher.Mono;
 
 /**
@@ -18,6 +19,7 @@ import reactor.core.publisher.Mono;
 //@Slf4j
 public class AccountApi {
 
+    @GetExchange
 
 //
 //    @Autowired
