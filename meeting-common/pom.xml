@@ -146,7 +146,6 @@
     <build>
 <!--        <outputDirectory>${project.parent.basedir}/gui/target</outputDirectory>-->
         <plugins>
-
 <!--            <plugin>-->
 <!--                <groupId>org.apache.maven.plugins</groupId>-->
 <!--                <artifactId>maven-jar-plugin</artifactId>-->

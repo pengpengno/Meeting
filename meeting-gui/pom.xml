@@ -304,21 +304,21 @@
       </plugin>
 
 
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <sourceDirectory>src/main/java</sourceDirectory>
-          <mainClass>com.github.peng.Launcher</mainClass>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <sourceDirectory>src/main/java</sourceDirectory>-->
+<!--          <mainClass>${main.class}</mainClass>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <goals>-->
+<!--              <goal>repackage</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
 
       <plugin>
         <groupId>org.openjfx</groupId>
@@ -410,7 +410,8 @@
       <id>android</id>
       <properties>
         <gluonfx.target>android</gluonfx.target>
-        <app.identifier>com.gluonhq.samples.hellogluon</app.identifier>
+
+<!--        <app.identifier>com.gluonhq.samples.hellogluon</app.identifier>-->
         <!--suppress UnresolvedMavenProperty -->
         <version.code>${env.GITHUB_RUN_NUMBER}</version.code>
         <!--suppress UnresolvedMavenProperty -->
