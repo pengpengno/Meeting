@@ -611,15 +611,15 @@
             </properties>
 
             <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>com.gluonhq</groupId>
-                            <artifactId>gluonfx-maven-plugin</artifactId>
-                            <version>${gluonfx.maven.plugin.version}</version>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
+<!--                <pluginManagement>-->
+<!--                    <plugins>-->
+<!--                        <plugin>-->
+<!--                            <groupId>com.gluonhq</groupId>-->
+<!--                            <artifactId>gluonfx-maven-plugin</artifactId>-->
+<!--                            <version>${gluonfx.maven.plugin.version}</version>-->
+<!--                        </plugin>-->
+<!--                    </plugins>-->
+<!--                </pluginManagement>-->
             </build>
 <!--                <build>-->
 <!--                    <plugins>-->
