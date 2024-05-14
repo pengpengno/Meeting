@@ -35,7 +35,7 @@ jobs:
 
       - name: Build meeting-common
         run: |
-          mvn clean package -am -f meeting-gui/pom.xml
+          mvn clean package -am -f meeting-common/pom.xml
 
       - name: Gluon Build
         run: |
