@@ -4,6 +4,8 @@ import com.github.meeting.common.connect.connection.client.ClientLifeStyle;
 import com.github.meeting.common.connect.connection.client.tcp.ReactorTcpClient;
 //import com.github.meeting.gui.app.controller.VideoController;
 //import com.github.meeting.gui.util.FxmlLoader;
+import com.github.meeting.gui.app.controller.LoginController;
+import com.github.meeting.gui.util.FxmlLoader;
 import com.gluonhq.attach.display.DisplayService;
 import com.gluonhq.attach.util.Platform;
 import com.gluonhq.charm.glisten.application.AppManager;
@@ -20,11 +22,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.IOException;
-import java.net.InetSocketAddress;
-
 import static com.gluonhq.charm.glisten.application.AppManager.HOME_VIEW;
 
 /***
@@ -57,6 +55,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        Scene scene = FxmlLoader.applySingleScene(LoginController.class);
 //        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
 
         //log.debug("connect status  "  );
@@ -75,7 +74,7 @@ public class Application extends javafx.application.Application {
 //        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
 
 
-//        stage.setScene(scene);
+        stage.setScene(scene);
 
         stage.show();
     }
@@ -84,30 +83,30 @@ public class Application extends javafx.application.Application {
     @Override
     public void init() throws Exception {
 
-        appManager.addViewFactory(HOME_VIEW, () -> {
-            FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.SEARCH.text,
-                    e -> System.out.println("Search"));
-
-            ImageView imageView = new ImageView(new Image(Application.class.getResourceAsStream("openduke.png")));
-
-            imageView.setFitHeight(200);
-            imageView.setPreserveRatio(true);
-
-            Label label = new Label("Hello, Gluon Mobile!");
-            VBox root = new VBox(20, imageView, label);
-            root.setAlignment(Pos.CENTER);
-
-            View view = new View(root) {
-                @Override
-                protected void updateAppBar(AppBar appBar) {
-                    appBar.setTitleText("Gluon Mobile");
-                }
-            };
-
-            fab.showOn(view);
-
-            return view;
-        });
+//        appManager.addViewFactory(HOME_VIEW, () -> {
+//            FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.SEARCH.text,
+//                    e -> System.out.println("Search"));
+//
+//            ImageView imageView = new ImageView(new Image(Application.class.getResourceAsStream("openduke.png")));
+//
+//            imageView.setFitHeight(200);
+//            imageView.setPreserveRatio(true);
+//
+//            Label label = new Label("Hello, Gluon Mobile!");
+//            VBox root = new VBox(20, imageView, label);
+//            root.setAlignment(Pos.CENTER);
+//
+//            View view = new View(root) {
+//                @Override
+//                protected void updateAppBar(AppBar appBar) {
+//                    appBar.setTitleText("Gluon Mobile");
+//                }
+//            };
+//
+//            fab.showOn(view);
+//
+//            return view;
+//        });
     }
 
     public static void main(String[] args) {
