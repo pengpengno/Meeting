@@ -206,11 +206,6 @@
       <artifactId>reactor-core</artifactId>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework.boot</groupId>-->
-<!--      <artifactId>spring-boot-starter-logging</artifactId>-->
-<!--    </dependency>-->
-
 
     <dependency>
       <groupId>com.github.ben-manes.caffeine</groupId>
@@ -235,22 +230,40 @@
       <version>11.17.0</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/fr.brouillard.oss/cssfx -->
+    <dependency>
+      <groupId>fr.brouillard.oss</groupId>
+      <artifactId>cssfx</artifactId>
+      <version>11.5.1</version>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>slf4j-api</artifactId>
-          <groupId>org.slf4j</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+    <dependency>
+      <groupId>com.jayway.jsonpath</groupId>
+      <artifactId>json-path</artifactId>
+    </dependency>
+
 
     <dependency>
       <groupId>io.projectreactor</groupId>
       <artifactId>reactor-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>io.github.mkpaz</groupId>
+      <artifactId>atlantafx-base</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+<!--    <dependency>-->
+<!--      <groupId></groupId>-->
+<!--      <artifactId>spring-boot-start</artifactId>-->
+<!--    </dependency>-->
 
   </dependencies>
 

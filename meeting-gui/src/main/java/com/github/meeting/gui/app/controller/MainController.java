@@ -89,11 +89,13 @@ public class MainController implements Initializable {
 
     public static void show(){
         Stage stage = FxmlLoader.applySingleStage(MainController.class);
-        //log.info("prepare to show  main");
+
+        // log.info("prepare to show  main");
+
         Image icon = new Image(FileUtil.getInputStream("icon/title/conversation.png"));
         stage.getIcons().add(icon);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("IFx");
+        stage.setTitle("Meeting ");
         stage.show();
 
     }

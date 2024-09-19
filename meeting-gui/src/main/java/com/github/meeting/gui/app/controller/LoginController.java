@@ -4,6 +4,7 @@ package com.github.meeting.gui.app.controller;
 import com.github.meeting.common.connect.connection.client.ReactiveClientAction;
 import com.github.meeting.common.model.account.AccountVo;
 import com.github.meeting.gui.util.FxmlLoader;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,7 +38,7 @@ public class LoginController  implements Initializable {
     private ImageView iconView;
 
     @FXML
-    private Button loginBut;
+    private MFXButton loginBut;
 
     @FXML
     private VBox loginFrame;

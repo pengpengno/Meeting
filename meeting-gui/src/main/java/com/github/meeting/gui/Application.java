@@ -14,6 +14,10 @@ import com.gluonhq.charm.glisten.control.FloatingActionButton;
 import com.gluonhq.charm.glisten.mvc.View;
 import com.gluonhq.charm.glisten.visual.MaterialDesignIcon;
 import com.gluonhq.charm.glisten.visual.Swatch;
+import fr.brouillard.oss.cssfx.CSSFX;
+import io.github.palexdev.materialfx.theming.JavaFXThemes;
+import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
+import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.geometry.Dimension2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,7 +25,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import static com.gluonhq.charm.glisten.application.AppManager.HOME_VIEW;
 
@@ -58,9 +65,20 @@ public class Application extends javafx.application.Application {
         Scene scene = FxmlLoader.applySingleScene(LoginController.class);
 //        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
 
-        //log.debug("connect status  "  );
-
         try{
+
+
+            CSSFX.start();
+
+            UserAgentBuilder.builder()
+//                    .themes(JavaFXThemes.CASPIAN_TWO_LEVEL_FOCUS)
+                    .themes(JavaFXThemes.MODENA)
+                    .themes(MaterialFXStylesheets.forAssemble(true))
+                    .setDeploy(true)
+                    .setResolveAssets(true)
+                    .build()
+                    .setGlobal();
+
 //            ClientLifeStyle connect =
 //                    ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
 //                            .connect();
@@ -70,7 +88,8 @@ public class Application extends javafx.application.Application {
             //log.error("1");
         }
 
-
+        scene.setFill(Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
 //        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
 
 
