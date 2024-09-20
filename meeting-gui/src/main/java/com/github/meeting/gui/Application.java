@@ -62,70 +62,70 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        Scene scene = FxmlLoader.applySingleScene(LoginController.class);
-//        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
-
-        try{
-
-
-            CSSFX.start();
-
-            UserAgentBuilder.builder()
-//                    .themes(JavaFXThemes.CASPIAN_TWO_LEVEL_FOCUS)
-                    .themes(JavaFXThemes.MODENA)
-                    .themes(MaterialFXStylesheets.forAssemble(true))
-                    .setDeploy(true)
-                    .setResolveAssets(true)
-                    .build()
-                    .setGlobal();
-
-//            ClientLifeStyle connect =
-//                    ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
-//                            .connect();
-//            //log.debug("connect status {}", connect.isAlive());
-
-        }catch (Exception ex){
-            //log.error("1");
-        }
-
-        scene.setFill(Color.TRANSPARENT);
-        stage.initStyle(StageStyle.TRANSPARENT);
-//        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
-
-
-        stage.setScene(scene);
-
-        stage.show();
+//        Scene scene = FxmlLoader.applySingleScene(LoginController.class);
+////        Scene scene = FxmlLoader.applySingleScene(VideoController.class);
+//
+//        try{
+//
+//
+//            CSSFX.start();
+//
+//            UserAgentBuilder.builder()
+////                    .themes(JavaFXThemes.CASPIAN_TWO_LEVEL_FOCUS)
+//                    .themes(JavaFXThemes.MODENA)
+//                    .themes(MaterialFXStylesheets.forAssemble(true))
+//                    .setDeploy(true)
+//                    .setResolveAssets(true)
+//                    .build()
+//                    .setGlobal();
+//
+////            ClientLifeStyle connect =
+////                    ReactorTcpClient.getInstance().config(new InetSocketAddress("localhost", 8080))
+////                            .connect();
+////            //log.debug("connect status {}", connect.isAlive());
+//
+//        }catch (Exception ex){
+//            //log.error("1");
+//        }
+//
+//        scene.setFill(Color.TRANSPARENT);
+//        stage.initStyle(StageStyle.TRANSPARENT);
+////        ClientToolkit.reactiveClientAction().sendString("connection established").subscribe();
+//
+//
+//        stage.setScene(scene);
+//
+//        stage.show();
     }
 
 
     @Override
     public void init() throws Exception {
 
-//        appManager.addViewFactory(HOME_VIEW, () -> {
-//            FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.SEARCH.text,
-//                    e -> System.out.println("Search"));
-//
-//            ImageView imageView = new ImageView(new Image(Application.class.getResourceAsStream("openduke.png")));
-//
-//            imageView.setFitHeight(200);
-//            imageView.setPreserveRatio(true);
-//
-//            Label label = new Label("Hello, Gluon Mobile!");
-//            VBox root = new VBox(20, imageView, label);
-//            root.setAlignment(Pos.CENTER);
-//
-//            View view = new View(root) {
-//                @Override
-//                protected void updateAppBar(AppBar appBar) {
-//                    appBar.setTitleText("Gluon Mobile");
-//                }
-//            };
-//
-//            fab.showOn(view);
-//
-//            return view;
-//        });
+        appManager.addViewFactory(HOME_VIEW, () -> {
+            FloatingActionButton fab = new FloatingActionButton(MaterialDesignIcon.SEARCH.text,
+                    e -> System.out.println("Search"));
+
+            ImageView imageView = new ImageView(new Image(Application.class.getResourceAsStream("openduke.png")));
+
+            imageView.setFitHeight(200);
+            imageView.setPreserveRatio(true);
+
+            Label label = new Label("Hello, Gluon Mobile!");
+            VBox root = new VBox(20, imageView, label);
+            root.setAlignment(Pos.CENTER);
+
+            View view = new View(root) {
+                @Override
+                protected void updateAppBar(AppBar appBar) {
+                    appBar.setTitleText("Gluon Mobile");
+                }
+            };
+
+            fab.showOn(view);
+
+            return view;
+        });
     }
 
     public static void main(String[] args) {
